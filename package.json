@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@curiosityx/bootstrap-session-timeout": "^1.0.0",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.2",
     "jquery": "^3.7.1"

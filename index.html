@@ -1,15 +1,4 @@
 
-<!---(remove after completion)
-install npm packages in the VS-Code terminal with the following commands:
-npm i jquery
-npm i bootstrap
-npm i aos
-npm i @fortawesome/fontawesome-free
-if Fontawesome cannot be installed from npmjs then must be installed manually, get from https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers
-if you cannot get the fontawesome package to install, then you can use the CDN link in the head of the html file
-https://cdnjs.com/libraries/font-awesome
---->
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -110,6 +99,8 @@ https://cdnjs.com/libraries/font-awesome
 </script>
 <script>
     $(document).ready(function(){
+        //load landing.html into index.html
+        $("body").load("landing.html");
 
     });
     let scrollpos = window.scrollY
