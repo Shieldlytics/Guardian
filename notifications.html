@@ -6,7 +6,7 @@
         <span class="justify-content-end">Views: <span class="badge text-bg-primary">42</span></span>
     </div>
     <div class="col-md-1">
-        <span>Received: <span class="badge text-bg-success">31</span></span>
+        <span>Received: <span class="badge text-bg-danger">31</span></span>
     </div>
     <div class="col-md-1">
         <span>Issued: <span class="badge text-bg-warning">10</span></span>
@@ -87,7 +87,7 @@
     </div>
   </div>
 
-  <div id="infoModal" class="modal" tabindex="-1">
+  <div id="infoModal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered  modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -104,6 +104,7 @@
         $('#addNew').on('click', function() {
             $('#newMessageModal').modal('show');
         });
+        
         var table = $('#notifications').DataTable({
             ajax: "assets/json/guardian_Notifications.json",
                 "columns": [
@@ -131,9 +132,9 @@
             var data = table.row(this).data();
             $('#infoModal .modal-title').text('Notification Details - ' + data.id);
             $('#infoModal .modal-body').html(''); // Clear previous data
-            $('#infoModal .modal-body').append('<p class="mb-0">To: ' + data.to + '</p>');
-            $('#infoModal .modal-body').append('<p class="mb-0">From: ' + data.from + '</p>');
-            $('#infoModal .modal-body').append('<p class="mb-4">Title: <strong>' + data.title + '</strong></p>');
+            $('#infoModal .modal-body').append('<p class="mb-0"><span class="p-1">To:</span><span class="p-5">' + data.to + '</span></p>');
+            $('#infoModal .modal-body').append('<p class="mb-0"><span class="p-1">From: </span><span class="p-4">' + data.from + '</span></p>');
+            $('#infoModal .modal-body').append('<p class="mb-4"><span class="p-1">Title: </span> <span class="p-4 fw-bold"> ' + data.title + '</span></p>');
             $('#infoModal .modal-body').append('<p>' + data.notifications + '</p>');
             $('#infoModal').modal('show');
         });
