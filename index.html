@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="node_modules/bootstrap/scss/_popover.scss">
         <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
         <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css">
@@ -34,8 +35,8 @@
         } */
         .custom-popover {
             --bs-popover-max-width: 200px;
-            --bs-popover-border-color: var(--bd-teal-bg);
-            --bs-popover-header-bg: var(--bd-violet-bg);
+            --bs-popover-border-color: var(--bd-teal);
+            --bs-popover-header-bg: var(--bd-teal);
             --bs-popover-header-color: var(--bs-white);
             --bs-popover-body-padding-x: 1rem;
             --bs-popover-body-padding-y: .5rem;
@@ -108,8 +109,16 @@
                     <i class="fad fa-cog fa-2x" style="--fa-primary-color: teal;"></i>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a page="settings"  href="#" class="nav-link" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Sign Out">
+                    <i class="fad fa-portal-exit fa-2x" style="--fa-primary-color: teal;"></i>
+                </a>
+            </li>
         </ul>
     </div>
+
+    
     <div class="container-fluid" data-bs-spy="scroll" data-bs-target="#navScroll">
     <main style="margin-right:-10px">
         <div class="w-100 min-vh-100 bg-white text-black bg-teal d-flex ">
