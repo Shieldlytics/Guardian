@@ -87,9 +87,17 @@
     </div>
   </div>
 
+  <div id="infoModal" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered  modal-lg">
+      <div class="modal-content">
+        <div class="modal-body"></div>
+      </div>
+    </div>
+  </div>
+
 <script>
     $('document').ready(function() {
-        $('#notifications').DataTable({
+        var table = $('#notifications').DataTable({
             ajax: "assets/json/guardian_Notifications.json",
                 "columns": [
                     { "data": "id"},
@@ -112,6 +120,32 @@
                 lengthMenu: [10, 25, 50, 75, 100],
             responsive: true
         });
+        $('#notifications tbody').on('click', 'tr', function () {
+            var data = table.row(this).data();
+            console.log(data.notifications)
+            // Populate modal with data and show it
+            $('.modal-body').html(''); // Clear previous data
+            $('.modal-body').append('<p>To: ' + data.to + '</p>');
+            $('.modal-body').append('<p>From: ' + data.from + '</p>');
+            $('.modal-body').append('<p>Title: <strong>' + data.title + '</strong></p>');
+            $('.modal-body').append('<br><p>' + data.notifications + '</p>');
+
+            // ... add more fields as needed
+            $('#infoModal').modal('show');
+        });
+        // $('#notifications tbody').on('mouseenter', 'tr', function () {
+        //     var data = table.row(this).data();
+        //     // Populate the modal with the data
+        //     // You can format the data as you wish and append it to the modal body
+        //     $('#infoModal .modal-body').html('Name: ' + data[0] + '<br>Position: ' + data[1] + '... and so on.');
+        //     // Show the modal
+        //     $('#infoModal').modal('show');
+        // });
+
+        // $('#notifications tbody').on('mouseleave', 'tr', function () {
+        //     // Hide the modal when the mouse leaves the row
+        //     $('#infoModal').modal('hide');
+        // });
     });
 
     function loadNotifications(){
