@@ -13,87 +13,93 @@
     <body>
 
 
-        <div class="container my-auto">
-        <div id="login" class="frostedGlass mx-auto" style="max-width: 850px;display: none;">
-            <div class="card-body">
-                
-                      <div class="row">
-                        <div class="col-12">
-                          <div class="mb-3">
-                            <h2 class="display-5 fw-bold text-center">Guardian Sign in</h2>
-                          </div>
+<div class="container my-auto">
+  <div class="row ">
+    <div class="col-12">
+      <div class="mb-5">
+        <h2 class="display-5 fw-bold text-white text-center">Guardian Sign in</h2>
+      </div>
+    </div>
+  </div>
+  <div id="login" class="frostedGlass mx-auto" style="max-width: 850px;display: none;">
+    <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="col-12 col-10 col-8">
+          <div class="row gy-5 justify-content-center">
+            <div class="col-12 col-lg-5">
+              <form action="#!">
+                <div class="row gy-3 overflow-hidden">
+                  <div class="col-12">
+                    <div class="form-floating mb-2">
+                      <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com"
+                        required>
+                      <label for="email" class="form-label text-black">Email</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating mb-2">
+                      <input type="password" class="form-control" name="password" id="password" value=""
+                        placeholder="Password" required>
+                      <label for="password" class="form-label text-black">Password</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="row justify-content-between">
+                      <div class="col-6">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" name="remember_me" id="remember_me">
+                          <label class="form-check-label text-dark" for="remember_me">
+                            Remember me
+                          </label>
                         </div>
                       </div>
-                      <div class="row justify-content-center">
-                        <div class="col-12 col-10 col-8">
-                          <div class="row gy-5 justify-content-center">
-                            <div class="col-12 col-lg-5">
-                              <form action="#!">
-                                <div class="row gy-3 overflow-hidden">
-                                  <div class="col-12">
-                                    <div class="form-floating mb-2">
-                                      <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
-                                      <label for="email" class="form-label text-black">Email</label>
-                                    </div>
-                                  </div>
-                                  <div class="col-12">
-                                    <div class="form-floating mb-2">
-                                      <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required>
-                                      <label for="password" class="form-label text-black">Password</label>
-                                    </div>
-                                  </div>
-                                  <div class="col-12">
-                                    <div class="row justify-content-between">
-                                      <div class="col-6">
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" value="" name="remember_me" id="remember_me">
-                                          <label class="form-check-label text-dark" for="remember_me">
-                                            Remember me
-                                          </label>
-                                        </div>
-                                      </div>
-                                      <div class="col-6">
-                                        <div class="text-end">
-                                          <a href="#!" class="link-dark text-decoration-none">Forgot password?</a>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-12">
-                                    <div class="d-grid">
-                                      <button class="btn btn-primary btn-lg" type="submit">Log in</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
-                            <div class="col-12 col-lg-2 d-flex align-items-center justify-content-center gap-3 flex-lg-column">
-                              <div class="bg-dark h-100 d-none d-lg-block" style="width: 1px; --bs-bg-opacity: .1;"></div>
-                              <div class="bg-dark w-100 d-lg-none" style="height: 1px; --bs-bg-opacity: .1;"></div>
-                              <div>or</div>
-                              <div class="bg-dark h-100 d-none d-lg-block" style="width: 1px; --bs-bg-opacity: .1;"></div>
-                              <div class="bg-dark w-100 d-lg-none" style="height: 1px; --bs-bg-opacity: .1;"></div>
-                            </div>
-                            
-                            <div class="col-12 col-lg-5 d-flex align-items-center">
-                              <div class="d-flex gap-3 flex-column w-100 ">
-                                <a href="#!" class="btn btn-lg btn-success">
-                                    Sign in with 
-                                  <img src="assets/images/landingPage/ID.me_logo_wht.svg" height="20" alt="">
-                                </a>
-                                <a href="#!" class="btn btn-lg btn-light">
-                                    <img src="assets/images/landingPage/ID.me_logo.svg" height="20" alt=""> Create an account
-                                    
-                                </a>
-                                
-                              </div>
-                            </div>
-                          </div>
+                      <div class="col-6">
+                        <div class="text-end">
+                          <a href="#!" class="link-dark text-decoration-none">Forgot password?</a>
                         </div>
                       </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="d-grid">
+                      <button class="btn btn-primary btn-lg" type="submit">Log in</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
+            <div class="col-12 col-lg-2 d-flex align-items-center justify-content-center gap-1 flex-lg-column">
+              <div class="bg-dark h-100 d-none d-lg-block" style="width: 1px; --bs-bg-opacity: .1;"></div>
+              <div class="bg-dark w-100 d-lg-none" style="height: 1px; --bs-bg-opacity: .1;"></div>
+              <div class="fs-3">or</div>
+              <div class="bg-dark h-100 d-none d-lg-block" style="width: 1px; --bs-bg-opacity: .1;"></div>
+              <div class="bg-dark w-100 d-lg-none" style="height: 1px; --bs-bg-opacity: .1;"></div>
+            </div>
+
+            <div class="col-12 col-lg-5 d-flex align-items-center">
+              <div class="d-flex gap-1 flex-column w-100">
+                <a href="#!" class="btn btn-lg btn-success mb-3">
+                  Sign in with
+                  <img src="assets/images/landingPage/ID.me_logo_wht.svg" height="20" alt="">
+                </a>
+                <a href="#!" class="btn btn-lg btn-light">
+                  <img src="assets/images/landingPage/ID.me_logo.svg" height="20" alt=""> Create an account
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center mt-5">
+      <span class="text-white">Powered by</span><br>
+        <img src="assets/images/landingPage/ShieldLyticsLogoOrbitronHorzWt.svg" height="40" alt="">
+    </div>
+  </div>
+
+</div>
         
         
         

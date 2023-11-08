@@ -1,15 +1,100 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
 body {
-    background: url('../images/mda-logo-blue.png') no-repeat;
-    /* backdrop-filter: blur(3px); */
-    transition:all 0.9s;
-    -webkit-transition:all 0.9s;
-    -o-transition:all 0.9s;
-    -moz-transition:all 0.9s;
-    background-attachment: fixed;
-    background-size: cover;
-    display: grid;
-    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #777;
+    background: #fff;
 }
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+}
+
+html {font-size: 100%;} /* 16px */
+h1 {font-size: 4.210rem; /* 67.36px */}
+h2 {font-size: 3.158rem; /* 50.56px */}
+h3 {font-size: 2.369rem; /* 37.92px */}
+h4 {font-size: 1.777rem; /* 28.48px */}
+h5 {font-size: 1.333rem; /* 21.28px */}
+small {font-size: 0.750rem; /* 12px */}
+
+.background {
+  /* background-image: url('../img/darkBG.jpeg') no-repeat; */
+  /* backdrop-filter: blur(3px); */
+  transition:all 0.9s;
+  -webkit-transition:all 0.9s;
+  -o-transition:all 0.9s;
+  -moz-transition:all 0.9s;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.text {color: #f2e6d9;} /* (rgb(242, 230, 217) - hsl(31, 49%, 90%)) */
+.background {background-color: #130d06;} /* (rgb(19, 13, 6) - hsl(32, 52%, 5%)) */
+.primary {background-color: #3e79bb;} /* (rgb(62, 121, 187) - hsl(212, 50%, 49%)) */
+.secondary {background-color: #121132;} /*(rgb(18, 17, 50) - hsl(242, 49%, 13%) */
+.accent {background-color: #4bbfc3; } /* (rgb(75, 191, 195) - hsl(182, 50%, 53%)) */
+
+
+/* inter-300 - latin */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: local(''),
+      url('fonts/inter-v12-latin-300.woff2') format('woff2'),
+      /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url('fonts/inter-v12-latin-300.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+
+  /* inter-400 - latin */
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local(''),
+      url('fonts/inter-v12-latin-regular.woff2') format('woff2'),
+      /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url('fonts/inter-v12-latin-regular.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: local(''),
+      url('fonts/inter-v12-latin-500.woff2') format('woff2'),
+      /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url('fonts/inter-v12-latin-500.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local(''),
+      url('fonts/inter-v12-latin-700.woff2') format('woff2'),
+      /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url('fonts/inter-v12-latin-700.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
 .glass{
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.218),rgba(255, 255, 255, 0.205));
     backdrop-filter: blur(15px);

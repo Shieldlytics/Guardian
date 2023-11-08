@@ -1,0 +1,104 @@
+<div class="p-2">
+<div class="row row-col-12"><h1>Notifications</h1></div>
+<div class="row mt-3" >
+    <div class="col-md-7"><h3 class="text-start">Notices</h3></div>
+    <div class="col-md-1">
+        <span class="justify-content-end">Views: <span class="badge text-bg-primary">42</span></span>
+    </div>
+    <div class="col-md-1">
+        <span>Received: <span class="badge text-bg-success">31</span></span>
+    </div>
+    <div class="col-md-1">
+        <span>Issued: <span class="badge text-bg-warning">10</span></span>
+    </div>
+    <div class="col-2 text-end">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fad fa-plus"></i> New Notification
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <table id="notifications" class="table table-hover table-striped table-active">
+                    <thead>
+                        <tr><th scope="col" nowrap>ID</th>
+                            <th scope="col" nowrap>Title</th>
+                            <th scope="col" nowrap>Type</th>
+                            <th scope="col" nowrap>Issued Date/Time</th>
+                            <th scope="col" nowrap>Issued By</th>
+                            <th scope="col" nowrap>Issued Team</th>
+                            <th scope="col" nowrap>Recipient</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    $('document').ready(function() {
+        $('#notifications').DataTable({
+            ajax: "assets/json/guardian_Notifications.json",
+                "columns": [
+                    { "data": "id"},
+                    { "data": "title"},
+                    { "data": "type"},
+                    { "data": "issued_date"},
+                    { "data": "issued_by"},
+                    { "data": "issued_team"},
+                    { "data": "recipient"}
+                ],"order": [[0, "asc"]],
+                    "paging": true,
+                    "ordering": true,
+                    "info": true,
+                    "searching": true,
+                    //"scrollY": "550px",
+                    "scrollCollapse": true,
+                    "paging": true,
+                "ordering": true,
+                pageLength: 10,
+                lengthMenu: [10, 25, 50, 75, 100],
+            responsive: true
+        });
+    });
+
+    function loadNotifications(){
+      $.ajax({
+        url: "assets/json/guardian_Notifications.json",
+        type: "GET",
+        success: function(data){
+          var x = data.items;
+
+          var txt = '<ul class="list-group" style="font-size:12px">';
+            txt += '<li class="list-group-item active">';
+            txt += '<div class="row">';
+            txt += '<div class="col-md-2">Title</div>';
+            txt += '<div class="col-md-2">Type</div>';
+            txt += '<div class="col-md-2">Issued Date/Time</div>';
+            txt += '<div class="col-md-2">Issued By</div>';
+            txt += '<div class="col-md-2">Issued Team</div>';
+            txt += '<div class="col-md-2">Recipient</div>';
+            txt += '</div>';
+            txt += '</li>';
+          for (var i = 0; i < x.length; i++) {
+            txt += '<li  class="list-group-item">';
+            txt += '<div class="row"id="'+x[i].id +'">';
+            txt += '<div class="col-md-2">' + x[i].title + '</div>';
+            txt += '<div class="col-md-2">' + x[i].type + '</div>';
+            txt += '<div class="col-md-2">' + x[i].issued_date + '</div>';
+            txt += '<div class="col-md-2">' + x[i].issued_by + '</div>';
+            txt += '<div class="col-md-2">' + x[i].issued_team + '</div>';
+            txt += '<div class="col-md-2">' + x[i].recipient + '</div>';
+            txt += '</div>';
+            txt += '</li>';
+          }
+            txt += '</ul>';
+        $("#notifications").html(txt);
+        }
+      });
+    }
+</script>

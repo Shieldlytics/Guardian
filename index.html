@@ -14,82 +14,120 @@
         <title></title>
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
+        <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+        <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css">
     </head>
         <style>
         .red-bar {
             width:100%; 
-            background-color: #e32525;
+            background-color: #178799;
             height: 4px; 
             margin-top:60px;
             position: absolute;
         }
+        /* .custom-tooltip {
+        --bs-tooltip-bg: var(--bs-teal);
+        --bs-tooltip-color: var(--bs-white);
+        --bs-tooltip-margin: -10px 0 0;
+        } */
+        .custom-popover {
+            --bs-popover-max-width: 200px;
+            --bs-popover-border-color: var(--bd-teal-bg);
+            --bs-popover-header-bg: var(--bd-violet-bg);
+            --bs-popover-header-color: var(--bs-white);
+            --bs-popover-body-padding-x: 1rem;
+            --bs-popover-body-padding-y: .5rem;
+        } 
         </style>
-        
-    <nav id="navScroll" class="navbar navbar-expand-lg bg-dark fixed-top px-vw-5">
-        <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarToggler">
-                    <a class="navbar-brand" href="#">Hidden brand</a>
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li>
+     <body class="bg-black text-white mt-0">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand d-flex align-content-center" href="#"><img src="assets/images/GuardianLogo.png" alt="guardian.png" height="35"/> <span class="h3" >Guardian</span></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
             </div>
-        </div>
-        <div class="red-bar"></div>
-    </nav>
-    <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
+            <div class="red-bar"></div>
+          </nav>
+
+<div class="d-flex">
+    <div class="d-flex flex-column  bg-light" style="width:80px;margin-right:-8px;">
+        <ul class="nav nav-pills flex-column mb-auto">
+            <!-- <li class="nav-item">
+                <a id="home" href="#" class="nav-link" aria-current="page" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Home">
+                    <i class="fad fa-home fa-2x" style="--fa-primary-color: teal;"></i>
+                </a>
+            </li> -->
+            <li class="nav-item">
+                <a page="index"  href="#" class="nav-link" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Dashboard">
+                    <i class="fad fa-th-large fa-2x" style="--fa-primary-color: teal;"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a page="notifications"  href="#" class="nav-link" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Messaging">
+                    <i class="fad fa-comment-alt-dots fa-2x" style="--fa-primary-color: teal;"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a page="newmesssages" href="#" class="nav-link" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="New Message">
+                    <i class="fad fa-edit fa-2x" style="--fa-primary-color: teal;"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a page="settings"  href="#" class="nav-link" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Settings">
+                    <i class="fad fa-cog fa-2x" style="--fa-primary-color: teal;"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="container-fluid" data-bs-spy="scroll" data-bs-target="#navScroll">
+    <main style="margin-right:-10px">
+        <div class="w-100 min-vh-100 bg-white text-black bg-teal d-flex ">
+            <div id="mainContent"></div>
         
-    <main>
-        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-black text-white bg-cover d-flex align-items-center" data-aos="fade">
-        <div class="position-absolute w-100 h-100 bg-black opacity-75 top-0 start-0"></div>
-        <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
-            <div class="row d-flex align-items-center justify-content-center py-vh-5">
-                <div class="col-12 col-xl-10">
-                    <span class="h4 text-secondary fw-lighter">Animated on Scrolling</span>
-                    <h1 class="display-huge mt-3 mb-3 lh-1">HTML5 NPM Boilerplate</h1>
-                </div>
-                <div class="col-12 col-xl-8">
-                <p class="lead text-secondary">This can be a long description of the website </p>
-                </div>
-            </div>
-        </div>
-        </div>
-        <div class="w-100 min-vh-100 position-relative bg-white text-black bg-cover d-flex align-items-center">
-        <div class="position-absolute w-100 h-100 bg-white opacity-75 top-0 start-0"></div>
-        <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
-            <div class="row d-flex align-items-center justify-content-center py-vh-5">
-                <div class="col-12 col-xl-10">
-                    <span class="h4 text-secondary fw-lighter">Animated on Scrolling</span>
-                    <h1 class="display-huge mt-3 mb-3 lh-1">HTML5 NPM Boilerplate</h1>
-                </div>
-                <div class="col-12 col-xl-8">
-                <p class="lead text-secondary">This can be a long description of the website </p>
-                </div>
-            </div>
-        </div>
         </div>
     </main>
-        
-        
-        <script src="assets/js/app.js"></script>
-        <script src="node_modules/jquery/dist/jquery.js"></script>
-        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</div>
+</div>
+  </div>     
+        <script src="assets/js/apps.js"></script>
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="node_modules/aos/dist/aos.js"></script>
+        <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+        <script src="node_modules/datatables.net-buttons/js/dataTables.buttons.js"></script>
+        <script src="node_modules/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
     </body>
 </html>
 <script>
@@ -98,10 +136,15 @@
     });
 </script>
 <script>
-    $(document).ready(function(){
-        //load landing.html into index.html
-        $("body").load("landing.html");
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 
+    $(document).ready(function(){
+        $('a').on('click', function(){
+            var page = $(this).attr('page');
+            $("#mainContent").load(page + ".html");
+        });
+        
     });
     let scrollpos = window.scrollY
     const header = document.querySelector(".navbar")
@@ -113,5 +156,7 @@
         if (scrollpos >= header_height) { add_class_on_scroll() }
         else { remove_class_on_scroll() }
         console.log(scrollpos)
-    })
+    });
+
+
 </script>
