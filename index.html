@@ -28,11 +28,6 @@
             margin-top:60px;
             position: absolute;
         }
-        /* .custom-tooltip {
-        --bs-tooltip-bg: var(--bs-teal);
-        --bs-tooltip-color: var(--bs-white);
-        --bs-tooltip-margin: -10px 0 0;
-        } */
         .custom-popover {
             --bs-popover-max-width: 200px;
             --bs-popover-border-color: var(--bd-teal);
@@ -40,12 +35,12 @@
             --bs-popover-header-color: var(--bs-white);
             --bs-popover-body-padding-x: 1rem;
             --bs-popover-body-padding-y: .5rem;
-        } 
+        }
         </style>
      <body class="bg-black text-white mt-0">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-              <a class="navbar-brand d-flex align-content-center" href="#"><img src="assets/images/GuardianLogo.pn" alt="guardian.png" height="35"/> <span class="h3" >Guardian</span></a>
+              <a class="navbar-brand d-flex align-content-center" href="#"><img src="assets/images/GuardianLogo.png" alt="guardian.png" height="35"/> <span class="h3" >Guardian</span></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -160,6 +155,7 @@
     });
     
     $(document).ready(function(){
+        $("#mainContent").load("dashboard.html");
         $('a').on('click', function(){
             var page = $(this).attr('page');
             if(page == "index"){
