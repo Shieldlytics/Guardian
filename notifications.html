@@ -12,7 +12,7 @@
         <span>Issued: <span class="badge text-bg-warning">10</span></span>
     </div>
     <div class="col-2 text-end">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newMessageModal">
+        <button id="addNew" type="button" class="btn btn-primary" >
             <i class="fad fa-plus"></i> New Notification
         </button>
     </div>
@@ -90,6 +90,10 @@
   <div id="infoModal" class="modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered  modal-lg">
       <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title"><i class="far fa-plus-circle"></i> </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
         <div class="modal-body"></div>
       </div>
     </div>
@@ -97,6 +101,9 @@
 
 <script>
     $('document').ready(function() {
+        $('#addNew').on('click', function() {
+            $('#newMessageModal').modal('show');
+        });
         var table = $('#notifications').DataTable({
             ajax: "assets/json/guardian_Notifications.json",
                 "columns": [
@@ -122,15 +129,12 @@
         });
         $('#notifications tbody').on('click', 'tr', function () {
             var data = table.row(this).data();
-            console.log(data.notifications)
-            // Populate modal with data and show it
-            $('.modal-body').html(''); // Clear previous data
-            $('.modal-body').append('<p>To: ' + data.to + '</p>');
-            $('.modal-body').append('<p>From: ' + data.from + '</p>');
-            $('.modal-body').append('<p>Title: <strong>' + data.title + '</strong></p>');
-            $('.modal-body').append('<br><p>' + data.notifications + '</p>');
-
-            // ... add more fields as needed
+            $('#infoModal .modal-title').text('Notification Details - ' + data.id);
+            $('#infoModal .modal-body').html(''); // Clear previous data
+            $('#infoModal .modal-body').append('<p class="mb-0">To: ' + data.to + '</p>');
+            $('#infoModal .modal-body').append('<p class="mb-0">From: ' + data.from + '</p>');
+            $('#infoModal .modal-body').append('<p class="mb-4">Title: <strong>' + data.title + '</strong></p>');
+            $('#infoModal .modal-body').append('<p>' + data.notifications + '</p>');
             $('#infoModal').modal('show');
         });
         // $('#notifications tbody').on('mouseenter', 'tr', function () {
