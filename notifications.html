@@ -12,7 +12,7 @@
         <span>Issued: <span class="badge text-bg-warning">10</span></span>
     </div>
     <div class="col-2 text-end">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newMessageModal">
             <i class="fad fa-plus"></i> New Notification
         </button>
     </div>
@@ -22,7 +22,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <table id="notifications" class="table table-hover table-striped table-active">
+                <table id="notifications" class="table table-hover table-striped">
                     <thead>
                         <tr><th scope="col" nowrap>ID</th>
                             <th scope="col" nowrap>Title</th>
@@ -39,6 +39,54 @@
     </div>
 </div>
 </div>
+<div id="newMessageModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="far fa-plus-circle"></i> New Notices</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title">
+            </div>
+            <div class="row mt-3">           
+                <div class="col-md-4">
+                    <label for="type" class="form-label">Type</label>
+                    <select  class="form-select" id="type">
+                        <option selected >Select Type</option>
+                        <option value="1">Notice</option>
+                        <option value="2">Alert</option>
+                        <option value="3">Warning</option>
+                        <option value="4">Announcement</option>
+                        <option value="5">Policy</option>
+                        <option value="6">External</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="caseNum" class="form-label">Case Number</label>
+                    <input type="text" class="form-control" id="caseNum">
+                </div>
+
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" rows="3"></textarea>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script>
     $('document').ready(function() {
         $('#notifications').DataTable({
