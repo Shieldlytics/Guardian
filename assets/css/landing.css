@@ -1,6 +1,6 @@
 body {
     position: relative;
-    background: url('../images/landingPage/hero-bg.jpg') no-repeat fixed;
+    background: url('../images/landingBG_Teal.png') no-repeat fixed;
     background-size: cover;
     display: grid;
     height: 100vh;
