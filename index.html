@@ -138,14 +138,6 @@
 <script>
     const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
     const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
-
-    $(document).ready(function(){
-        $('a').on('click', function(){
-            var page = $(this).attr('page');
-            $("#mainContent").load(page + ".html");
-        });
-        
-    });
     let scrollpos = window.scrollY
     const header = document.querySelector(".navbar")
     const header_height = header.offsetHeight
@@ -157,6 +149,20 @@
         else { remove_class_on_scroll() }
         console.log(scrollpos)
     });
+    
+    $(document).ready(function(){
+        $('a').on('click', function(){
+            var page = $(this).attr('page');
+            if(page == "index"){
+               //reload page
+                location.reload();
+            }else{
+                $("#mainContent").load(page + ".html");
+            }
+        });
+    });
+
+
 
 
 </script>
