@@ -45,6 +45,27 @@ small {font-size: 0.750rem; /* 12px */}
 .secondary {background-color: #121132;} /*(rgb(18, 17, 50) - hsl(242, 49%, 13%) */
 .accent {background-color: #4bbfc3; } /* (rgb(75, 191, 195) - hsl(182, 50%, 53%)) */
 
+/* Add this CSS to handle the transition */
+.leftNavCollapse {
+  width: 65px; /* Initial width */
+  transition: width 0.5s; /* Transition for width */
+}
+
+.leftNavCollapse ul li .nav-link span {
+  display: none;
+  transition: opacity 0.5s; /* Transition for opacity */
+  opacity: 0; /* Initial opacity */
+}
+
+.leftNavCollapse.expanded {
+  width: 232px; /* Expanded width */
+}
+
+.leftNavCollapse.expanded ul li .nav-link span {
+  display: inline;
+  opacity: 1; /* Full opacity */
+}
+
 
 /* inter-300 - latin */
 @font-face {
@@ -142,7 +163,7 @@ small {font-size: 0.750rem; /* 12px */}
 /* change background image width of 1024  */
 @media only screen and (max-width: 1024px) {
     body {
-        background: url('../images/mda-logo-blue_1024.jpg') no-repeat;
+        /* background: url('../images/mda-logo-blue_1024.jpg') no-repeat; */
         /* backdrop-filter: blur(9px); */
         transition:all 0.9s;
         -webkit-transition:all 0.9s;
@@ -157,7 +178,7 @@ small {font-size: 0.750rem; /* 12px */}
 /* change background image width of 768  */
 @media only screen and (max-width: 768px) {
     body {
-        background: url('../images/mda-logo-blue_768.jpg') no-repeat;
+        /* background: url('../images/mda-logo-blue_768.jpg') no-repeat; */
         /* backdrop-filter: blur(9px); */
         transition:all 0.9s;
         -webkit-transition:all 0.9s;
