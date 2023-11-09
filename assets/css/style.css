@@ -58,7 +58,7 @@ small {font-size: 0.750rem; /* 12px */}
 }
 
 .leftNavCollapse.expanded {
-  width: 232px; /* Expanded width */
+  width: 235px; /* Expanded width */
 }
 
 .leftNavCollapse.expanded ul li .nav-link span {
