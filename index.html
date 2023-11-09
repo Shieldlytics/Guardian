@@ -77,37 +77,42 @@
           </nav>
 
 <div class="d-flex">
-    <div class="d-flex flex-column  bg-light" style="width:80px;margin-right:-8px;">
+    <div class="d-flex flex-column bg-light leftNavCollapse" id="leftNav" style="margin-right: -8px;">
         <ul class="nav nav-pills flex-column mb-auto">
-            <!-- <li class="nav-item">
-                <a id="home" href="#" class="nav-link" aria-current="page" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Home">
-                    <i class="fad fa-home fa-2x" style="--fa-primary-color: teal;"></i>
-                </a>
-            </li> -->
             <li class="nav-item">
-                <a page="index"  href="#" class="nav-link" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Dashboard">
-                    <i class="fad fa-th-large fa-2x" style="--fa-primary-color: teal;"></i>
+                <a page="expand" href="#" class="nav-link">
+                    <i class="far fa-arrow-to-right float-end" style="--fa-primary-color: teal; "></i>
+                </a>
+            </li>
+            <li class="nav-itemn">
+                <a page="index"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Dashboard">
+                    <i class="fad fa-th-large fa-2x col-2" style="--fa-primary-color: teal;"></i>
+                    <span id="navTextDashboard" class="text-uppercase mx-3" style="display:none"> Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a page="notifications"  href="#" class="nav-link" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Messaging">
-                    <i class="fad fa-comment-alt-dots fa-2x" style="--fa-primary-color: teal;"></i>
+                <a page="notifications"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Messaging">
+                    <i class="fad fa-comment-alt-dots fa-2x col-2" style="--fa-primary-color: teal;"></i>
+                    <span id="navTextMessaging" class="text-uppercase mx-3" style="display:none"> Messaging</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a page="newmesssages" href="#" class="nav-link" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="New Message">
-                    <i class="fad fa-edit fa-2x" style="--fa-primary-color: teal;"></i>
+                <a page="newmesssages" href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="New Message">
+                    <i class="fad fa-edit fa-2x col-2" style="--fa-primary-color: teal;"></i>
+                    <span id="navTextNewMessaging" class="text-uppercase mx-3" style="display:none"> New Message</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a page="settings"  href="#" class="nav-link" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Settings">
-                    <i class="fad fa-cog fa-2x" style="--fa-primary-color: teal;"></i>
+                <a page="settings"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Settings">
+                    <i class="fad fa-cog fa-2x col-2" style="--fa-primary-color: teal;"></i>
+                    <span id="navTextSettings" class="text-uppercase mx-3" style="display:none"> Settings</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a page="settings"  href="#" class="nav-link" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Sign Out">
-                    <i class="fad fa-portal-exit fa-2x" style="--fa-primary-color: teal;"></i>
+                <a page="settings"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Sign Out">
+                    <i class="fad fa-portal-exit fa-2x col-2" style="--fa-primary-color: teal;"></i>
+                    <span id="navTextSignOut" class="text-uppercase mx-3" style="display:none"> Sign Out</span>
                 </a>
             </li>
         </ul>
@@ -156,11 +161,28 @@
     
     $(document).ready(function(){
         $("#mainContent").load("dashboard.html");
+
         $('a').on('click', function(){
             var page = $(this).attr('page');
+            console.log(page);
             if(page == "index"){
                //reload page
                 location.reload();
+            }else if(page == "expand"){
+                //expand parent div and add text after icon
+                $(this).find('i').toggleClass('fa-arrow-to-right fa-arrow-from-right');
+                $('#leftNav').toggleClass('expanded');
+                // Check if the nav is expanded and set the display accordingly
+                if ($('#leftNav').hasClass('expanded')) {
+                    $('.nav-link span').css('display', 'inline').animate({ opacity: 1 }, 500);
+                } else {
+                    $('.nav-link span').animate({ opacity: 0 }, 100, function() {
+                        $(this).css('display', 'none');
+                        //$('#navTextDashboard,#navTextMessaging,#navTextNewMessaging,#navTextSettings,#navTextSignOut').css('display', 'none');
+                    });
+                }
+                //$
+
             }else{
                 $("#mainContent").load(page + ".html");
             }
