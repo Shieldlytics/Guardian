@@ -11,14 +11,16 @@
         <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon.png">
         <meta name="author" content="Ernest Pena Jr">
         <meta name="HandheldFriendly" content="true">
-        <title></title>
+        <title>Guardian bowered by Shieldlytics</title>
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="node_modules/bootstrap/scss/_popover.scss">
+        
         <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
         <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
         <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css">
+        <link rel="stylesheet" href="assets/scss/_variables.scss">
+        <link rel="stylesheet" href="node_modules/bootstrap/scss/_popover.scss">
     </head>
         <style>
         .red-bar {
@@ -28,14 +30,29 @@
             margin-top:60px;
             position: absolute;
         }
-        .custom-popover {
-            --bs-popover-max-width: 200px;
-            --bs-popover-border-color: var(--bd-teal);
-            --bs-popover-header-bg: var(--bd-teal);
-            --bs-popover-header-color: var(--bs-white);
-            --bs-popover-body-padding-x: 1rem;
-            --bs-popover-body-padding-y: .5rem;
+ 
+        .custom-popover .popover-header {
+            background-color: #008080;
+            color: #fff;
+            border-bottom: 1px solid #008080; /* Added 'px' and 'solid' */
         }
+
+        .custom-popover .popover-body {
+            background-color: #008080;
+            color: #fff;
+            border: 2px solid #008080; /* Added 'px' */
+            border-radius: 10px;
+        }
+
+        /* Adjusting the arrow for a popover that appears at the top */
+        .custom-popover.bs-popover-top .arrow::before {
+            border-top-color: #008080 !important; /* Outer part of the arrow */
+        }
+
+        .custom-popover.bs-popover-top .arrow::after {
+            border-top-color: #008080 !important; /* Inner part of the arrow */
+        }
+
         </style>
      <body class="bg-black text-white mt-0">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -85,32 +102,33 @@
                 </a>
             </li>
             <li class="nav-itemn">
-                <a page="index"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Dashboard">
+                <a page="index"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-trigger="hover" data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="Dashboard">
+
                     <i class="fad fa-th-large fa-2x col-2" style="--fa-primary-color: teal;"></i>
                     <span id="navTextDashboard" class="text-uppercase mx-3" style="display:none"> Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a page="notifications"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Messaging">
+                <a page="notifications"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="Messaging">
                     <i class="fad fa-comment-alt-dots fa-2x col-2" style="--fa-primary-color: teal;"></i>
                     <span id="navTextMessaging" class="text-uppercase mx-3" style="display:none"> Messaging</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a page="newmesssages" href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="New Message">
+                <a page="newmesssages" href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-custom-class="custom-popover"  data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="New Message">
                     <i class="fad fa-edit fa-2x col-2" style="--fa-primary-color: teal;"></i>
                     <span id="navTextNewMessaging" class="text-uppercase mx-3" style="display:none"> New Message</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a page="settings"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Settings">
+                <a page="settings"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-custom-class="custom-popover"  data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="Settings">
                     <i class="fad fa-cog fa-2x col-2" style="--fa-primary-color: teal;"></i>
                     <span id="navTextSettings" class="text-uppercase mx-3" style="display:none"> Settings</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a page="settings"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Sign Out">
+                <a page="settings"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-custom-class="custom-popover"  data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="Sign Out">
                     <i class="fad fa-portal-exit fa-2x col-2" style="--fa-primary-color: teal;"></i>
                     <span id="navTextSignOut" class="text-uppercase mx-3" style="display:none"> Sign Out</span>
                 </a>
