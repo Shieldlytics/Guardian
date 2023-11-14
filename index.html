@@ -42,33 +42,23 @@
         .custom-popover.bs-popover-top .arrow::after {
             border-top-color: #008080 !important;
         }
-        .bg-body-teal {
-            background-color: #008080 !important;
-        }
-        .bg-body-teal-light {
-            background-color: #00ffff !important;
-        }
-        .leftNavButton:hover{
-            background: linear-gradient(to right, #92E6E8, #ffffff);
-        };
         </style>
-     <body>
+     <body data-bs-spy="scroll" data-bs-target="#TableOfContents">
        
-        <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-body-teal">
-            <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+        <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-body-teal border-5 border-bottom border-dark">
+            <a class="navbar-brand d-flex align-items-center justify-content-center p-1" href="#">
+                <img src="assets/images/GuardianLogo-Blk.png" height="45" alt="Logo" />
+                <h1 style="margin-bottom: 0; margin-left: 10px;">GUARDIAN</h1>
+            </a>
+
+            <nav class="container-fluid" aria-label="Main navigation">
                 <div class="bd-navbar-toggle">
-                
-                <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-label="Toggle docs navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
+                    <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-label="Toggle docs navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                 </div>
-                <a class="navbar-brand p-0 me-0 me-lg-2" href="#">
-                    <img class="d-flex align-items-center justify-content-between " src="assets/images/GuardianLogo-Wht.png" height="40" /><title>Guardian bowered by Shieldlytics</title>
-                </a>
+
                 <ul class="navbar-nav p-0 me-0 me-lg-2">
-                    <li class="nav-item">
-                        <a class="nav-link active y-auto" aria-current="page" href="#"><span class="h1">GUARDIAN</span></a>
-                    </li>
                     <li class="nav-item py-2 py-lg-1 col-12 ">
                         <input id="docsearch" class="form-control navbar-text" type="text" placeholder="Search..." aria-label="Search for..." autocomplete="off" ">
                     </li>
@@ -84,39 +74,39 @@
                         </div>
                     </div>
                     <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
-                        
-                    
                         <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
                             <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
                             <hr class="d-lg-none my-2 text-white-50">
                         </li>
-
-                    <div class="d-flex align-items-center">
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fad fa-user-circle fa-2x"></i>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Sign Out</a></li>
-                            </ul>
+                        <div class="d-flex align-items-center">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fad fa-user-circle fa-2x"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                                    <li><a class="dropdown-item" href="#">Sign Out</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- <div class="d-flex align-items-center p-2">
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="bd-theme-text" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-sun fa-2x"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text" id="bd-theme-text">
-                                <li><a class="dropdown-item" href="#" data-bs-theme-value="light" ><i class="fas fa-sun"></i> Light</a></li>
-                                <li><a class="dropdown-item"  href="#" data-bs-theme-value="dark" ><i class="fas fa-moon-stars"></i> Dark</a></li>
-                                <li><a class="dropdown-item" href="#" data-bs-theme-value="auto" ><i class="fas fa-eclipse"></i> Auto</a></li>
-                            </ul>
+                        <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                            <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+                            <hr class="d-lg-none my-2 text-white-50">
+                        </li>
+                        <div class="d-flex align-items-center">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="bd-theme-text" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-sun fa-2x"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text" id="bd-theme-text">
+                                    <li><a class="dropdown-item" href="#" data-bs-theme-value="light" ><i class="fas fa-sun"></i> Light</a></li>
+                                    <li><a class="dropdown-item"  href="#" data-bs-theme-value="dark" ><i class="fas fa-moon-stars"></i> Dark</a></li>
+                                    <li><a class="dropdown-item" href="#" data-bs-theme-value="auto" ><i class="fas fa-eclipse"></i> Auto</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div> -->
-                </ul>
+                    </ul>
 
                 </div>
              
@@ -126,7 +116,7 @@
 
 
 <div class="d-flex">
-    <div class="d-flex flex-column bg-light leftNavCollapse" id="leftNav" style="margin-right: -8px;">
+    <div class="d-flex flex-column bg-light leftNavCollapse border-5 border-end border-black" id="leftNav" style="margin-right: -8px;">
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
                 <a page="expand" href="#" class="nav-link">
@@ -188,10 +178,10 @@
     </div>
 
     
-    <div class="container-fluid" data-bs-spy="scroll" data-bs-target="#navScroll">
-    <main style="margin-right:-10px">
+    <div class="container-fluid bd-guttermy-md-4 bd-layout">
+    <main class="bd-main order-1" style="margin-right:-10px">
         <div class="w-100 min-vh-100 bg-white text-black bg-teal d-flex ">
-            <div id="mainContent"></div>
+            <div class="bd-layout" id="mainContent"></div>
         
         </div>
     </main>
@@ -199,6 +189,8 @@
 </div>
   </div>     
         <script src="assets/js/apps.js"></script>
+        <script src="assets/js/color-modes.js"></script>
+        <script src="assets/js/main.js"></script>
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="node_modules/aos/dist/aos.js"></script>
@@ -236,12 +228,19 @@
             if(theme == "light"){
                 $('html').attr('data-bs-theme', 'light');
                 $('#bd-theme-text').find('i').removeClass('fa-moon-stars fa-eclipse').addClass('fa-sun');
+                $('.navbar-brand img').attr('src', 'assets/images/GuardianLogo-Blk.png');
             }else if(theme == "dark"){
                 $('html').attr('data-bs-theme', 'dark');
                 $('#bd-theme-text').find('i').removeClass('fa-sun fa-eclipse').addClass('fa-moon-stars');
+                $('.navbar-brand img').attr('src', 'assets/images/GuardianLogo-Wht.png');
             }else{
                 $('html').attr('data-bs-theme', 'auto');
                 $('#bd-theme-text').find('i').removeClass('fa-sun fa-moon-stars').addClass('fa-eclipse');
+
+
+
+
+
             }
         });
 

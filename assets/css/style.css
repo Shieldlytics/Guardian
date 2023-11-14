@@ -48,6 +48,7 @@ small {font-size: 0.750rem; /* 12px */}
 /* Add this CSS to handle the transition */
 .leftNavCollapse {
   transition: width 0.5s; /* Transition for width */
+  slideRight: 1.5s; /* Transition for width */
 }
 
 .leftNavCollapse ul li .nav-link span {
@@ -57,12 +58,14 @@ small {font-size: 0.750rem; /* 12px */}
 }
 
 .leftNavCollapse.expanded {
-  width: 235px; /* Expanded width */
+  width: 245px; /* Expanded width */
+  slideLeft: 1.5s; /* Transition for width */
 }
 
 .leftNavCollapse.expanded ul li .nav-link span {
   display: inline;
   opacity: 1; /* Full opacity */
+  slideLeft: 1.5s; /* Transition for width */
 }
 .red-bar {
   width:100%; 
@@ -171,6 +174,15 @@ small {font-size: 0.750rem; /* 12px */}
 #secureLogin {
     position: relative;
  }
+ .bg-body-teal {
+  background-color: #008080 !important;
+}
+.bg-body-teal-light {
+  background-color: #00ffff !important;
+}
+.leftNavButton:hover{
+  background: linear-gradient(to right, #92E6E8, #ffffff);
+};
 /* change background image width of 1024  */
 @media only screen and (max-width: 1024px) {
     body {
