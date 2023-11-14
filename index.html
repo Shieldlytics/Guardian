@@ -80,13 +80,13 @@
                         </li>
                         <div class="d-flex align-items-center">
                             <div class="dropdown">
-                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="ProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fad fa-user-circle fa-2x"></i>
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profile</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i> Settings</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-portal-exit"></i> Sign Out</a></li>
+                                <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                                    <li><a class="dropdown-item" data-bs-value="profile"href="#"><i class="fas fa-user"></i> Profile</a></li>
+                                    <li><a class="dropdown-item" data-bs-value="settings" href="#"><i class="fas fa-user-cog"></i> Settings</a></li>
+                                    <li><a class="dropdown-item" data-bs-value="signout" href="#"><i class="fas fa-portal-exit"></i> Sign Out</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -190,7 +190,6 @@
   </div>     
         <script src="assets/js/apps.js"></script>
         <script src="assets/js/color-modes.js"></script>
-        <script src="assets/js/main.js"></script>
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="node_modules/aos/dist/aos.js"></script>
@@ -236,11 +235,14 @@
             }else{
                 $('html').attr('data-bs-theme', 'auto');
                 $('#bd-theme-text').find('i').removeClass('fa-sun fa-moon-stars').addClass('fa-eclipse');
-
-
-
-
-
+            }
+        });
+        $('#profileDropdown .dropdown-item').click(function() {
+            var x = $(this).attr('data-bs-value');
+            console.log(x)
+            if($(this).attr('id') == "signout"){
+                localStorage.clear();
+                window.location.href = "landing.html";
             }
         });
 
