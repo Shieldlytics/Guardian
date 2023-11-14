@@ -47,7 +47,6 @@ small {font-size: 0.750rem; /* 12px */}
 
 /* Add this CSS to handle the transition */
 .leftNavCollapse {
-  width: 65px; /* Initial width */
   transition: width 0.5s; /* Transition for width */
 }
 
@@ -65,7 +64,19 @@ small {font-size: 0.750rem; /* 12px */}
   display: inline;
   opacity: 1; /* Full opacity */
 }
+.red-bar {
+  width:100%; 
+  background-color: #012b32;
+  height: 4px; 
+  margin-top:75px;
+  position: absolute;
+}
+@media only screen and (max-width: 991px) {
+  .red-bar {
+      margin-top: 65px;
+  }
 
+}
 
 /* inter-300 - latin */
 @font-face {
