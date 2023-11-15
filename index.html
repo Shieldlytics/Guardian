@@ -83,7 +83,7 @@
                                 <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="ProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fad fa-user-circle fa-2x"></i>
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                                <ul class="dropdown-menu" aria-labelledby="profileDropdown" id="profileDropdown">
                                     <li><a class="dropdown-item" data-bs-value="profile"href="#"><i class="fas fa-user"></i> Profile</a></li>
                                     <li><a class="dropdown-item" data-bs-value="settings" href="#"><i class="fas fa-user-cog"></i> Settings</a></li>
                                     <li><a class="dropdown-item" data-bs-value="signout" href="#"><i class="fas fa-portal-exit"></i> Sign Out</a></li>
@@ -237,10 +237,10 @@
                 $('#bd-theme-text').find('i').removeClass('fa-sun fa-moon-stars').addClass('fa-eclipse');
             }
         });
+
         $('#profileDropdown .dropdown-item').click(function() {
             var x = $(this).attr('data-bs-value');
-            console.log(x)
-            if($(this).attr('id') == "signout"){
+            if(x == "signout"){
                 localStorage.clear();
                 window.location.href = "landing.html";
             }
