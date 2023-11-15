@@ -43,8 +43,88 @@
 </style>
 
 <body data-bs-spy="scroll" data-bs-target="#TableOfContents">
-
     <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-body-teal border-5 border-bottom border-dark">
+        <nav class="container bd-gutter flex-wrap flex-lg-nowrap " aria-label="Main navigation">
+            
+
+            <a class="navbar-brand p-0 me-0 me-lg-2 d-flex align-items-center" href="#" aria-label="Guardian">
+                <img src="assets/images/GuardianLogo-Wht.png" height="45" alt="Logo" />
+                <h1 style="margin-bottom: 0; margin-left: 10px;">GUARDIAN</h1>
+            </a>
+            
+            <div class="d-flex">
+      
+            <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
+              <i class="far fa-ellipsis-h bi"></i>
+            </button>
+          </div>
+      
+          <div class="offcanvas-lg offcanvas-end flex-grow-1 bg-body-teal" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+            <div class="offcanvas-header px-4 pb-0">
+                <img src="assets/images/GuardianLogo-Wht.png" height="35" alt="Logo" />
+              <h5 class="offcanvas-title text-black" id="bdNavbarOffcanvasLabel">Guardian</h5>
+              <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+            </div>
+      
+            <div class="offcanvas-body p-4 pt-0 p-lg-0">
+                <ul class="navbar-nav p-0 me-0 me-lg-2">
+                    <li class="nav-item py-2 py-lg-1 col-12">
+                        <input id="docsearch" class="form-control navbar-text  d-flex align-content-center justify-content-center" type="text" placeholder="Search..."aria-label="Search for..." autocomplete="off">
+                    </li>
+                </ul>
+
+                <div class="collapse navbar-collapse " id="bdSidebar">
+                    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar"aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+                        <div class="offcanvas-header px-4 pb-0">
+                            <h5 class="offcanvas-title text-white " id="bdNavbarOffcanvasLabel">GUARDIAN</h5>
+                            <button type="button" class="btn-close btn-close-white float-start" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+                    <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                        <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+                        <hr class="d-lg-none my-2 text-white-50">
+                    </li>
+                    <div class="d-flex align-items-center">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-light dropdown-toggle bg-layout" type="button" id="ProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fad fa-user-circle fa-2x"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="profileDropdown" id="profileDropdown">
+                                <li><a class="dropdown-item" data-bs-value="profile" href="#"><i class="fas fa-user"></i> Profile</a></li>
+                                <li><a class="dropdown-item" data-bs-value="settings" href="#"><i class="fas fa-user-cog"></i> Settings</a></li>
+                                <li><a class="dropdown-item" data-bs-value="signout" href="#"><i class="fas fa-portal-exit"></i> Sign Out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                        <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+                        <hr class="d-lg-none my-2 text-white-50">
+                    </li>
+                    <div class="d-flex align-items-center">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="bd-theme-text" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-sun fa-2x"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text"
+                                id="bd-theme-text">
+                                <li><a class="dropdown-item" href="#" data-bs-theme-value="light"><i class="fas fa-sun"></i> Light</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-theme-value="dark"><i class="fas fa-moon-stars"></i> Dark</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-theme-value="auto"><i class="fas fa-eclipse"></i> Auto</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+    
+
+    <!-- <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-body-teal border-5 border-bottom border-dark">
         
         <nav class="container" aria-label="Main navigation">
 
@@ -54,6 +134,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
+
             <a class="navbar-brand d-flex align-items-center justify-content-center p-1" href="#">
                 <img src="assets/images/GuardianLogo-Wht.png" height="45" alt="Logo" />
                 <h1 style="margin-bottom: 0; margin-left: 10px;">GUARDIAN</h1>
@@ -81,8 +162,7 @@
                         </li>
                         <div class="d-flex align-items-center">
                             <div class="dropdown">
-                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button"
-                                    id="ProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="ProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fad fa-user-circle fa-2x"></i>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="profileDropdown" id="profileDropdown">
@@ -113,7 +193,7 @@
                     </ul>
                 </div>
         </nav>
-    </header>
+    </header> -->
 
 
     <div class="d-flex">
@@ -198,19 +278,21 @@
 
         <div class="container-fluid bd-guttermy-md-4 bd-layout bg-body-tertiary">
 
-            
             <main class="bd-main order-1" style="margin-right:-10px">
-                
-                    <div class="bd-layout min-vh-100" id="mainContent"></div>
-
+                <div class="bd-layout min-vh-100" id="mainContent"></div>
             </main>
-
-
-
-
-
         </div>
+
+
     </div>
+
+
+
+
+
+
+
+
 
 <footer class="bd-footer py-4 py-md-5 bg-layout border-5 border-top border-dark">
     <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">

@@ -156,7 +156,7 @@ small {font-size: 0.750rem; /* 12px */}
     padding: 8px 0px 8px 0px;
 }
 .glassBlue{
-    background: linear-gradient(135deg, rgba(119, 210, 252, 0.25),rgba(125, 200, 243, 0));
+    background: linear-gradient(135deg, rgba(119, 252, 245, 0.25),rgba(125, 243, 231, 0.205));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(1px);
     border-radius: 5px;
