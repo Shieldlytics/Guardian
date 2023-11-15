@@ -74,6 +74,13 @@ small {font-size: 0.750rem; /* 12px */}
   margin-top:75px;
   position: absolute;
 }
+.bg-body-teal-light {
+  background-color: #00b3b3 !important;
+}
+.btn-custom-teal {
+  border-color: #00b3b3 !important;
+  background-color: #00b3b3;
+}
 @media only screen and (max-width: 991px) {
   .red-bar {
       margin-top: 65px;

@@ -1,23 +1,219 @@
-<div class="p-1 d-flex justify-content-center">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Dashboard</h1>
+<style>
+    /* custom button teal */
+    .btn-teal {
+        color: #fff;
+        background-color: #008080;
+        border-color: #008080;
+    }
+    /* custom button teal hover */
+    .btn-teal:hover {
+        color: #fff;
+        background-color: #019898;
+        border-color: #006767;
+    }
 
+
+</style>
+<div class="p-2">
+    <div class="row">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <table id="notifications" class="table table-hover table-striped d-flex align-content-center">
-                        <thead>
-                            <tr><th scope="col" nowrap>Subject Line</th>
-                                <th scope="col" nowrap>Type</th>
-                                <th scope="col" nowrap>Created</th>
-                                <th scope="col" nowrap>Due Date</th>
-                                <th scope="col" nowrap>Recipient</th>
-                                <th scope="col" nowrap>Activity Date</th>
-                                <th scope="col" nowrap>Status</th>
-                            </tr>
-                        </thead>
-                    </table>
-                    
+                    <h5 class="card-title">Notices <i class="fas fa-comment-alt-dots" ></i></h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-group mb-3">
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <i class="fas fa-circle" style="color: teal"></i>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <span class="fw-bold">Referral</span>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <span class="alert-link">Suspect in stolen identity</span>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <span>10/27/2023</span>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <span>3:02 PM</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <i class="fas fa-flag"></i>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <span class="fw-bold">Urgent</span>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <span class="alert-link">New Healthcare Policy in Upcoming Year</span>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <span>10/27/2023</span>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <span>11:57 AM</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <button class="btn btn-teal float-end" data-bs-toggle="modal" data-bs-target="#newMessageModal"><i class="fas fa-plus"></i> New Notice</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"> Requests <i class="fas fa-edit"></i></h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-group mb-3">
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <i class="far fa-circle"></i>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <span class="fw-bold">Eternal</span>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <span class="alert-link">NYPD - Request for Information</span>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <span class="badge d-flex align-items-center p-1 pe-2 text-dark-emphasis bg-dark-subtle border border-dark-subtle rounded-pill">
+                                                <img class="rounded-circle me-1" width="24" height="24" src="https://github.com/mdo.png" alt=""> A. Frank
+                                            </span>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <span>3:02 PM</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-teal float-end" data-bs-toggle="modal" data-bs-target="#newMessageModal"><i class="fas fa-plus"></i> New Request</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h5>Resources</h5> 
+            <div class="row">
+                <div class="col-md-1">
+                    <div class="card" style="width: 9rem;">
+                        <div class="card-body">
+                            <i class="fas fa-file-alt fa-3x d-flex align-items-center justify-content-center"></i><hr>
+                            <span class="d-flex align-items-center justify-content-center">sdhjbs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="card" style="width: 9rem;">
+                        <div class="card-body">
+                            <i class="fas fa-file-alt fa-3x d-flex align-items-center justify-content-center"></i><hr>
+                            <span class="d-flex align-items-center justify-content-center">sdhjbs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="card" style="width: 9rem;">
+                        <div class="card-body ">
+                            <i class="fas fa-books fa-3x d-flex align-items-center justify-content-center"></i><hr>
+                            <span class="d-flex align-items-center justify-content-center">sdhjbs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="card" style="width: 9rem;">
+                        <div class="card-body">
+                            <i class="fas fa-file-alt fa-3x d-flex align-items-center justify-content-center"></i><hr>
+                            <span class="d-flex align-items-center justify-content-center">sdhjbs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="card" style="width: 9rem;">
+                        <div class="card-body">
+                            <i class="fas fa-file-alt fa-3x d-flex align-items-center justify-content-center"></i><hr>
+                            <span class="d-flex align-items-center justify-content-center">sdhjbs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="card" style="width: 9rem;">
+                        <div class="card-body ">
+                            <i class="fas fa-books fa-3x d-flex align-items-center justify-content-center"></i><hr>
+                            <span class="d-flex align-items-center justify-content-center">sdhjbs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="card" style="width: 9rem;">
+                        <div class="card-body">
+                            <i class="fas fa-file-alt fa-3x d-flex align-items-center justify-content-center"></i><hr>
+                            <span class="d-flex align-items-center justify-content-center">sdhjbs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="card" style="width: 9rem;">
+                        <div class="card-body">
+                            <i class="fas fa-file-alt fa-3x d-flex align-items-center justify-content-center"></i><hr>
+                            <span class="d-flex align-items-center justify-content-center">sdhjbs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="card" style="width: 9rem;">
+                        <div class="card-body ">
+                            <i class="fas fa-books fa-3x d-flex align-items-center justify-content-center"></i><hr>
+                            <span class="d-flex align-items-center justify-content-center">sdhjbs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="mt-5">
+        <h5>Grid Panel</h5> 
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-2"><div class="border border-2 border-black bg-opacity-10 bg-dark" style="height: 100px;"></div></div>
+                    <div class="col-sm-2"><div class="border border-2 border-black bg-opacity-10 bg-dark" style="height: 100px;"></div></div>
+                    <div class="col-sm-2"><div class="border border-2 border-black bg-opacity-10 bg-dark" style="height: 100px;"></div></div>
+                    <div class="col-sm-2"><div class="border border-2 border-black bg-opacity-10 bg-dark" style="height: 100px;"></div></div>
+                    <div class="col-sm-2"><div class="border border-2 border-black bg-opacity-10 bg-dark" style="height: 100px;"></div></div>
+                    <div class="col-sm-2"><div class="border border-2 border-black bg-opacity-10 bg-dark" style="height: 100px;"></div></div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-sm-2"><div class="border border-2 border-black bg-opacity-10 bg-dark" style="height: 100px;"></div></div>
+                    <div class="col-sm-2"><div class="border border-2 border-black bg-opacity-10 bg-dark" style="height: 100px;"></div></div>
+                    <div class="col-sm-2"><div class="border border-2 border-black bg-opacity-10 bg-dark" style="height: 100px;"></div></div>
+                    <div class="col-sm-2"><div class="border border-2 border-black bg-opacity-10 bg-dark" style="height: 100px;"></div></div>
+                    <div class="col-sm-2"><div class="border border-2 border-black bg-opacity-10 bg-dark" style="height: 100px;"></div></div>
+                    <div class="col-sm-2"><div class="border border-2 border-black bg-opacity-10 bg-dark" style="height: 100px;"></div></div>
                 </div>
             </div>
         </div>

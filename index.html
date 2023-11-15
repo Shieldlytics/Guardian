@@ -1,75 +1,76 @@
-
 <!DOCTYPE html>
 <html data-bs-theme="auto">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-        <meta name="description" content="">
-        <link rel="icon" type="image/png" href="assets/images/favicon/favicon.ico">
-        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
-        <link rel="icon" type="image/png" href="assets/images/favicon/apple-touch-icon.png">
-        <meta name="author" content="Ernest Pena Jr">
-        <meta name="HandheldFriendly" content="true">
-        <title>Guardian bowered by Shieldlytics</title>
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
-        <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
-        <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css">
-    </head>
-        <style>
 
- 
-        .custom-popover .popover-header {
-            background-color: #008080;
-            color: #fff;
-            border-bottom: 1px solid #008080; 
-        }
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="description" content="">
+    <link rel="icon" type="image/png" href="assets/images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon/apple-touch-icon.png">
+    <meta name="author" content="Ernest Pena Jr">
+    <meta name="HandheldFriendly" content="true">
+    <title>Guardian bowered by Shieldlytics</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css">
+</head>
+<style>
+    .custom-popover .popover-header {
+        background-color: #008080;
+        color: #fff;
+        border-bottom: 1px solid #008080;
+    }
 
-        .custom-popover .popover-body {
-            background-color: #008080;
-            color: #fff;
-            border: 2px solid #008080; 
-            border-radius: 10px;
-        }
+    .custom-popover .popover-body {
+        background-color: #008080;
+        color: #fff;
+        border: 2px solid #008080;
+        border-radius: 10px;
+    }
 
-        .custom-popover.bs-popover-top .arrow::before {
-            border-top-color: #008080 !important; 
-        }
+    .custom-popover.bs-popover-top .arrow::before {
+        border-top-color: #008080 !important;
+    }
 
-        .custom-popover.bs-popover-top .arrow::after {
-            border-top-color: #008080 !important;
-        }
-        </style>
-     <body data-bs-spy="scroll" data-bs-target="#TableOfContents">
-       
-        <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-body-teal border-5 border-bottom border-dark">
+    .custom-popover.bs-popover-top .arrow::after {
+        border-top-color: #008080 !important;
+    }
+</style>
+
+<body data-bs-spy="scroll" data-bs-target="#TableOfContents">
+
+    <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-body-teal border-5 border-bottom border-dark">
+        
+        <nav class="container" aria-label="Main navigation">
+
+            <div class="bd-navbar-toggle">
+                <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar"
+                    aria-controls="bdSidebar" aria-label="Toggle docs navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
             <a class="navbar-brand d-flex align-items-center justify-content-center p-1" href="#">
                 <img src="assets/images/GuardianLogo-Wht.png" height="45" alt="Logo" />
                 <h1 style="margin-bottom: 0; margin-left: 10px;">GUARDIAN</h1>
             </a>
-
-            <nav class="container-fluid" aria-label="Main navigation">
-                <div class="bd-navbar-toggle">
-                    <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-label="Toggle docs navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-
-                <ul class="navbar-nav p-0 me-0 me-lg-2">
-                    <li class="nav-item py-2 py-lg-1 col-12 ">
-                        <input id="docsearch" class="form-control navbar-text" type="text" placeholder="Search..." aria-label="Search for..." autocomplete="off" ">
-                    </li>
-                </ul>
-                <div class="d-flex">
-
-                  <div class="collapse navbar-collapse " id="bdSidebar">
-                        <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+            <ul class="navbar-nav p-0 me-0 me-lg-2">
+                <li class="nav-item py-2 py-lg-1 col-12 ">
+                    <input id="docsearch" class="form-control navbar-text" type="text" placeholder="Search..."aria-label="Search for..." autocomplete="off" ">
+                </li>
+            </ul>
+                <div class=" d-flex">
+                    <div class="collapse navbar-collapse " id="bdSidebar">
+                        <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar"
+                            aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
                             <div class="offcanvas-header px-4 pb-0">
                                 <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">GUARDIAN</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                                    aria-label="Close" data-bs-target="#bdNavbar"></button>
                             </div>
                         </div>
                     </div>
@@ -80,11 +81,12 @@
                         </li>
                         <div class="d-flex align-items-center">
                             <div class="dropdown">
-                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="ProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button"
+                                    id="ProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fad fa-user-circle fa-2x"></i>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="profileDropdown" id="profileDropdown">
-                                    <li><a class="dropdown-item" data-bs-value="profile"href="#"><i class="fas fa-user"></i> Profile</a></li>
+                                    <li><a class="dropdown-item" data-bs-value="profile" href="#"><i class="fas fa-user"></i> Profile</a></li>
                                     <li><a class="dropdown-item" data-bs-value="settings" href="#"><i class="fas fa-user-cog"></i> Settings</a></li>
                                     <li><a class="dropdown-item" data-bs-value="signout" href="#"><i class="fas fa-portal-exit"></i> Sign Out</a></li>
                                 </ul>
@@ -96,108 +98,188 @@
                         </li>
                         <div class="d-flex align-items-center">
                             <div class="dropdown">
-                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="bd-theme-text" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button"
+                                    id="bd-theme-text" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-sun fa-2x"></i>
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text" id="bd-theme-text">
-                                    <li><a class="dropdown-item" href="#" data-bs-theme-value="light" ><i class="fas fa-sun"></i> Light</a></li>
-                                    <li><a class="dropdown-item"  href="#" data-bs-theme-value="dark" ><i class="fas fa-moon-stars"></i> Dark</a></li>
-                                    <li><a class="dropdown-item" href="#" data-bs-theme-value="auto" ><i class="fas fa-eclipse"></i> Auto</a></li>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text"
+                                    id="bd-theme-text">
+                                    <li><a class="dropdown-item" href="#" data-bs-theme-value="light"><i class="fas fa-sun"></i> Light</a></li>
+                                    <li><a class="dropdown-item" href="#" data-bs-theme-value="dark"><i class="fas fa-moon-stars"></i> Dark</a></li>
+                                    <li><a class="dropdown-item" href="#" data-bs-theme-value="auto"><i class="fas fa-eclipse"></i> Auto</a></li>
                                 </ul>
                             </div>
                         </div>
                     </ul>
-
                 </div>
-             
-            
-          </nav>
-        </header>
+        </nav>
+    </header>
 
 
-<div class="d-flex">
-    <div class="d-flex flex-column bg-light leftNavCollapse border-5 border-end border-black" id="leftNav" style="margin-right: -8px;">
-        <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-                <a page="expand" href="#" class="nav-link">
-                    <i class="fas fa-arrow-to-right float-end" style="color: teal; "></i>
-                </a>
-            </li>
-            <li class="nav-itemn p-1">
-                <div class="border border-2 rounded leftNavButton" style="background: linear-gradient(to right, rgb(146, 230, 232), rgb(255, 255, 255));" >
-                    <a page="index"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-trigger="hover" data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="Dashboard">
-                        <i class="fas fa-th-large fa-2x col-2" style="color: teal;"></i>
-                        <span id="navTextDashboard" class="text-uppercase mx-3" style="display:none; color:#008080;"> Dashboard</span>
+    <div class="d-flex">
+        <div class="d-flex flex-column bg-layout leftNavCollapse border-5 border-end border-dark" id="leftNav">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a page="expand" href="#" class="nav-link">
+                        <i class="fas fa-arrow-to-right float-end" style="color: teal; "></i>
                     </a>
-                </div>
-            </li>
-            <li class="nav-item mt-1 p-1">
-                <div class="border border-2 rounded leftNavButton">
-                <a page="notifications"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="Messaging">
-                    <i class="fas fa-comment-alt-dots fa-2x col-2" style="color: teal;"></i>
-                    <span id="navTextMessaging" class="text-uppercase mx-3 fw-medium" style="display:none; color:#008080;"> Messaging</span>
-                </a>
-            </div>
-            </li>
-            <li class="nav-item mt-1 p-1">
-                <div class="border border-2 rounded leftNavButton">
-                <a page="newmesssages" href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-custom-class="custom-popover"  data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="New Message">
-                    <i class="fas fa-edit fa-2x col-2" style="color: teal;"></i>
-                    <span id="navTextNewMessaging" class="text-uppercase mx-3" style="display:none; color:#008080;"> New Message</span>
-                </a>
-            </div>
-            </li>
-            <li class="nav-item mt-1 p-1">
-                <div class="border border-2 rounded leftNavButton">
-                <a page="settings"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-custom-class="custom-popover"  data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="Settings">
-                    <i class="fas fa-cog fa-2x col-2" style="color: teal;"></i>
-                    <span id="navTextSettings" class="text-uppercase mx-3" style="display:none; color:#008080;"> Settings</span>
-                </a>
-            </div>
-            </li>
+                </li>
+                <li class="nav-itemn p-1">
+                    <div class="border border-2 rounded leftNavButton"
+                        style="background: linear-gradient(to right, rgb(146, 230, 232), rgb(255, 255, 255));">
+                        <a page="index" href="#" class="nav-link d-flex align-items-center" data-bs-container="body"
+                            data-bs-trigger="hover" data-bs-custom-class="custom-popover" data-bs-toggle="popover"
+                            data-bs-placement="auto" data-bs-content="Dashboard">
+                            <i class="fas fa-th-large fa-2x col-2" style="color: teal;"></i>
+                            <span id="navTextDashboard" class="text-uppercase mx-3"
+                                style="display:none; color:#008080;"> Dashboard</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item mt-1 p-1">
+                    <div class="border border-2 rounded leftNavButton">
+                        <a page="notifications" href="#" class="nav-link d-flex align-items-center"
+                            data-bs-container="body" data-bs-custom-class="custom-popover" data-bs-trigger="hover"
+                            data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="Messaging">
+                            <i class="fas fa-comment-alt-dots fa-2x col-2" style="color: teal;"></i>
+                            <span id="navTextMessaging" class="text-uppercase mx-3 fw-medium"
+                                style="display:none; color:#008080;"> Messaging</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item mt-1 p-1">
+                    <div class="border border-2 rounded leftNavButton">
+                        <a page="newmesssages" href="#" class="nav-link d-flex align-items-center"
+                            data-bs-container="body" data-bs-custom-class="custom-popover" data-bs-trigger="hover"
+                            data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="New Message">
+                            <i class="fas fa-edit fa-2x col-2" style="color: teal;"></i>
+                            <span id="navTextNewMessaging" class="text-uppercase mx-3"
+                                style="display:none; color:#008080;"> New Message</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item mt-1 p-1">
+                    <div class="border border-2 rounded leftNavButton">
+                        <a page="settings" href="#" class="nav-link d-flex align-items-center" data-bs-container="body"
+                            data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-toggle="popover"
+                            data-bs-placement="auto" data-bs-content="Settings">
+                            <i class="fas fa-cog fa-2x col-2" style="color: teal;"></i>
+                            <span id="navTextSettings" class="text-uppercase mx-3" style="display:none; color:#008080;">
+                                Settings</span>
+                        </a>
+                    </div>
+                </li>
 
-            <li class="nav-item mt-1 p-1">
-                <div class="border border-2 rounded leftNavButton">
-                <a page="signout"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-custom-class="custom-popover"  data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="Sign Out">
-                    <i class="fas fa-portal-exit fa-2x col-2" style="color: teal;"></i>
-                    <span id="navTextSignOut" class="text-uppercase mx-3" style="display:none; color:#008080;"> Sign Out</span>
-                </a>
-            </div>
-            </li>
-            <li class="nav-item mt-1 p-1">
-                <div class="border border-2 rounded leftNavButton">
-                <a page="siteAdministration"  href="#" class="nav-link d-flex align-items-center" data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="Site Admin">
-                    <i class="fas fa-toolbox fa-2x col-2" style="color:#008080"></i>
-                    <span id="navTextSignOut" class="text-uppercase mx-3" style="display:none; color:#008080"> Site Admin</span>
-                </a>
-            </div>
-            </li>
+                <li class="nav-item mt-1 p-1">
+                    <div class="border border-2 rounded leftNavButton">
+                        <a page="signout" href="#" class="nav-link d-flex align-items-center" data-bs-container="body"
+                            data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-toggle="popover"
+                            data-bs-placement="auto" data-bs-content="Sign Out">
+                            <i class="fas fa-portal-exit fa-2x col-2" style="color: teal;"></i>
+                            <span id="navTextSignOut" class="text-uppercase mx-3" style="display:none; color:#008080;">
+                                Sign Out</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item mt-1 p-1">
+                    <div class="border border-2 rounded leftNavButton">
+                        <a page="siteAdministration" href="#" class="nav-link d-flex align-items-center"
+                            data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover"
+                            data-bs-placement="auto" data-bs-content="Site Admin">
+                            <i class="fas fa-toolbox fa-2x col-2" style="color:#008080"></i>
+                            <span id="navTextSignOut" class="text-uppercase mx-3" style="display:none; color:#008080">
+                                Site Admin</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
 
-        </ul>
+        <div class="container-fluid bd-guttermy-md-4 bd-layout bg-body-tertiary">
+
+            
+            <main class="bd-main order-1" style="margin-right:-10px">
+                
+                    <div class="bd-layout min-vh-100" id="mainContent"></div>
+
+            </main>
+
+
+
+
+
+        </div>
     </div>
 
-    
-    <div class="container-fluid bd-guttermy-md-4 bd-layout">
-    <main class="bd-main order-1" style="margin-right:-10px">
-        <div class="w-100 min-vh-100 bg-white text-black bg-teal d-flex ">
-            <div class="bd-layout" id="mainContent"></div>
-        
+<footer class="bd-footer py-4 py-md-5 bg-layout border-5 border-top border-dark">
+    <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+      <div class="row">
+        <div class="col-lg-3 mb-3">
+          <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/" aria-label="Bootstrap">
+            <img height="32" class="d-block me-2" src="assets/images/GuardianLogo-Blk.png" alt="Guardian">
+             <span class="fs-5">Guardian</span>
+          </a>
+          <ul class="list-unstyled small">
+            <li class="mb-2">Designed and developed by the   <a href="https://www.shieldlytics.com/theteam/">Shieldlytics team</a>.</li>
+            <li class="mb-2">Code licensed <a href="https://github.com/Shieldlytics/Guardian/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
+            <li class="mb-2">Currently alpha 0.0.1.</li>
+          </ul>
         </div>
-    </main>
+        <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+          <h5>Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" onclick="">Home</a></li>
+            <li class="mb-2"><a href="#" onclick="">Messages</a></li>
+            <li class="mb-2"><a href="#" onclick="">New Messsages</a></li>
+            <li class="mb-2"><a href="#" onclick="">Settings</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Guides</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/docs/1.0/getting-started/">Getting started</a></li>
+            <!-- <li class="mb-2"><a href="/docs/5.3/examples/starter-template/">Starter template</a></li>
+            <li class="mb-2"><a href="/docs/5.3/getting-started/webpack/">Webpack</a></li>
+            <li class="mb-2"><a href="/docs/5.3/getting-started/parcel/">Parcel</a></li>
+            <li class="mb-2"><a href="/docs/5.3/getting-started/vite/">Vite</a></li> -->
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Projects</h5>
+          <ul class="list-unstyled">
+            <!-- <li class="mb-2"><a href="https://github.com/twbs/bootstrap" target="_blank" rel="noopener">Bootstrap 5</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev" target="_blank" rel="noopener">Bootstrap 4</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/icons" target="_blank" rel="noopener">Icons</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/rfs" target="_blank" rel="noopener">RFS</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/examples/" target="_blank" rel="noopener">Examples repo</a></li> -->
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Community</h5>
+          <ul class="list-unstyled">
+            <!-- <li class="mb-2"><a href="https://github.com/twbs/bootstrap/issues" target="_blank" rel="noopener">Issues</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/bootstrap/discussions" target="_blank" rel="noopener">Discussions</a></li>
+            <li class="mb-2"><a href="https://github.com/sponsors/twbs" target="_blank" rel="noopener">Corporate sponsors</a></li>
+            <li class="mb-2"><a href="https://opencollective.com/bootstrap" target="_blank" rel="noopener">Open Collective</a></li>
+            <li class="mb-2"><a href="https://stackoverflow.com/questions/tagged/bootstrap-5" target="_blank" rel="noopener">Stack Overflow</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
-</div>
-  </div>     
-        <script src="assets/js/apps.js"></script>
-        <script src="assets/js/color-modes.js"></script>
-        <script src="node_modules/jquery/dist/jquery.min.js"></script>
-        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="node_modules/aos/dist/aos.js"></script>
-        <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-        <script src="node_modules/datatables.net-buttons/js/dataTables.buttons.js"></script>
-        <script src="node_modules/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
-    </body>
+    <script src="assets/js/apps.js"></script>
+    <script src="assets/js/color-modes.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/aos/dist/aos.js"></script>
+    <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="node_modules/datatables.net-buttons/js/dataTables.buttons.js"></script>
+    <script src="node_modules/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+</body>
+
 </html>
 <script>
     AOS.init({
@@ -218,45 +300,45 @@
         else { remove_class_on_scroll() }
         console.log(scrollpos)
     });
-    
-    $(document).ready(function(){
+
+    $(document).ready(function () {
         $("#mainContent").load("dashboard.html");
 
-        $('#bd-theme-text .dropdown-item').click(function() {
+        $('#bd-theme-text .dropdown-item').click(function () {
             var theme = $(this).attr('data-bs-theme-value');
-            if(theme == "light"){
+            if (theme == "light") {
                 $('html').attr('data-bs-theme', 'light');
                 $('#bd-theme-text').find('i').removeClass('fa-moon-stars fa-eclipse').addClass('fa-sun');
                 $('.navbar-brand img').attr('src', 'assets/images/GuardianLogo-Blk.png');
-            }else if(theme == "dark"){
+            } else if (theme == "dark") {
                 $('html').attr('data-bs-theme', 'dark');
                 $('#bd-theme-text').find('i').removeClass('fa-sun fa-eclipse').addClass('fa-moon-stars');
                 $('.navbar-brand img').attr('src', 'assets/images/GuardianLogo-Wht.png');
-            }else{
+            } else {
                 $('html').attr('data-bs-theme', 'auto');
                 $('#bd-theme-text').find('i').removeClass('fa-sun fa-moon-stars').addClass('fa-eclipse');
             }
         });
 
-        $('#profileDropdown .dropdown-item').click(function() {
+        $('#profileDropdown .dropdown-item').click(function () {
             var x = $(this).attr('data-bs-value');
-            if(x == "signout"){
+            if (x == "signout") {
                 localStorage.clear();
                 window.location.href = "landing.html";
             }
         });
 
-        $('a').on('click', function(){
+        $('a').on('click', function () {
             //remove fw-bold class
             $('.nav-link').removeClass('fw-bold');
-        
+
 
 
             var page = $(this).attr('page');
-            if(page == "index"){
-               //reload page
+            if (page == "index") {
+                //reload page
                 location.reload();
-            }else if(page == "expand"){
+            } else if (page == "expand") {
                 //expand parent div and add text after icon
                 $(this).find('i').toggleClass('fa-arrow-to-right fa-arrow-from-right');
                 $('#leftNav').toggleClass('expanded');
@@ -271,14 +353,13 @@
                 } else {
                     //add popover
                     $('.nav-link').attr('data-bs-container="body" data-bs-trigger="hover" data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="auto"');
-                    $('.nav-link span').animate({ opacity: 0 }, 100, function() {
+                    $('.nav-link span').animate({ opacity: 0 }, 100, function () {
                         $(this).css('display', 'none');
                     });
                 }
                 //$
 
-            }else{
-                
+            } else {
                 $("#mainContent").load(page + ".html");
                 //set selected nav-item to active
                 $('.nav-item').removeClass('active');
@@ -293,8 +374,4 @@
             }
         });
     });
-
-
-
-
 </script>
