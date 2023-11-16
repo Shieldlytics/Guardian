@@ -1,8 +1,25 @@
 {
-    "items":
-    [
-        {"name": "Requests", "id": 1,"permission_type":"", "description": "Routed to a Processor queue; completed by a person: <lu><li>May have an approval queue (Admin set up); requiring an approval button/action by a Manager or designee.</li><li>Any Guardian user can submit</li><li>Unlimited number of Request Types</li></lu>","status": "active"},
-        {"name": "Self-Service", "id": 2,"permission_type":"",  "description": "Request Type with rules: <lu><li>Same as above, except NO Processor queue</li><li>Auto completes based on business rules</li><li>Good entry point for RPA or automations, future state</li></lu>","status": "active"},
-        {"name": "Notices", "id": 3,"permission_type":"",  "description": "<lu><li>Only Processors and Managers can submit.</li><li>Any Guardian user can submit</li><li>Limited number of Notice Types (up to five)</li></lu>","status": "active"}
+    "items": [
+        {
+            "name": "Requests",
+            "id": 1,
+            "permission_type": "",
+            "description": "Routed to a Processor queue; completed by a person: <lu><li>May have an approval queue (Admin set up); requiring an approval button/action by a Manager or designee.</li><li>Any Guardian user can submit</li><li>Unlimited number of Request Types</li></lu>",
+            "status": "active"
+        },
+        {
+            "name": "Self-Service",
+            "id": 2,
+            "permission_type": "",
+            "description": "Request Type with rules: <lu><li>Same as above, except NO Processor queue</li><li>Auto completes based on business rules</li><li>Good entry point for RPA or automations, future state</li></lu>",
+            "status": "active"
+        },
+        {
+            "name": "Notices",
+            "id": 3,
+            "permission_type": "",
+            "description": "<lu><li>Only Processors and Managers can submit.</li><li>Any Guardian user can submit</li><li>Limited number of Notice Types (up to five)</li></lu>",
+            "status": "active"
+        }
     ]
 }

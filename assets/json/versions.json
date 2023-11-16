@@ -1,0 +1,13 @@
+{
+    "version": [
+        {
+            "version": 0.1,
+            "stage": "Alpha",
+            "description": "This is the first version of the UI and API. This version is NOT recommended for production use.",
+            "date": "2023-11-16",
+            "license": "MIT",
+            "link": "https://github.com/Shieldlytics/Guardian/blob/main/LICENSE",
+            "status": "active"
+        }
+    ]
+}
