@@ -215,26 +215,20 @@
 
     </div>
 
-
-
-
-
-
-
-
-
 <footer class="bd-footer py-4 py-md-5 bg-layout border-5 border-top border-dark">
     <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
       <div class="row">
         <div class="col-lg-3 mb-3">
-          <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/" aria-label="Bootstrap">
-            <img height="32" class="d-block me-2" src="assets/images/GuardianLogo-Blk.png" alt="Guardian">
-             <span class="fs-5">Guardian</span>
-          </a>
+            
           <ul class="list-unstyled small">
-            <li class="mb-2">Designed and developed by the   <a href="https://www.shieldlytics.com/theteam/">Shieldlytics team</a>.</li>
-            <li class="mb-2">Code licensed <a href="https://github.com/Shieldlytics/Guardian/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-            <li class="mb-2">Currently alpha 0.0.1.</li>
+            <li class="mb-2"><a class="navbar-brand p-0 me-0 me-lg-2 d-flex align-items-center" href="#" aria-label="Guardian">
+                    <img src="assets/images/GuardianLogo.png" height="40" alt="Logo" />
+                    <h1 style="margin-bottom: 0; margin-left: 5px;">GUARDIAN</h1>
+                </a>
+            </li>
+            <li class="mb-2">Powered by <a href="https://www.shieldlytics.com/theteam/">Shieldlytics</a>.</li>
+            <li class="mb-2">Code licensed <a href="https://github.com/Shieldlytics/Guardian/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>.</li>
+            <li class="mb-2">Current Version: alpha 0.1</li>
           </ul>
         </div>
         <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -356,11 +350,9 @@
                 // Check if the nav is expanded and set the display accordingly
                 if ($('#leftNav').hasClass('expanded')) {
                     $('.nav-link span').css('display', 'inline').animate({ opacity: 1 }, 500);
-                    //remove all popover
-
-                    $('a').Popover('hide');
-
+                    
                     $('a').removeAttr('data-bs-container data-bs-trigger data-bs-custom-class data-bs-toggle data-bs-placement data-bs-content');
+                    $('.popover, .custom-popover').remove();
                 } else {
                     //add popover
                     $('.nav-link').attr('data-bs-container="body" data-bs-trigger="hover" data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="auto"');
