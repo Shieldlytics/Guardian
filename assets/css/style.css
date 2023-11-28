@@ -12,15 +12,24 @@ body {
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.7;
-    color: #777;
-    background: #fff;
+    color: #000000;
+    .background {background-color: #FFFFFF;} 
+    .card {background-color: #09B8B5;} 
+    .secondary {background-color: #056E6C;}
+    .accent {background-color: #012424; }
 }
-
 h1, h2, h3, h4, h5 {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
 }
-
+.shieldlitics{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #777;
+    background: #fff; 
+}
 html {font-size: 100%;} /* 16px */
 h1 {font-size: 4.210rem; /* 67.36px */}
 h2 {font-size: 3.158rem; /* 50.56px */}
@@ -39,11 +48,40 @@ small {font-size: 0.750rem; /* 12px */}
   background-attachment: fixed;
   background-size: cover;
 }
-.text {color: #f2e6d9;} /* (rgb(242, 230, 217) - hsl(31, 49%, 90%)) */
-.background {background-color: #130d06;} /* (rgb(19, 13, 6) - hsl(32, 52%, 5%)) */
-.primary {background-color: #3e79bb;} /* (rgb(62, 121, 187) - hsl(212, 50%, 49%)) */
-.secondary {background-color: #121132;} /*(rgb(18, 17, 50) - hsl(242, 49%, 13%) */
-.accent {background-color: #4bbfc3; } /* (rgb(75, 191, 195) - hsl(182, 50%, 53%)) */
+/*light*/
+.light_layout{
+  /* background-image: url('../img/lightBG.jpeg') no-repeat;
+  backdrop-filter: blur(3px); */
+  transition:all 0.9s;
+  -webkit-transition:all 0.9s;
+  -o-transition:all 0.9s;
+  -moz-transition:all 0.9s;
+  background-attachment: fixed;
+  background-size: cover;
+  .text {color: #000000;} 
+  .background {background-color: #FFFFFF;} 
+  .primary {background-color: #09B8B5;} 
+  .secondary {background-color: #056E6C;}
+  .accent {background-color: #012424; }
+
+}
+
+/*dark*/
+.layout_Dark{
+  /* background-image: url('../img/darkBG.jpeg') no-repeat;
+  backdrop-filter: blur(3px); */
+  transition:all 0.9s;
+  -webkit-transition:all 0.9s;
+  -o-transition:all 0.9s;
+  -moz-transition:all 0.9s;
+  background-attachment: fixed;
+  background-size: cover;
+  .text {color: #FFFFFF;}
+  .background {background-color: #FFFFFF;} 
+  .primary {background-color: #46F6F3;}
+  .secondary {background-color: #8FFAF8;}
+  .accent {background-color: #DCFEFE; }
+}
 
 /* Add this CSS to handle the transition */
 .leftNavCollapse {
@@ -75,11 +113,11 @@ small {font-size: 0.750rem; /* 12px */}
   position: absolute;
 }
 .bg-body-teal-light {
-  background-color: #00b3b3 !important;
+  background-color: #09B9B6 !important;
 }
 .btn-custom-teal {
-  border-color: #00b3b3 !important;
-  background-color: #00b3b3;
+  border-color: #05706E !important;
+  background-color: #05706E;
 }
 @media only screen and (max-width: 991px) {
   .red-bar {
