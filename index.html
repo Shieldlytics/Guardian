@@ -43,11 +43,11 @@
 </style>
 
 <body class="light_layout" data-bs-spy="scroll" data-bs-target="#TableOfContents">
-    <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-body-teal border-5 border-bottom border-dark">
+    <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-light border-2 border-bottom border-secondary-subtle shadow-sm ">
         <nav class="container-fluid bd-gutter flex-wrap flex-lg-nowrap " aria-label="Main navigation">
             <a class="navbar-brand p-0 me-0 me-lg-2 d-flex align-items-center" href="#" aria-label="Guardian">
-                <img src="assets/images/GuardianLogo-Wht.png" height="45" alt="Logo" />
-                <h1 style="margin-bottom: 0; margin-left: 10px;">GUARDIAN</h1>
+                <img src="assets/images/GuardianLogo-Blk.png" height="45" alt="Logo" />
+                <h2 style="margin-bottom: 0; margin-left: 10px;">Guardian</h2>
             </a>
             
             <div class="d-flex">
@@ -57,7 +57,7 @@
             </button>
           </div>
       
-          <div class="offcanvas-lg offcanvas-end flex-grow-1 bg-body-teal" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+          <div class="offcanvas-lg offcanvas-end flex-grow-1 bg-light" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
             <div class="offcanvas-header px-4 pb-0">
                 <!-- <img src="assets/images/GuardianLogo-Wht.png" height="35" alt="Logo" /> -->
               <h4 class="offcanvas-title text-black text-uppercase" id="bdNavbarOffcanvasLabel">Guardian </h4>
@@ -122,8 +122,8 @@
         </nav>
     </header>
 
-    <div class="d-flex accent">
-        <div class="d-flex flex-column bg-layout leftNavCollapse border-5 border-end border-dark" id="leftNav">
+    <div class="d-flex ">
+        <div class="d-flex flex-column bg-layout leftNavCollapse border-2 border-end border-secondary-subtle" id="leftNav">
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
                     <a page="expand" href="#" class="nav-link">
@@ -131,45 +131,45 @@
                     </a>
                 </li>
                 <li class="nav-itemn p-1">
-                    <div class="border border-2 rounded leftNavButton"
+                    <div class="border border-0 rounded leftNavButton"
                         style="background: linear-gradient(to right, rgb(146, 230, 232), rgb(255, 255, 255));">
                         <a page="index" href="#" class="nav-link d-flex align-items-center" data-bs-container="body"
                             data-bs-trigger="hover" data-bs-custom-class="custom-popover" data-bs-toggle="popover"
-                            data-bs-placement="auto" data-bs-content="Dashboard">
-                            <i class="fas fa-th-large fa-2x col-2" style="color: teal;"></i>
+                            data-bs-placement="auto" data-bs-content="Home">
+                            <i class="fal fa-home-alt fa-2x col-2" style="color: teal; font-size: 25px;"></i>
                             <span id="navTextDashboard" class="text-uppercase mx-3"
-                                style="display:none; color:#008080;"> Dashboard</span>
+                                style="display:none; color:#008080;"> Home</span>
                         </a>
                     </div>
                 </li>
                 <li class="nav-item mt-1 p-1">
-                    <div class="border border-2 rounded leftNavButton">
+                    <div class="border border-0 rounded leftNavButton">
                         <a page="notifications" href="#" class="nav-link d-flex align-items-center"
                             data-bs-container="body" data-bs-custom-class="custom-popover" data-bs-trigger="hover"
-                            data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="Messaging">
-                            <i class="fas fa-comment-alt-dots fa-2x col-2" style="color: teal;"></i>
+                            data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="Notices">
+                            <i class="fal fa-megaphone fa-2x col-2" style="color: teal; font-size:25px"></i>
                             <span id="navTextMessaging" class="text-uppercase mx-3 fw-medium"
-                                style="display:none; color:#008080;"> Messaging</span>
+                                style="display:none; color:#008080;"> Notices</span>
                         </a>
                     </div>
                 </li>
                 <li class="nav-item mt-1 p-1">
-                    <div class="border border-2 rounded leftNavButton">
+                    <div class="border border-0 rounded leftNavButton">
                         <a page="newmesssages" href="#" class="nav-link d-flex align-items-center"
                             data-bs-container="body" data-bs-custom-class="custom-popover" data-bs-trigger="hover"
                             data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="New Message">
-                            <i class="fas fa-edit fa-2x col-2" style="color: teal;"></i>
+                            <i class="fal fa-edit fa-2x col-2" style="color: teal;  font-size:25px"></i>
                             <span id="navTextNewMessaging" class="text-uppercase mx-3"
                                 style="display:none; color:#008080;"> New Message</span>
                         </a>
                     </div>
                 </li>
                 <li class="nav-item mt-1 p-1">
-                    <div class="border border-2 rounded leftNavButton">
+                    <div class="border border-0 rounded leftNavButton">
                         <a page="settings" href="#" class="nav-link d-flex align-items-center" data-bs-container="body"
                             data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-toggle="popover"
                             data-bs-placement="auto" data-bs-content="Settings">
-                            <i class="fas fa-cog fa-2x col-2" style="color: teal;"></i>
+                            <i class="fal fa-cog fa-2x col-2" style="color: teal; font-size:25px"></i>
                             <span id="navTextSettings" class="text-uppercase mx-3" style="display:none; color:#008080;">
                                 Settings</span>
                         </a>
@@ -177,22 +177,22 @@
                 </li>
 
                 <li class="nav-item mt-1 p-1">
-                    <div class="border border-2 rounded leftNavButton">
+                    <div class="border border-0 rounded leftNavButton">
                         <a page="signout" href="#" class="nav-link d-flex align-items-center" data-bs-container="body"
                             data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-toggle="popover"
                             data-bs-placement="auto" data-bs-content="Sign Out">
-                            <i class="fas fa-portal-exit fa-2x col-2" style="color: teal;"></i>
+                            <i class="fal fa-sign-out fa-2x col-2" style="color: teal;  font-size:25px"></i>
                             <span id="navTextSignOut" class="text-uppercase mx-3" style="display:none; color:#008080;">
                                 Sign Out</span>
                         </a>
                     </div>
                 </li>
                 <li class="nav-item mt-1 p-1">
-                    <div class="border border-2 rounded leftNavButton">
+                    <div class="border border-0 rounded leftNavButton">
                         <a page="siteAdministration" href="#" class="nav-link d-flex align-items-center"
                             data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover"
                             data-bs-placement="auto" data-bs-content="Site Admin">
-                            <i class="fas fa-toolbox fa-2x col-2" style="color:#008080"></i>
+                            <i class="fal fa-shield fa-2x col-2" style="color:teal; font-size:25px"></i>
                             <span id="navTextSignOut" class="text-uppercase mx-3" style="display:none; color:#008080">
                                 Site Admin</span>
                         </a>
@@ -211,7 +211,7 @@
 
     </div>
 
-<footer class="bd-footer py-4 py-md-5 bg-layout border-5 border-top border-dark">
+<footer class="bd-footer py-4 py-md-5 bg-layout border-2 border-top border-secondary-subtle">
     <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
       <div class="row">
         <div class="col-lg-3 mb-3">

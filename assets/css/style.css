@@ -14,7 +14,7 @@ body {
     line-height: 1.7;
     color: #000000;
     .background {background-color: #FFFFFF;} 
-    .card {background-color: #09B8B5;} 
+    .card {background-color: #ffffff;} 
     .secondary {background-color: #056E6C;}
     .accent {background-color: #012424; }
 }
@@ -284,7 +284,7 @@ hr.h-color{
     border-radius: 8px;
 }
 .sidebar li.active a, .sidebar li.active a:hover{
-    color: rgb(47, 47, 47);
+    color: rgb(156, 156, 156);
 }
 .sidebar li a{
     color: #fff;
