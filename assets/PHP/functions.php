@@ -10,6 +10,11 @@
 
     if(isset($_POST["method"])) {
         $method = $_POST["method"];
+        // echo $method;
+        echo $method;
+
+
+
         if($method=="verifyUser") {verifyUser($_POST["email"], $_POST["password"]);};
         if($method=="getUsers") {getUsers();};
         if($method=="addUser") {addUser($_POST["userData"]);};
