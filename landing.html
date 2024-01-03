@@ -106,6 +106,7 @@
     $(document).ready(function(){
         $("#login").slideDown(1000);
         $("#SignMeIn").click(function(){
+          $("#showResults").
             var e = $("#email").val();
             var p = $("#password").val();
             // if missing "@" or "."
@@ -113,10 +114,16 @@
                 $("#showResults").show();
                 $(".results").html("<div class='alert alert-danger' role='alert'>Please enter a valid email address.</div>");
                 return false;
+            }else if(p.length < 8){
+                $("#showResults").show();
+                $(".results").html("<div class='alert alert-danger' role='alert'>Please enter a valid password.</div>");
+                return false;
+            }else{
+                login(e,p);
             }
 
 
-            login(e,p);
+            
         });
     });
 
