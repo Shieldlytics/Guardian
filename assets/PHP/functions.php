@@ -10,6 +10,7 @@
 
     if(isset($_POST["method"])) {
         $method = $_POST["method"];
+        if($method=="verifyUser") {verifyUser($_POST["email"], $_POST["password"]);};
         if($method=="getUsers") {getUsers();};
         if($method=="addUser") {addUser($_POST["userData"]);};
         if($method=="editUser") {editUser($_POST["userId"], $_POST["userData"]);};
@@ -20,6 +21,31 @@
         if($method=="manageUserRoles") {manageUserRoles($_POST["userId"], $_POST["roleId"], $_POST["action"]);};
         if($method=="getRoles") {getRoles();};
         if($method=="manageRoles") {manageRoles($_POST["roleId"], $_POST["roleData"], $_POST["action"]);};
+    }
+    //function search users
+    function verifyUser($email, $password) {
+        //write output to JSON file
+        
+        // Path to the JSON file
+        $jsonFilePath = '../json/userLogin.json';
+    
+        // Read JSON file
+        $jsonData = file_get_contents($jsonFilePath);
+        $data = json_decode($jsonData, true);
+    
+        // Search for the user by username
+        foreach ($data['users'] as $user) {
+            if (strtolower($user['email']) == strtolower($email)) {
+                // Username found, now check password
+                if ($user['password'] == $password) {
+                    return ['status' => 'success', 'message' => 'User verified', 'user' => $user];
+                } else {
+                    return ['status' => 'error', 'message' => 'Password is incorrect'];
+                }
+            }
+        }
+        // Username not found
+        return ['status' => 'error', 'message' => 'User does not exist'];
     }
 
     //function to get all users

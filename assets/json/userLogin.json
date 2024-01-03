@@ -1,0 +1,242 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "epena",
+            "password": "M47ztr201&",
+            "firstName": "Ernest",
+            "lastName": "Pena",
+            "email": "ernest@Shieldlytics.com",
+            "phone": "832-452-5547",
+            "address": "21419 Village Crossing Ln",
+            "city": "Porter",
+            "state": "TX",
+            "zip": "77365",
+            "country": "USA",
+            "company": "Shieldlytics",
+            "title": "Developer",
+            "website": "www.Shieldlytics.com",
+            "sites": [
+                {
+                    "id": 1,
+                    "name": "Shieldlytics",
+                    "role": "admin"
+                },
+                {
+                    "id": 2,
+                    "name": "Guardian",
+                    "role": "admin"
+                },
+                {
+                    "id": 3,
+                    "name": "Badger",
+                    "role": "admin"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "username": "rdevalle",
+            "password": "today123",
+            "firstName": "Ruben",
+            "lastName": "DeValle",
+            "email": "support@shieldlytics.com",
+            "phone": "917-715-8013",
+            "address": "21419 Village Crossing Ln",
+            "city": "New York",
+            "state": "NY",
+            "zip": "77365",
+            "country": "USA",
+            "company": "Shieldlytics",
+            "title": "Founder",
+            "website": "www.Shieldlytics.com",
+            "sites": [
+                {
+                    "id": 1,
+                    "name": "Shieldlytics",
+                    "role": "admin"
+                },
+                {
+                    "id": 2,
+                    "name": "Guardian",
+                    "role": "admin"
+                },
+                {
+                    "id": 3,
+                    "name": "Badger",
+                    "role": "admin"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "username": "dchau",
+            "password": "today123",
+            "firstName": "Diana",
+            "lastName": "Chau",
+            "email": "diana@shieldlytics.com",
+            "phone": "832-452-5547",
+            "address": "21419 Village Crossing Ln",
+            "city": "Porter",
+            "state": "TX",
+            "zip": "77365",
+            "country": "USA",
+            "company": "Shieldlytics",
+            "title": "Founder",
+            "website": "www.shieldlytics.com",
+            "sites":[
+                {
+                    "id": 1,
+                    "name": "Shieldlytics",
+                    "role": "admin"
+                },
+                {
+                    "id": 2,
+                    "name": "Guardian",
+                    "role": "admin"
+                },
+                {
+                    "id": 3,
+                    "name": "Badger",
+                    "role": "admin"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "username": "ahall",
+            "password": "today123",
+            "firstName": "Andrea",
+            "lastName": "Hall",
+            "email": "andrea@shieldlytics.com",
+            "phone": "832-452-5547",
+            "address": "21419 Village Crossing Ln",
+            "city": "Porter",
+            "state": "TX",
+            "zip": "77365",
+            "country": "USA",
+            "company": "Shieldlytics",
+            "title": "Founder",
+            "website": "www.shieldlytics.com",
+            "sites": [
+                {
+                    "id": 1,
+                    "name": "Shieldlytics",
+                    "role": "admin"
+                },
+                {
+                    "id": 2,
+                    "name": "Guardian",
+                    "role": "admin"
+                },
+                {
+                    "id": 3,
+                    "name": "Badger",
+                    "role": "admin"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "username": "jupright",
+            "password": "today123",
+            "firstName": "Joel",
+            "lastName": "Upright",
+            "email": "joel@shieldlytics.com",
+            "phone": "832-452-5547",
+            "address": "21419 Village Crossing Ln",
+            "city": "Porter",
+            "state": "TX",
+            "zip": "77365",
+            "country": "USA",
+            "company": "Shieldlytics",
+            "title": "Founder",
+            "website": "www.shieldlytics.com",
+            "sites": [
+                {
+                    "id": 1,
+                    "name": "Shieldlytics",
+                    "role": "admin"
+                },
+                {
+                    "id": 2,
+                    "name": "Guardian",
+                    "role": "admin"
+                },
+                {
+                    "id": 3,
+                    "name": "Badger",
+                    "role": "admin"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "username": "scampion",
+            "password": "today123",
+            "firstName": "Sean",
+            "lastName": "Campion",
+            "email": "sean@shieldlytics.com",
+            "phone": "832-452-5547",
+            "address": "21419 Village Crossing Ln",
+            "city": "Porter",
+            "state": "TX",
+            "zip": "77365",
+            "country": "USA",
+            "company": "Shieldlytics",
+            "title": "Founder",
+            "website": "www.shieldlytics.com",
+            "sites": [
+                {
+                    "id": 1,
+                    "name": "Shieldlytics",
+                    "role": "admin"
+                },
+                {
+                    "id": 2,
+                    "name": "Guardian",
+                    "role": "admin"
+                },
+                {
+                    "id": 3,
+                    "name": "Badger",
+                    "role": "admin"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "username": "cpender",
+            "password": "today123",
+            "firstName": "Colin",
+            "lastName": "Pender",
+            "email": "colin@shieldlytics.com",
+            "phone": "832-452-5547",
+            "address": "11210 Thistle Butterfly Way",
+            "city": "Cypress",
+            "state": "TX",
+            "zip": "77433",
+            "country": "USA",
+            "company": "Shieldlytics",
+            "title": "Founder",
+            "website": "www.shieldlytics.com",
+            "sites": [
+                {
+                    "id": 1,
+                    "name": "Shieldlytics",
+                    "role": "admin"
+                },
+                {
+                    "id": 2,
+                    "name": "Guardian",
+                    "role": "admin"
+                },
+                {
+                    "id": 3,
+                    "name": "Badger",
+                    "role": "admin"
+                }
+            ]
+        }
+    ]
+}

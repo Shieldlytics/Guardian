@@ -71,31 +71,15 @@
                   </div>
                   <div class="col-sm-12">
                     <div class="d-grid">
-                      <button class="btn btn-teal btn-lg" type="submit">Sign In</button>
+                      <button id="SignMeIn" class="btn btn-teal btn-lg">Sign In</button>
                     </div>
+                  </div>
+                  <div id="showResults" class="col-sm-12" style="display:none">
+                    <div class="results"></div>
                   </div>
                 </div>
               </form>
             </div>
-            <!-- <div class="col-12 col-lg-2 d-flex align-items-center justify-content-center gap-1 flex-lg-column">
-              <div class="bg-dark h-100 d-none d-lg-block" style="width: 1px; --bs-bg-opacity: .1;"></div>
-              <div class="bg-dark w-100 d-lg-none" style="height: 1px; --bs-bg-opacity: .1;"></div>
-              <div class="fs-3">or</div>
-              <div class="bg-dark h-100 d-none d-lg-block" style="width: 1px; --bs-bg-opacity: .1;"></div>
-              <div class="bg-dark w-100 d-lg-none" style="height: 1px; --bs-bg-opacity: .1;"></div>
-            </div> -->
-
-            <!-- <div class="col-12 col-lg-5 d-flex align-items-center">
-              <div class="d-flex gap-1 flex-column w-100">
-                <a href="#!" class="btn btn-lg btn-success mb-3">
-                  Sign in with
-                  <img src="assets/images/landingPage/ID.me_logo_wht.svg" height="20" alt="">
-                </a>
-                <a href="#!" class="btn btn-lg btn-light">
-                  <img src="assets/images/landingPage/ID.me_logo.svg" height="20" alt=""> Create an account
-                </a>
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
@@ -121,5 +105,35 @@
 <script>
     $(document).ready(function(){
         $("#login").slideDown(1000);
+        $("#SignMeIn").click(function(){
+            var e = $("#email").val();
+            var p = $("#password").val();
+            // if missing "@" or "."
+            if(e.indexOf("@") == -1 || e.indexOf(".") == -1){
+                $("#showResults").show();
+                $(".results").html("<div class='alert alert-danger' role='alert'>Please enter a valid email address.</div>");
+                return false;
+            }
+
+
+            login(e,p);
+        });
     });
+
+    function login(e,p){
+        $.ajax({
+            url: 'assets/PHP/functions.php', // Updated path
+            type: 'POST',
+            data: {method: "verifyUser" ,email: e, password: p },
+            success: function(response){
+                // Process the response
+                console.log(response);
+                // Display the results
+                // TODO: Update this part to display the data as needed
+            },
+            error: function(xhr, status, error){
+                console.error(error);
+            }
+        });
+    }
 </script>
