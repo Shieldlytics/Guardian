@@ -142,37 +142,36 @@
                 var message = response.message
                 console.log(response);
                 var u = response.user.id;
-                console.log('user length: '+u.length);
+                console.log('user length: '+u);
 
                 if(status == "success"){
                     $("#showResults").slideDown(500);
                     $(".results").html("<div class='alert alert-success' role='alert'>"+message+"</div>");
 
-                    for (var i = 0; i < response.user.length; i++) {
-                        var user = response.user[i].id;
-                        sessionStorage.setItem('ID', response.user[i].id);
-                        sessionStorage.setItem('FirstName', response.user[i].firstName);
-                        sessionStorage.setItem('LastName', response.user[i].lastName);
-                        sessionStorage.setItem('Email', response.user[i].email);
-                        sessionStorage.setItem('Phone', response.user[i].phone);
-                        sessionStorage.setItem('city', response.user[i].city);
-                        sessionStorage.setItem('Company', response.user[i].company);
-                        sessionStorage.setItem('Address', response.user[i].address);
-                        sessionStorage.setItem('State', response.user[i].state);
-                        sessionStorage.setItem('Zip', response.user[i].zip);
-                        sessionStorage.setItem('Country', response.user[i].country);
-                        sessionStorage.setItem('title', response.user[i].title);
-
+                    //set session storage
+                    sessionStorage.setItem('ID', response.user.id);
+                    sessionStorage.setItem('FirstName', response.user.firstName);
+                    sessionStorage.setItem('LastName', response.user.lastName);
+                    sessionStorage.setItem('Email', response.user.email);
+                    sessionStorage.setItem('Phone', response.user.phone);
+                    sessionStorage.setItem('city', response.user.city);
+                    sessionStorage.setItem('Company', response.user.company);
+                    sessionStorage.setItem('Address', response.user.address);
+                    sessionStorage.setItem('State', response.user.state);
+                    sessionStorage.setItem('Zip', response.user.zip);
+                    sessionStorage.setItem('Country', response.user.country);
+                    sessionStorage.setItem('title', response.user.title);
+                    console.log(sessionStorage);
                         //loop through sites and set session storage
                         var sites = [];
                         for (var j = 0; j < response.user[i].sites.length; j++) {
                             sites.push(response.user[i].sites[j].siteID);
                         }
                         console.log(sites);
-                        console.log(sessionStorage);
+                        
 
 
-                    }
+                    
 
                     setTimeout(function(){
                         //window.location.href = "index.html";
