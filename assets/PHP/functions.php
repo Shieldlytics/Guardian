@@ -24,8 +24,6 @@
     }
     //function search users
     function verifyUser($email, $password) {
-        //echo "email: " . $email . " password: " . $password;
-        
         // Path to the JSON file
         $jsonFilePath = '../json/userLogin.json';
     
@@ -33,20 +31,28 @@
         $jsonData = file_get_contents($jsonFilePath);
         $data = json_decode($jsonData, true);
     
-        // Search for the user by username
+        // Initialize result as user not found
+        $result = ['status' => 'error', 'message' => 'User does not exist'];
+    
+        // Search for the user by email
         foreach ($data['users'] as $user) {
             if (strtolower($user['email']) == strtolower($email)) {
-                // Username found, now check password
+                // Email found, now check password
                 if ($user['password'] == $password) {
-                    return ['status' => 'success', 'message' => 'User verified', 'user' => $user];
+                    $result = ['status' => 'success', 'message' => 'User verified', 'user' => $user];
+                    break; // Exit the loop as user is found
                 } else {
-                    return ['status' => 'error', 'message' => 'Password is incorrect'];
+                    $result = ['status' => 'error', 'message' => 'Password is incorrect'];
+                    break; // Exit the loop as user is found but password is wrong
                 }
             }
         }
-        // 
-        return ['status' => 'error', 'message' => 'User does not exist'];
+    
+        // Encode the result as JSON and output it
+        header('Content-Type: application/json');
+        echo json_encode($result);
     }
+    
 
     //function to get all users
     function getUsers() {
