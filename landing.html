@@ -164,8 +164,8 @@
                     console.log(sessionStorage);
                         //loop through sites and set session storage
                         var sites = [];
-                        for (var j = 0; j < response.user[i].sites.length; j++) {
-                            sites.push(response.user[i].sites[j].siteID);
+                        for (var j = 0; j < response.user.sites.length; j++) {
+                            sites.push(response.user.sites[j].siteID);
                         }
                         console.log(sites);
                         
