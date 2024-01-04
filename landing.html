@@ -141,7 +141,7 @@
                 var status = response.status
                 var message = response.message
                 console.log(response);
-                var u = response.user[0];
+                var u = response.user.id;
                 console.log('user length: '+u.length);
 
                 if(status == "success"){
