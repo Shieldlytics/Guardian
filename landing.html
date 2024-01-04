@@ -135,8 +135,36 @@
             success: function(response){
                 // Process the response
                 console.log(response);
+
                 // Display the results
                 // TODO: Update this part to display the data as needed
+                var status = response.status
+                var message = response.message
+                if(status == "success"){
+                    $("#showResults").slideDown(500);
+                    $(".results").html("<div class='alert alert-success' role='alert'>"+message+"</div>");
+  
+                    for (var i = 0; i < response.user.length; i++) {
+                        var user = response.user[i].id;
+                        sessionStorage.setItem('ID', response.user[i].id);
+                        sessionStorage.setItem('FirstName', response.user[i].firstName);
+                        sessionStorage.setItem('LastName', response.user[i].lastName);
+                        sessionStorage.setItem('Email', response.user[i].email);
+                        sessionStorage.setItem('Phone', response.user[i].phone);
+                        sessionStorage.setItem('city', response.user[i].city);
+                        sessionStorage.setItem('Company', response.user[i].company);
+                        sessionStorage.setItem('Address', response.user[i].address);
+                        sessionStorage.setItem('State', response.user[i].state);
+                        sessionStorage.setItem('Zip', response.user[i].zip);
+                        sessionStorage.setItem('Country', response.user[i].country);
+                        sessionStorage.setItem('title', response.user[i].title);
+                        sessionStorage.setItem('roles', JSON(response.user[i].sites));
+                    }
+                    setTimeout(function(){
+                        window.location.href = "index.html";
+                    }, 1000);
+                }
+
 
             return false;
             },
@@ -145,4 +173,32 @@
             }
         });
     }
+// Function to block out dates for specific users and make them non-clickable
+// function blockOutDatesForSpecificUsers(calendar, currentUserEmplid) {
+//     var blockedDates = ["2024-02-14", "2024-07-04", "2024-11-28", "2024-12-25"];
+//     var emplidsWithBlockedDates = ["12345", "67890"]; // List of EMPLIDs that need blocked dates
+
+//     if (emplidsWithBlockedDates.includes(currentUserEmplid)) {
+//         calendar.addEventSource(function(fetchInfo, successCallback, failureCallback) {
+//             var events = [];
+//             blockedDates.forEach(function(date) {
+//                 var dateObj = new Date(date);
+//                 if (fetchInfo.start <= dateObj && dateObj <= fetchInfo.end) {
+//                     events.push({
+//                         start: date,
+//                         end: date,
+//                         rendering: 'background',
+//                         color: '#ff9f89', // Color for blocked dates
+//                         overlap: false, // Prevent events from being dragged/resized over this
+//                         // Don't assign any click handler to make the day block non-clickable
+
+//                     });
+//                 }
+//             });
+//             successCallback(events);
+//         });
+//     }
+// }
+
 </script>
+
