@@ -9,12 +9,11 @@
     }
 
     if(isset($_POST["method"])) {
-        $method = $_POST["method"];
         if($method=="verifyUser") {verifyUser($_POST["email"], $_POST["password"]);};
         if($method=="getUsers") {getUsers();};
         if($method=="addUser") {addUser($_POST["userData"]);};
         if($method=="editUser") {editUser($_POST["userId"], $_POST["userData"]);};
-        if($method=="authenticate") {authenticate();};
+        //if($method=="authenticate") {authenticate();};
         if($method=="deleteUser") {deleteUser($_POST["userId"]);};
         if($method=="getUserRoles") {getUserRoles($_POST["userId"]);};
         if($method=="addUserRole") {addUserRole($_POST["userId"], $_POST["roleId"]);};
