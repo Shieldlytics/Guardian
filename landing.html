@@ -140,10 +140,12 @@
                 // TODO: Update this part to display the data as needed
                 var status = response.status
                 var message = response.message
+                console.log(response);
+                console.log(response.user.sites);
                 if(status == "success"){
                     $("#showResults").slideDown(500);
                     $(".results").html("<div class='alert alert-success' role='alert'>"+message+"</div>");
-  console.log(response.user)
+
                     for (var i = 0; i < response.user.length; i++) {
                         var user = response.user[i].id;
                         sessionStorage.setItem('ID', response.user[i].id);
