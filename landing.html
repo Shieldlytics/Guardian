@@ -141,7 +141,8 @@
                 var status = response.status
                 var message = response.message
                 console.log(response);
-                console.log(response.user.sites);
+                console.log(response.user.length);
+
                 if(status == "success"){
                     $("#showResults").slideDown(500);
                     $(".results").html("<div class='alert alert-success' role='alert'>"+message+"</div>");
