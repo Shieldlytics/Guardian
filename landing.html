@@ -158,16 +158,13 @@
                         sessionStorage.setItem('Zip', response.user[i].zip);
                         sessionStorage.setItem('Country', response.user[i].country);
                         sessionStorage.setItem('title', response.user[i].title);
-                        
+
                         //loop through sites and set session storage
-                        for (var i = 0; i < response.user[i].sites.length; i++) {
-                            var site = response.user[i].sites[i].id;
-                            var siteName = response.user[i].sites[i].name;
-                            var siteRole = response.user[i].sites[i].role;
-                            sessionStorage.setItem('SiteID', site);
-                            sessionStorage.setItem('SiteName', siteName);
-                            sessionStorage.setItem('SiteRole', siteRole);
+                        var sites = [];
+                        for (var j = 0; j < response.user[i].sites.length; j++) {
+                            sites.push(response.user[i].sites[j].siteID);
                         }
+                        console.log(sites);
 
 
                     }
