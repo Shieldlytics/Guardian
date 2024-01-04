@@ -24,7 +24,7 @@
     }
     //function search users
     function verifyUser($email, $password) {
-        echo "email: " . $email . " password: " . $password;
+        //echo "email: " . $email . " password: " . $password;
         
         // Path to the JSON file
         $jsonFilePath = '../json/userLogin.json';
@@ -44,7 +44,7 @@
                 }
             }
         }
-        // Username not found
+        // 
         return ['status' => 'error', 'message' => 'User does not exist'];
     }
 
