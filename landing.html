@@ -161,8 +161,12 @@
                     sessionStorage.setItem('Zip', response.user.zip);
                     sessionStorage.setItem('Country', response.user.country);
                     sessionStorage.setItem('title', response.user.title);
-                    console.log(response.user.sites.length)
+                    
                     console.log(sessionStorage);
+
+                    for(var i = 0; i < response.user.sites.length; i++){
+                        sessionStorage.setItem(response.user.sites[i].name+' Role:'+i, response.user.sites[i].role);
+                    }
 
 
                     
@@ -170,6 +174,9 @@
                     setTimeout(function(){
                         //window.location.href = "index.html";
                     }, 1000);
+                }else if(status == "error"){
+                    $("#showResults").slideDown(500);
+                    $(".results").html("<div class='alert alert-danger' role='alert'>"+message+"</div>");
                 }
 
 
