@@ -141,7 +141,8 @@
                 var status = response.status
                 var message = response.message
                 console.log(response);
-                console.log('user length: '+response.user[0].length);
+                var u = response.user;
+                console.log('user length: '+u.length);
 
                 if(status == "success"){
                     $("#showResults").slideDown(500);
