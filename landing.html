@@ -161,7 +161,7 @@
                     sessionStorage.setItem('Zip', response.user.zip);
                     sessionStorage.setItem('Country', response.user.country);
                     sessionStorage.setItem('title', response.user.title);
-                    sessionStorage.setItem('sites', JSON.stringify(response.user.sites));
+                    console.log(response.user.sites.length)
                     console.log(sessionStorage);
 
 
