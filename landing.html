@@ -163,7 +163,7 @@
                     sessionStorage.setItem('title', response.user.title);
                     for(var i = 0; i < response.user.sites.length; i++){
                       sessionStorage.setItem('AppName_'+ response.user.sites[i].site_id, response.user.sites[i].name);
-                      sessionStorage.setItem('Role_ID',response.user.sites[i].role_id);
+                      sessionStorage.setItem('Role_ID_'+ response.user.sites[i].site_id,response.user.sites[i].role_id);
                     }
 
                     console.log(sessionStorage);
