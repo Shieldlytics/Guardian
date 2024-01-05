@@ -162,7 +162,8 @@
                     sessionStorage.setItem('Country', response.user.country);
                     sessionStorage.setItem('title', response.user.title);
                     for(var i = 0; i < response.user.sites.length; i++){
-                        sessionStorage.setItem(response.user.sites[i].name + ',' + response.user.sites[i].site_id);
+                      sessionStorage.setItem('AppName_'+ response.user.sites[i].site_id, response.user.sites[i].name);
+                      sessionStorage.setItem('Role_ID',response.user.sites[i].role_id);
                     }
 
                     console.log(sessionStorage);
