@@ -165,7 +165,7 @@
                     
 
                     for(var i = 0; i < response.user.sites.length; i++){
-                        sessionStorage.setItem(response.user.sites[i].name+' Role:'+i, response.user.sites[i].role);
+                        sessionStorage.setItem('App:'+response.user.sites[i].name+' Role:'+response.user.sites[i].role);
                     }
 
                     console.log(sessionStorage);
