@@ -18,19 +18,19 @@
             "website": "www.Shieldlytics.com",
             "sites": [
                 {
-                    "id": 1,
+                    "site_id": 1,
                     "name": "Shieldlytics",
-                    "role": "admin"
+                    "role_id": 2
                 },
                 {
-                    "id": 2,
+                    "site_id": 2,
                     "name": "Guardian",
-                    "role": "admin"
+                    "role_id": 1
                 },
                 {
-                    "id": 3,
+                    "site_id": 3,
                     "name": "Badger",
-                    "role": "admin"
+                    "role_id": 1
                 }
             ]
         },
@@ -52,17 +52,17 @@
             "website": "www.Shieldlytics.com",
             "sites": [
                 {
-                    "id": 1,
+                    "site_id": 1,
                     "name": "Shieldlytics",
                     "role": "admin"
                 },
                 {
-                    "id": 2,
+                    "site_id": 2,
                     "name": "Guardian",
                     "role": "admin"
                 },
                 {
-                    "id": 3,
+                    "site_id": 3,
                     "name": "Badger",
                     "role": "admin"
                 }
@@ -86,17 +86,17 @@
             "website": "www.shieldlytics.com",
             "sites":[
                 {
-                    "id": 1,
+                    "site_id": 1,
                     "name": "Shieldlytics",
                     "role": "admin"
                 },
                 {
-                    "id": 2,
+                    "site_id": 2,
                     "name": "Guardian",
                     "role": "admin"
                 },
                 {
-                    "id": 3,
+                    "site_id": 3,
                     "name": "Badger",
                     "role": "admin"
                 }
@@ -120,17 +120,17 @@
             "website": "www.shieldlytics.com",
             "sites": [
                 {
-                    "id": 1,
+                    "site_id": 1,
                     "name": "Shieldlytics",
                     "role": "admin"
                 },
                 {
-                    "id": 2,
+                    "site_id": 2,
                     "name": "Guardian",
                     "role": "admin"
                 },
                 {
-                    "id": 3,
+                    "site_id": 3,
                     "name": "Badger",
                     "role": "admin"
                 }
@@ -154,17 +154,17 @@
             "website": "www.shieldlytics.com",
             "sites": [
                 {
-                    "id": 1,
+                    "site_id": 1,
                     "name": "Shieldlytics",
                     "role": "admin"
                 },
                 {
-                    "id": 2,
+                    "site_id": 2,
                     "name": "Guardian",
                     "role": "admin"
                 },
                 {
-                    "id": 3,
+                    "site_id": 3,
                     "name": "Badger",
                     "role": "admin"
                 }
@@ -188,17 +188,17 @@
             "website": "www.shieldlytics.com",
             "sites": [
                 {
-                    "id": 1,
+                    "site_id": 1,
                     "name": "Shieldlytics",
                     "role": "admin"
                 },
                 {
-                    "id": 2,
+                    "site_id": 2,
                     "name": "Guardian",
                     "role": "admin"
                 },
                 {
-                    "id": 3,
+                    "site_id": 3,
                     "name": "Badger",
                     "role": "admin"
                 }
@@ -222,17 +222,17 @@
             "website": "www.shieldlytics.com",
             "sites": [
                 {
-                    "id": 1,
+                    "site_id": 1,
                     "name": "Shieldlytics",
                     "role": "admin"
                 },
                 {
-                    "id": 2,
+                    "site_id": 2,
                     "name": "Guardian",
                     "role": "admin"
                 },
                 {
-                    "id": 3,
+                    "site_id": 3,
                     "name": "Badger",
                     "role": "admin"
                 }

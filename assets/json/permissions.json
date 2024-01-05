@@ -1,0 +1,62 @@
+{
+    "roles": [
+        {
+            "role_id": "1",
+            "name": "Super-Admin",
+            "permissions": [
+                "guest",
+                "general",
+                "processor",
+                "manager",
+                "table-admin"
+            ]
+        },
+        {
+            "role_id": "2",
+            "name": "General-User",
+            "permissions": [
+                "general"
+            ]
+        },
+        {
+            "role_id": "3",
+            "name": "Processor",
+            "permissions": [
+                "Processor"
+            ]
+        },
+        {
+            "role_id": "4",
+            "name": "Manager",
+            "permissions": [
+                "Manager"
+            ]
+        },
+        {
+            "role_id": "5",
+            "name": "Table-Admin",
+            "permissions": [
+                "Table-Admin"
+            ]
+        },
+        {
+            "role_id": "6",
+            "name": "Guest",
+            "permissions": [
+                "guest"
+            ]
+        },
+        {
+            "role_id": "7",
+            "name": "Site-Admin",
+            "permissions": [
+                "guest",
+                "general",
+                "processor",
+                "manager",
+                "table-admin",
+                "site-admin"
+            ]
+        }
+    ]
+}
