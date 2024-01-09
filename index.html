@@ -331,22 +331,33 @@
                 window.location.href = "landing.html";
             }
         });
+        if(sessionStorage.getItem('ID').length != 0){
+            sessionStorage.getItem('ID');
+            sessionStorage.getItem('FirstName');
+            sessionStorage.getItem('LastName');
+            sessionStorage.getItem('Email');
+            sessionStorage.getItem('Phone');
+            sessionStorage.getItem('city');
+            sessionStorage.getItem('Company');
+            sessionStorage.getItem('Address');
+            sessionStorage.getItem('State');
+            sessionStorage.getItem('Zip');
+            sessionStorage.getItem('Country');
+            sessionStorage.getItem('title');
+
+            console.log(sessionStorage);
+            
+            var sitePermissions = JSON.parse(sessionStorage.getItem('sitePermissions'));
+            console.log(sitePermissions);
+            if(sitePermissions.includes("SiteAdmin")){
+                $('#navTextSignOut').parent().parent().parent().css('display', 'block');
+                $('#navTextSignOut').parent().parent().css('display', 'block');
+                $('#navTextSignOut').parent().css('display', 'block');
+                $('#navTextSignOut').css('display', 'block');
+            }
+        }
+
         
-        sessionStorage.getItem('ID');
-        sessionStorage.getItem('FirstName');
-        sessionStorage.getItem('LastName');
-        sessionStorage.getItem('Email');
-        sessionStorage.getItem('Phone');
-        sessionStorage.getItem('city');
-        sessionStorage.getItem('Company');
-        sessionStorage.getItem('Address');
-        sessionStorage.getItem('State');
-        sessionStorage.getItem('Zip');
-        sessionStorage.getItem('Country');
-        sessionStorage.getItem('title');
-        sessionStorage.getItem('sitePermissions');
-        
-        console.log(sessionStorage);
 
 
         $('a').on('click', function () {
