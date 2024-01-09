@@ -11,6 +11,7 @@
     if(isset($_POST["method"])) {
         $method = $_POST["method"];
         if($method=="verifyUser") {verifyUser($_POST["email"], $_POST["password"]);};
+        if($method=="addNewCompany") {verifyUser($_POST["email"], $_POST["password"]);};
         if($method=="getUsers") {getUsers();};
         if($method=="addUser") {addUser($_POST["userData"]);};
         if($method=="editUser") {editUser($_POST["userId"], $_POST["userData"]);};
@@ -53,7 +54,50 @@
         echo json_encode($result);
     }
     
-
+    //function to add new company
+    function addNewCompany($companyData) {
+        $pdo = getConnection();
+        $sql = "INSERT INTO DBO.COMPANIES (COMPANY_ID, NAME, ADDRESS_LINE_1, ADDRESS_LINE_2, ADDRESS_LINE_3, CITY, STATE, POSTAL_CODE, COUNTRY, PHONE, EMAIL, CREATE_DATE, CREATE_USER_ID, ACTIVE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?)";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([$companyData['COMPANY_ID'], $companyData['NAME'], $companyData['ADDRESS_LINE_1'], $companyData['ADDRESS_LINE_2'], $companyData['ADDRESS_LINE_3'], $companyData['CITY'], $companyData['STATE'], $companyData['POSTAL_CODE'], $companyData['COUNTRY'], $companyData['PHONE'], $companyData['EMAIL'], $companyData['CREATE_USER_ID'], $companyData['ACTIVE']]);
+    }
+    //function to get company
+    function getCompany($companyId) {
+        $pdo = getConnection();
+        $sql = "SELECT COMPANY_ID, NAME, ADDRESS_LINE_1, ADDRESS_LINE_2, ADDRESS_LINE_3, CITY, STATE, POSTAL_CODE, COUNTRY, PHONE, EMAIL, CREATE_DATE, CREATE_USER_ID, ACTIVE FROM DBO.COMPANIES WHERE COMPANY_ID = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$companyId]);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        header('Content-Type: application/json');
+        $json = json_encode(array('items' => $results));
+        echo $json;
+    }
+    //function to edit company
+    function editCompany($companyId, $companyData) {
+        $pdo = getConnection();
+        $sql = "UPDATE DBO.COMPANIES SET NAME = ?, ADDRESS_LINE_1 = ?, ADDRESS_LINE_2 = ?, ADDRESS_LINE_3 = ?, CITY = ?, STATE = ?, POSTAL_CODE = ?, COUNTRY = ?, PHONE = ?, EMAIL = ?, UPDATE_DATE = NOW(), UPDATE_USER_ID = ?, ACTIVE = ? WHERE COMPANY_ID = ?";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([$companyData['NAME'], $companyData['ADDRESS_LINE_1'], $companyData['ADDRESS_LINE_2'], $companyData['ADDRESS_LINE_3'], $companyData['CITY'], $companyData['STATE'], $companyData['POSTAL_CODE'], $companyData['COUNTRY'], $companyData['PHONE'], $companyData['EMAIL'], $companyData['UPDATE_USER_ID'], $companyData['ACTIVE'], $companyId]);
+    }
+    //function to delete company
+    function deleteCompany($companyId) {
+        $pdo = getConnection();
+        $sql = "UPDATE DBO.COMPANIES SET ACTIVE = 'D' WHERE COMPANY_ID = ?";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([$companyId]);
+    }
+    //function to get all companies
+    function getCompanies() {
+        $pdo = getConnection();
+        $sql = "SELECT COMPANY_ID, NAME, ADDRESS_LINE_1, ADDRESS_LINE_2, ADDRESS_LINE_3, CITY, STATE, POSTAL_CODE, COUNTRY, PHONE, EMAIL, CREATE_DATE, CREATE_USER_ID, ACTIVE FROM DBO.COMPANIES";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        header('Content-Type: application/json');
+        $json = json_encode(array('items' => $results));
+        echo $json;
+    }
+    
     //function to get all users
     function getUsers() {
         $pdo = getConnection();

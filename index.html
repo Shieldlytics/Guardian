@@ -279,8 +279,8 @@
     <script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
     <script src="node_modules/datatables.net-buttons/js/dataTables.buttons.js"></script>
     <script src="node_modules/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
-
     <script src="node_modules/bootstrap-tour/build/js/bootstrap-tour.js"></script>
+
 </body>
 
 </html>
@@ -330,41 +330,35 @@
                 window.location.href = "landing.html";
             }
         });
-        if(sessionStorage.getItem('ID').length != 0){
-            var profileName = sessionStorage.getItem('FirstName').charAt(0) + ". " + sessionStorage.getItem('LastName');
-            sessionStorage.getItem('ID');
-            sessionStorage.getItem('FirstName');
-            sessionStorage.getItem('LastName');
-            sessionStorage.getItem('Email');
-            sessionStorage.getItem('Phone');
-            sessionStorage.getItem('city');
-            sessionStorage.getItem('Company');
-            sessionStorage.getItem('Address');
-            sessionStorage.getItem('State');
-            sessionStorage.getItem('Zip');
-            sessionStorage.getItem('Country');
-            sessionStorage.getItem('title');
 
-            console.log(sessionStorage);
+        const storedUser = JSON.parse(sessionStorage.getItem('user'));
+        console.log(storedUser);
+        if(storedUser.id !== 'undefined'){
+            $('#profileName').html(storedUser.firstName.charAt(0) + '. ' + storedUser.lastName);
 
-            var sitePermissions = JSON.parse(sessionStorage.getItem('sitePermissions'));
+            var sitePermissions = JSON.stringify(storedUser.organization);
+            
             console.log(sitePermissions);
-            if(sitePermissions.includes("SiteAdmin")){
-                $('#navTextSignOut').parent().parent().parent().css('display', 'block');
-                $('#navTextSignOut').parent().parent().css('display', 'block');
-                $('#navTextSignOut').parent().css('display', 'block');
-                $('#navTextSignOut').css('display', 'block');
-            }
+            
         }
-
         
+        // if(storedUser.length != 0){
 
+           
+
+        //     var sitePermissions = JSON.parse(sessionStorage.getItem('sitePermissions'));
+        //     console.log(sitePermissions);
+        //     if(sitePermissions.includes("SiteAdmin")){
+        //         $('#navTextSignOut').parent().parent().parent().css('display', 'block');
+        //         $('#navTextSignOut').parent().parent().css('display', 'block');
+        //         $('#navTextSignOut').parent().css('display', 'block');
+        //         $('#navTextSignOut').css('display', 'block');
+        //     }
+        // }
 
         $('a').on('click', function () {
             //remove fw-bold class
             $('.nav-link').removeClass('fw-bold');
-
-
 
             var page = $(this).attr('page');
             if (page == "index") {

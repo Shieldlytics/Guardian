@@ -149,19 +149,7 @@
                     $(".results").html("<div class='alert alert-success' role='alert'>"+message+"</div>");
 
                     //set session storage
-                    sessionStorage.setItem('ID', response.user.id);
-                    sessionStorage.setItem('FirstName', response.user.firstName);
-                    sessionStorage.setItem('LastName', response.user.lastName);
-                    sessionStorage.setItem('Email', response.user.email);
-                    sessionStorage.setItem('Phone', response.user.phone);
-                    sessionStorage.setItem('city', response.user.city);
-                    sessionStorage.setItem('Company', response.user.company);
-                    sessionStorage.setItem('Address', response.user.address);
-                    sessionStorage.setItem('State', response.user.state);
-                    sessionStorage.setItem('Zip', response.user.zip);
-                    sessionStorage.setItem('Country', response.user.country);
-                    sessionStorage.setItem('title', response.user.title);
-                    sessionStorage.setItem('sitePermissions', response.user.sites);
+                    sessionStorage.setItem('user', JSON.stringify(response.user));
 
                     //redirect to dashboard
                     window.location.href = "index.html";
