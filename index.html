@@ -90,7 +90,7 @@
                         <div class="dropdown">
                             <button class="btn btn-sm btn-outline-light dropdown-toggle bg-layout  justify-content-center" type="button" id="ProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 
-                                    <img class="rounded-circle me-2 d-flex align-content-center justify-content-center float-start " width="30" height="30" src="https://pena-cloud.network/images/EP.jpg" alt="E. Pena Jr."> <span id="profileName" class="fs-5 justify-content-center justify-content-center">E. Pena Jr.</span>
+                                    <img class="rounded-circle me-2 d-flex align-content-center justify-content-center float-start " width="30" height="30" src="https://pena-cloud.network/images/EP.jpg" alt="E. Pena Jr."> <span id="profileName" class="fs-5 align-content-center justify-content-center" data-bs-theme="auto"></span>
                                 
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="profileDropdown" id="profileDropdown">
@@ -109,8 +109,7 @@
                             <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="bd-theme-text" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-sun fa-2x"></i>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text"
-                                id="bd-theme-text">
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text" id="bd-theme-text">
                                 <li><a class="dropdown-item" href="#" data-bs-theme-value="light"><i class="fas fa-sun"></i> Light</a></li>
                                 <li><a class="dropdown-item" href="#" data-bs-theme-value="dark"><i class="fas fa-moon-stars"></i> Dark</a></li>
                                 <li><a class="dropdown-item" href="#" data-bs-theme-value="auto"><i class="fas fa-eclipse"></i> Auto</a></li>
@@ -332,6 +331,7 @@
             }
         });
         if(sessionStorage.getItem('ID').length != 0){
+            var profileName = sessionStorage.getItem('FirstName').charAt(0) + ". " + sessionStorage.getItem('LastName');
             sessionStorage.getItem('ID');
             sessionStorage.getItem('FirstName');
             sessionStorage.getItem('LastName');
@@ -346,7 +346,7 @@
             sessionStorage.getItem('title');
 
             console.log(sessionStorage);
-            
+
             var sitePermissions = JSON.parse(sessionStorage.getItem('sitePermissions'));
             console.log(sitePermissions);
             if(sitePermissions.includes("SiteAdmin")){
