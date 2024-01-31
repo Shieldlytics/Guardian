@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    </head>
+    <style>
+        .password-container {
+            position: relative; /* Needed for positioning the eye icon */
+            width: 300px; /* Adjust as needed */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .password-field {
+            width: 100%; /* Full width of the container */
+            padding: 10px;
+            padding-right: 40px; /* Make room for the icon */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px; /* Adjust as needed */
+        }
+
+        .fal.fa-eye, .fal.fa-eye-slash {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+            font-size: 20px; /* Adjust icon size as needed */
+            color: #777; /* Icon color */
+        }
+
+        /* Optional: Style for hover and focus states */
+        .password-field:hover, .password-field:focus {
+            border-color: #888;
+        }
+
+        .fal.fa-eye:hover, .fal.fa-eye-slash:hover {
+            color: #333;
+        }
+
+    </style>
+    <body>
+        <div class="container mt-5">
+  
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12">
+                    <div class="card mb-3" style="width: 40rem;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h1 class="text-center">Sign Up</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-center">Please fill out the form below to create an account.</p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <form id="signupForm">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="first_Name" class="h5">*First Name:</label>
+                                                <input type="text" class="form-control" id="first_Name" name="firstName" required />
+                                            </div>
+                                            <!-- <div class="col">
+                                                <label for="middle_Name" class="h5">Middle Name:</label>
+                                                <input type="text" class="form-control" id="middle_Name" name="middleName" />
+                                            </div> -->
+                                            <div class="col">
+                                                <label for="last_Name" class="h5">*Last Name:</label>
+                                                <input type="text" class="form-control" id="last_Name" name="lastName" required />
+                                            </div>
+                                        </div>
+                                        <label for="email" class="h5 mt-2">*Email:</label>
+                                        <input type="email" class="form-control" id="email" name="email">
+
+                                        <label for="phone" class="h5 mt-2">*Phone:</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone">
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="address_line_1" class="h5 mt-2">*Address:</label>
+                                                <input type="text" class="form-control" id="address_line_1" name="address" required />
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <label for="city" class="h5 mt-2">*City:</label>
+                                                        <input type="text" class="form-control" id="city" name="city" required />
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="state" class="h5 mt-2">*State:</label>
+                                                        <input type="text" class="form-control" id="state" name="state" required />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <label for="postal_code" class="h5 mt-2">*Zip:</label>
+                                                        <input type="text" class="form-control" id="zip" name="postal_code" required />
+                                                    </div>
+                                                    <div class="col">
+                                                        <label for="country" class="h5 mt-2">*Country:</label>
+                                                        <input type="text" class="form-control" id="country" name="country" required />
+                                                    </div>
+                                                </div>
+                                               
+                                               
+
+                                            </div>
+                                        </div>
+                                        
+
+                                       
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-sm-6">
+                                    <label for="password" class="h5">Create Password:</label>
+                                    <div class="password-container">
+                                        <input type="password" class="form-control password-field" id="password" name="password">
+                                        <i class="fal fa-eye toggle-password"></i>
+                                    </div>
+
+                                    <label for="password" class="h5 mt-2">Verify Password:</label>
+                                    <div class="password-container ">
+                                        <input type="password" class="form-control password-field" id="pwVerify" name="pwVerify">
+                                        <i class="fal fa-eye toggle-password"></i>
+                                    </div>
+                                    <a href="https://pages.nist.gov/800-63-3/sp800-63b.html" class="text-uppcercase" style="font-size: 10px; text-decoration: none;">NIST password guidelines</a>
+                                    
+                                    <input class=" btn btn-primary form-control mt-5" type="submit" value="Sign Up">
+                                </div>
+                                <div class="col-sm-6">
+                                    <h5>Password Requirements</h5>
+                                    <ul class="list-group">
+                                        <li class="list-group-item" id="length">Contains 12 Characters <span class="checkmark float-end"></span></li>
+                                        <li class="list-group-item" id="number">Contains Number <span class="checkmark float-end"></span></li>
+                                        <li class="list-group-item" id="lowercase">Contains Lowercase <span class="checkmark float-end"></span></li>
+                                        <li class="list-group-item" id="uppercase">Contains Uppercase <span class="checkmark float-end"></span></li>
+                                        <li class="list-group-item" id="special">Contains Special Character <span class="checkmark float-end"></span></li>
+                                        <li class="list-group-item" id="match">Passwords Verified Match <span class="checkmark float-end"></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        <script src="assets/js/app.js"></script>
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="node_modules/aos/dist/aos.js"></script>
+    </body>
+</html>
+<script>
+$(document).ready(function() {
+    var checkMark = '<i class="fal fa-check"></i>';
+
+    function checkPasswordCriteria() {
+        var passwordValue = $('#password').val();
+
+        toggleCheckMark('#length', passwordValue.length >= 12);
+        toggleCheckMark('#number', /\d/.test(passwordValue));
+        toggleCheckMark('#lowercase', /[a-z]/.test(passwordValue));
+        toggleCheckMark('#uppercase', /[A-Z]/.test(passwordValue));
+        toggleCheckMark('#special', /[!@#$%^&*(),.?":{}|<>]/.test(passwordValue));
+    }
+
+    function checkPasswordMatch() {
+        var passwordValue = $('#password').val();
+        var verifyValue = $('#pwVerify').val();
+
+        toggleCheckMark('#match', passwordValue === verifyValue && passwordValue.length > 0);
+    }
+
+    function toggleCheckMark(id, condition) {
+        if (condition) {
+            $(id).addClass('text-success').find('.checkmark').html(checkMark);
+        } else {
+            $(id).removeClass('text-success').find('.checkmark').empty();
+        }
+    }
+
+    $('#password, #pwVerify').on('input', function() {
+        checkPasswordCriteria();
+        checkPasswordMatch();
+    });
+});
+
+</script>
