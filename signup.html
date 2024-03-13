@@ -130,6 +130,15 @@
 <script>
 $(document).ready(function() {
     var checkMark = '<i class="fal fa-check"></i>';
+    $('.toggle-password').on('click', function() {
+        $(this).toggleClass('fa-eye fa-eye-slash');
+        var input = $($(this).prev());
+        if (input.attr('type') === 'password') {
+            input.attr('type', 'text');
+        } else {
+            input.attr('type', 'password');
+        }
+    }); 
 
     function checkPasswordCriteria() {
         var passwordValue = $('#password').val();
