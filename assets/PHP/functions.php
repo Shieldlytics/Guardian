@@ -1,21 +1,37 @@
 <?php 
-    function getConnection(){
-        $DB_DNS = "jdbc:sqlserver://;serverName=guardian-dev-db.database.windows.net;databaseName=GUARDIAN-DEV;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-        $DB_USER = "GUARDIAN";
-        $DB_PASSWORD = "Sh13ldlyt1c$";
-        $conn = new PDO($DB_DNS, $DB_USER, $DB_PASSWORD);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $conn;
-    }
-
+function getConnection() {
+    $DB_DNS = "jdbc:sqlserver://;serverName=guardian-dev-db.database.windows.net;databaseName=GUARDIAN-DEV;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+    $DB_USER = "GUARDIAN";
+    $DB_PASSWORD = "Sh13ldlyt1c$";
+    $conn = new PDO($DB_DNS, $DB_USER, $DB_PASSWORD);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return $conn;
+}
+    // Check if the method is set
     if(isset($_POST["method"])) {
+
+        if(isset($_POST["registerNewUser"])) {
+            $userData = [
+                "firstName" => $_POST["firstName"],
+                "lastName" => $_POST["lastName"],
+                "email" => $_POST["email"],
+                "password" => $_POST["password"], // Note: Storing plain text password is not secure
+                "createDate" => $_POST["createDate"],
+                "createUserId" => $_POST["createUserId"]
+            ];
+            $userData["hashedPassword"] = password_hash($userData["password"], PASSWORD_DEFAULT);
+            echo $userData;
+        }
+
+
         $method = $_POST["method"];
-        if($method=="verifyUser") {verifyUser($_POST["email"], $_POST["password"]);};
+        if($method=="registerUser") {registerUser($userData);};
+        if($method=="verifyUser") {verifyUser($email,$password);};
         if($method=="addNewCompany") {verifyUser($_POST["email"], $_POST["password"]);};
         if($method=="getUsers") {getUsers();};
         if($method=="addUser") {addUser($_POST["userData"]);};
         if($method=="editUser") {editUser($_POST["userId"], $_POST["userData"]);};
-        if($method=="authenticate") {authenticate();};
+        if($method=="authenticate") {authenticate($email,$password);};
         if($method=="deleteUser") {deleteUser($_POST["userId"]);};
         if($method=="getUserRoles") {getUserRoles($_POST["userId"]);};
         if($method=="addUserRole") {addUserRole($_POST["userId"], $_POST["roleId"]);};
@@ -23,6 +39,15 @@
         if($method=="getRoles") {getRoles();};
         if($method=="manageRoles") {manageRoles($_POST["roleId"], $_POST["roleData"], $_POST["action"]);};
     }
+//function to register a new user
+    function registerUser($userData){
+        $pdo = getConnection();
+        $sql = "INSERT INTO DBO.USERS (FIRST_NAME, LAST_NAME, EMAIL, CREATE_DATE, CREATE_USER_ID)VALUES (?,?,?,?,?)";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email'], $userData['createDate'], $userData['createUserId']]);
+    }
+
+
     //function search users
     function verifyUser($email, $password) {
         // Path to the JSON file
@@ -184,6 +209,14 @@
         }
         $stmt = $pdo->prepare($sql);
         return $stmt->execute([$roleData['ROLE_ID'], $roleData['NAME'], $roleData['DISPLAY_NAME'], $roleData['DESCRIPTION'], $roleData['ACTIVE'], $roleId]);
+    }
+
+    //save password in database table USER_EXTENSIONS
+    function savePassword($userId, $password, $salt) {
+        $pdo = getConnection();
+        $sql = "INSERT INTO DBO.USER_EXTENSIONS (USER_ID, SEA, JUMBLE) VALUES (?, ?)";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([$userId, $password]);
     }
 
     //authentication

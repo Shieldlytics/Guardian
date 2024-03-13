@@ -69,85 +69,49 @@
                                     <form id="signupForm">
                                         <div class="row">
                                             <div class="col">
-                                                <label for="first_Name" class="h5">*First Name:</label>
+                                                <label for="first_Name" class="h6">*First Name:</label>
                                                 <input type="text" class="form-control" id="first_Name" name="firstName" required />
                                             </div>
                                             <!-- <div class="col">
-                                                <label for="middle_Name" class="h5">Middle Name:</label>
+                                                <label for="middle_Name" class="h6">Middle Name:</label>
                                                 <input type="text" class="form-control" id="middle_Name" name="middleName" />
                                             </div> -->
                                             <div class="col">
-                                                <label for="last_Name" class="h5">*Last Name:</label>
+                                                <label for="last_Name" class="h6">*Last Name:</label>
                                                 <input type="text" class="form-control" id="last_Name" name="lastName" required />
                                             </div>
                                         </div>
-                                        <label for="email" class="h5 mt-2">*Email:</label>
+                                        <label for="email" class="h6 mt-2">*Email:</label>
                                         <input type="email" class="form-control" id="email" name="email">
-
-                                        <label for="phone" class="h5 mt-2">*Phone:</label>
-                                        <input type="tel" class="form-control" id="phone" name="phone">
-
-                                        <div class="row">
-                                            <div class="col">
-                                                <label for="address_line_1" class="h5 mt-2">*Address:</label>
-                                                <input type="text" class="form-control" id="address_line_1" name="address" required />
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <label for="city" class="h5 mt-2">*City:</label>
-                                                        <input type="text" class="form-control" id="city" name="city" required />
-                                                    </div>
-                                                    <div class="col">
-                                                        <label for="state" class="h5 mt-2">*State:</label>
-                                                        <input type="text" class="form-control" id="state" name="state" required />
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <label for="postal_code" class="h5 mt-2">*Postal Code:</label>
-                                                        <input type="text" class="form-control" id="postal_code" name="postal_code" required />
-                                                    </div>
-                                                    <div class="col">
-                                                        <label for="country" class="h5 mt-2">*Country:</label>
-                                                        <input type="text" class="form-control" id="country" name="country" required />
-                                                    </div>
-                                                </div>
-                                               
-                                               
-
-                                            </div>
-                                        </div>
-                                        
-
-                                       
                                     </form>
                                 </div>
                             </div>
                             <div class="row mt-5">
                                 <div class="col-sm-6">
-                                    <label for="password" class="h5">Create Password:</label>
+                                    <label for="password" class="h6">Create Password:</label>
                                     <div class="password-container">
                                         <input type="password" class="form-control password-field" id="password" name="password">
                                         <i class="fal fa-eye toggle-password"></i>
                                     </div>
 
-                                    <label for="password" class="h5 mt-2">Verify Password:</label>
+                                    <label for="password" class="h6 mt-2">Verify Password:</label>
                                     <div class="password-container ">
                                         <input type="password" class="form-control password-field" id="pwVerify" name="pwVerify" />
                                         <i class="fal fa-eye toggle-password"></i>
                                     </div>
                                     <a href="https://pages.nist.gov/800-63-3/sp800-63b.html" class="text-uppcercase" style="font-size: 10px; text-decoration: none;">NIST password guidelines</a>
                                     
-                                    <input class=" btn btn-primary form-control mt-5" type="submit" value="Sign Up">
+                                    <input class=" btn btn-primary form-control mt-5 signmeup" type="submit" value="Sign Up" disabled>
                                 </div>
                                 <div class="col-sm-6">
-                                    <h5>Password Requirements</h5>
-                                    <ul class="list-group">
-                                        <li class="list-group-item" id="length">Contains 12 Characters <span class="checkmark float-end"></span></li>
-                                        <li class="list-group-item" id="number">Contains Number <span class="checkmark float-end"></span></li>
-                                        <li class="list-group-item" id="lowercase">Contains Lowercase <span class="checkmark float-end"></span></li>
-                                        <li class="list-group-item" id="uppercase">Contains Uppercase <span class="checkmark float-end"></span></li>
-                                        <li class="list-group-item" id="special">Contains Special Character <span class="checkmark float-end"></span></li>
-                                        <li class="list-group-item" id="match">Passwords Verified Match <span class="checkmark float-end"></span></li>
+                                    <h6>Password Requirements</h6>
+                                    <ul class="list-group" style="font-size:12px">
+                                        <li class="list-group-item" id="length">Contains 12 Characters <span class="checkmark float-start mx-1"></span> </li>
+                                        <li class="list-group-item" id="number">Contains Number <span class="checkmark float-start mx-1"></span></li>
+                                        <li class="list-group-item" id="lowercase">Contains Lowercase <span class="checkmark float-start mx-1"></span></li>
+                                        <li class="list-group-item" id="uppercase">Contains Uppercase <span class="checkmark float-start mx-1"></span></li>
+                                        <li class="list-group-item" id="special">Contains Special Character <span class="checkmark float-start mx-1"></span></li>
+                                        <li class="list-group-item" id="match">Passwords Verified Match <span class="checkmark float-start mx-1"></span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -158,8 +122,6 @@
             </div>
         
         
-        
-        <script src="assets/js/app.js"></script>
         <script src="node_modules/jquery/dist/jquery.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="node_modules/aos/dist/aos.js"></script>
@@ -171,7 +133,6 @@ $(document).ready(function() {
 
     function checkPasswordCriteria() {
         var passwordValue = $('#password').val();
-
         toggleCheckMark('#length', passwordValue.length >= 12);
         toggleCheckMark('#number', /\d/.test(passwordValue));
         toggleCheckMark('#lowercase', /[a-z]/.test(passwordValue));
@@ -185,6 +146,24 @@ $(document).ready(function() {
 
         toggleCheckMark('#match', passwordValue === verifyValue && passwordValue.length > 0);
     }
+    $('#phone').on('keyup', function() {
+        var phone = $(this).val().replace(/\D/g, '');
+        var match = phone.match(/^(\d{3})(\d{3})(\d{4})$/);
+        if (match) {
+            $(this).val('(' + match[1] + ') ' + match[2] + '-' + match[3]);
+        }
+    });
+
+    $('#email').on('input', function() {
+        var email = $(this).val();
+        var valid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email);
+        if (valid) {
+            $(this).removeClass('is-invalid');
+        } else {
+            $(this).addClass('is-invalid');
+        }
+    });
+
 
     function toggleCheckMark(id, condition) {
         if (condition) {
@@ -197,7 +176,95 @@ $(document).ready(function() {
     $('#password, #pwVerify').on('input', function() {
         checkPasswordCriteria();
         checkPasswordMatch();
+        //remove disabled attribute from submit button
+        if (verifyInputs()) {
+            $('.signmeup').removeAttr('disabled');
+        } else {
+            $('.signmeup').attr('disabled', 'disabled');
+        }
     });
-});
 
+// check password criteria on submit
+    $('.signmeup').on('click', function(e) {
+        e.preventDefault();
+        checkPasswordCriteria();
+        checkPasswordMatch();
+        verifyInputs();
+        if (verifyInputs()) {
+            registerUser();
+        }
+        console.log('submit');
+    });
+    $('#address_line_1, #city, #state, #postal_code, #country').on('keyup', function() {
+        // search google for address and populate inputs city, state, postal code, country
+        
+        searchGoogleForAddress();
+
+
+    });
+
+
+
+});
+function searchGoogleForAddress() {
+    var address = $('#address_line_1').val() + ' ' + $('#city').val() + ' ' + $('#state').val() + ' ' + $('#postal_code').val() + ' ' + $('#country').val();
+    var url = 'https://www.google.com/maps/search/?api=1&query=' + address;
+    // search google for address and populate inputs city, state, postal code, country
+
+
+
+
+    
+}
+function verifyInputs() {
+
+    var isValid = true;
+    // List of required field IDs
+    var requiredFields = ['first_Name', 'last_Name', 'email', 'phone', 'address_line_1', 'city', 'state', 'postal_code', 'country', 'password', 'pwVerify'];
+    // Loop through each required field
+    requiredFields.forEach(function(field) {
+        // If the field is empty
+        if ($('#' + field).val() === '') {
+            // Add the error class to the field
+            $('#' + field).addClass('is-invalid');
+            // Set isValid to false
+            isValid = false;
+        } else {
+            // Remove the error class from the field
+            $('#' + field).removeClass('is-invalid');
+        }
+    });
+
+    return isValid;
+
+}
+function registerUser(){
+    var data = {
+        method: 'registerUser',
+        registerNewUser: true,
+        firstName: $('#first_Name').val(),
+        lastName: $('#last_Name').val(),
+        email: $('#email').val(),
+        phone: $('#phone').val(),
+        address: $('#address_line_1').val(),
+        city: $('#city').val(),
+        state: $('#state').val(),
+        postal_code: $('#postal_code').val(),
+        country: $('#country').val(),
+        password: $('#password').val()
+    }
+
+    $.ajax({
+        url: 'assets/php/function.php',
+        method: 'POST',
+        dataType: 'json',
+        data: data,
+        success: function(response) {
+            console.log(response);
+        },error: function(response) {
+            console.log(response);
+        }
+    });
+
+}
 </script>
