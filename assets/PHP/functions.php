@@ -20,7 +20,6 @@ function getConnection() {
                 "createUserId" => $_POST["createUserId"]
             ];
             $userData["hashedPassword"] = password_hash($userData["password"], PASSWORD_DEFAULT);
-            echo $userData;
         }
 
 
@@ -39,12 +38,39 @@ function getConnection() {
         if($method=="getRoles") {getRoles();};
         if($method=="manageRoles") {manageRoles($_POST["roleId"], $_POST["roleData"], $_POST["action"]);};
     }
-//function to register a new user
+    //function to register a new user
     function registerUser($userData){
         $pdo = getConnection();
-        $sql = "INSERT INTO DBO.USERS (FIRST_NAME, LAST_NAME, EMAIL, CREATE_DATE, CREATE_USER_ID)VALUES (?,?,?,?,?)";
-        $stmt = $pdo->prepare($sql);
-        return $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email'], $userData['createDate'], $userData['createUserId']]);
+        
+        // Start transaction
+        $pdo->beginTransaction();
+        
+        try {
+            // Insert user details into DBO.USERS
+            $sql = "INSERT INTO DBO.USERS (FIRST_NAME, LAST_NAME, EMAIL, CREATE_DATE, CREATE_USER_ID) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email'], $userData['createDate'], $userData['createUserId']]);
+            
+            // Get the USER_ID of the newly inserted user
+            $userId = $pdo->lastInsertId();
+    
+            // Insert password into DBO.USER_EXTENSIONS
+            $sql = "INSERT INTO DBO.USER_EXTENSIONS (USER_ID, JUMBLE) VALUES (?, ?)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$userId, $userData['hashedPassword']]);
+    
+            // Commit the transaction
+            $pdo->commit();
+    
+            // Return success message
+            return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
+        } catch (Exception $e) {
+            // Rollback the transaction in case of an error
+            $pdo->rollBack();
+
+            // Return error message
+            return json_encode(['status' => 'error', 'message' => 'An error occurred during registration: ' . $e->getMessage()]);
+        }
     }
 
 
