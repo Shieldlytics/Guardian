@@ -28,14 +28,14 @@ if(isset($_POST["method"])) {
 
         try {
             echo 'Start inserting user <br>';
-            $sql = "INSERT INTO DBO.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
+            $sql = "INSERT INTO USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
             echo 'user inserted successfully, now getting user id <br>';
             $userId = $pdo->lastInsertId();
             echo 'user id: ' . $userId . '<br>';
             echo 'inserting user extensions <br>';
-            $sql = "INSERT INTO DBO.USER_EXTENSIONS (USER_ID, JUMBLE) VALUES (?, ?)";
+            $sql = "INSERT INTO USER_EXTENSIONS (USER_ID, JUMBLE) VALUES (?, ?)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$userId, $userData['password']]);
             $pdo->commit();
