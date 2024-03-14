@@ -3,7 +3,7 @@ function getConnection() {
     $serverName = "tcp:guardian-dev-db.database.windows.net,1433";
     $database = "GUARDIAN-DEV";
     $username = "GUARDIAN";
-    $password = "Sh13ldlyt1c";
+    $password = "Sh13ldlyt1c$";
 
     try {
         $conn = new PDO("sqlsrv:server=$serverName;Database=$database", $username, $password);
