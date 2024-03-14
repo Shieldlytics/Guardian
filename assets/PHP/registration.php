@@ -4,19 +4,12 @@ function getConnection() {
     $database = "GUARDIAN-DEV";
     $username = "GUARDIAN";
     $password = "Sh13ldlyt1c$";
-    
-    try {
-        $conn = new PDO("sqlsrv:server=$serverName;Database=$database", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
+    $conn = new PDO("sqlsrv:server=$serverName;Database=$database", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return $conn;
 }
 
 if(isset($_POST["method"])) {
-
-
     $userData = [
         "firstName" => $_POST["firstName"],
         "lastName" => $_POST["lastName"],
