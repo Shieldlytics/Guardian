@@ -1,5 +1,5 @@
 <?php
-
+phpinfo();
 function getConnection() {
     $serverName = "tcp:guardian-dev-db.database.windows.net,1433";
     $database = "GUARDIAN-DEV";
