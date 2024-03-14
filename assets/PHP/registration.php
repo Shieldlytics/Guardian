@@ -45,12 +45,6 @@ function registration($userData){
     $stmt->execute([$userId['USER_ID'], $userData['password']]);
     return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
     
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    header('Content-Type: application/json');
-    $json = json_encode(array('items' => $results));
-    echo $json;
-
 }
 
 ?>
