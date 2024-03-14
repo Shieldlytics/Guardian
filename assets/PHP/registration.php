@@ -40,10 +40,12 @@ if(isset($_POST["method"])) {
             $stmt = $pdo->prepare($sql);
             if (!$stmt) {
                 throw new Exception($pdo->errorInfo()[2]);
+                echo 'Error: ' . $pdo->errorInfo()[2];
             }
             $result = $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
             if (!$result) {
                 throw new Exception($pdo->errorInfo()[2]);
+                echo 'Error: ' . $pdo->errorInfo()[2];
             }
             echo "Record inserted successfully";
 
