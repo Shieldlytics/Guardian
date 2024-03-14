@@ -23,6 +23,7 @@ if(isset($_POST["method"])) {
     
     
     $method = $_POST["method"];
+    echo json_encode($method);
     if($method=="registerUser") {registerUser($userData);};
 }
     
