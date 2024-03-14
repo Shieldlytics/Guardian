@@ -25,13 +25,13 @@ if(isset($_POST["method"])) {
         $pdo = getConnection();
         $pdo->beginTransaction();
         try {
-            $sql = "INSERT INTO DBO.USERS (FIRST_NAME, LAST_NAME, EMAIL, CREATE_DATE, CREATE_USER_ID) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO DBO.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email'], $userData['createDate'], $userData['createUserId']]);
+            $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
             $userId = $pdo->lastInsertId();
             $sql = "INSERT INTO DBO.USER_EXTENSIONS (USER_ID, JUMBLE) VALUES (?, ?)";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([$userId, $userData['hashedPassword']]);
+            $stmt->execute([$userId, $userData['password']]);
             $pdo->commit();
             return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
         } catch (Exception $e) {
