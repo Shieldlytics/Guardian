@@ -15,9 +15,7 @@ if(isset($_POST["method"])) {
             "firstName" => $_POST["firstName"],
             "lastName" => $_POST["lastName"],
             "email" => $_POST["email"],
-            "password" => $_POST["password"], // Note: Storing plain text password is not secure
-            "createDate" => $_POST["createDate"],
-            "createUserId" => $_POST["createUserId"]
+            "password" => $_POST["password"]
         ];
         $userData["hashedPassword"] = password_hash($userData["password"], PASSWORD_DEFAULT);
     }
