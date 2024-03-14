@@ -29,10 +29,16 @@ if(isset($_POST["method"])) {
 }
     
 function registration($userData){
-    $pdo = getConnection();
-    $sql = "INSERT INTO dbo.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
-    $stmt = $pdo->prepare($sql);
-   return $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
+    $conn = getConnection();
+    $sql = "INSERT INTO Users (firstName, lastName, email, password) VALUES (:firstName, :lastName, :email, :password)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":firstName", $userData["firstName"]);
+    $stmt->bindParam(":lastName", $userData["lastName"]);
+    $stmt->bindParam(":email", $userData["email"]);
+    $stmt->bindParam(":password", $userData["password"]);
+    $stmt->execute();
+    $conn = null;
+    echo "User registered successfully";
     
 }
 
