@@ -33,22 +33,18 @@ if(isset($_POST["method"])) {
         // $pdo->beginTransaction();
 
         try {
-            echo 'User insert Started <br>';
             $sql = "INSERT INTO dbo.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
-            echo 'User inserted <br>';
 
             $sql = "SELECT USER_ID FROM dbo.USERS WHERE EMAIL = ?";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$userData['email']]);
             $userId = $stmt->fetch();
-            echo 'User ID: ' . $userId['USER_ID'] . '<br>';
 
             $sql = "INSERT INTO dbo.USER_PASSWORDS (USER_ID, PASSWORD) VALUES (?, ?)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$userId['USER_ID'], $userData['password']]);
-            echo 'Password inserted <br>';
             
             $pdo->commit();
             return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
