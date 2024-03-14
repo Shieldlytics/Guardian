@@ -19,10 +19,10 @@ if(isset($_POST["method"])) {
             "email" => $_POST["email"],
             "password" => password_hash($_POST["password"], PASSWORD_DEFAULT)
         ];
-        echo json_encode($userData);
+        
+        registration($userData);
     }
     
-    if($method=="registerUser") {registration($userData);};
 }
     
     function registration($userData){
