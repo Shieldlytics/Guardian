@@ -30,9 +30,9 @@ if(isset($_POST["method"])) {
     
 function registration($userData){
     $pdo = getConnection();
-    $pdo->beginTransaction();
+    //$pdo->beginTransaction();
 
-    try {
+   
         $sql = "INSERT INTO dbo.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
@@ -47,9 +47,9 @@ function registration($userData){
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$userId['USER_ID'], $userData['password']]);
         
-        $pdo->commit();
+        //$pdo->commit();
         return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
-    } catch (PDOException $e) {
+    try { } catch (PDOException $e) {
         $pdo->rollBack();
         return json_encode(['status' => 'error', 'message' => 'An error occurred during registration: ' . $e->getMessage()]);
     }
