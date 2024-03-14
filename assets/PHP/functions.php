@@ -1,9 +1,10 @@
 <?php 
 function getConnection() {
-    $DB_DNS = "jdbc:sqlserver://;serverName=guardian-dev-db.database.windows.net;databaseName=GUARDIAN-DEV;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-    $DB_USER = "GUARDIAN";
-    $DB_PASSWORD = "Sh13ldlyt1c$";
-    $conn = new PDO($DB_DNS, $DB_USER, $DB_PASSWORD);
+    $serverName = "tcp:guardian-dev-db.database.windows.net,1433";
+    $database = "GUARDIAN-DEV";
+    $username = "GUARDIAN";
+    $password = "Sh13ldlyt1c$";
+    $conn = new PDO("sqlsrv:server=$serverName;Database=$database", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $conn;
 }
