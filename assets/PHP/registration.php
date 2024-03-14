@@ -10,8 +10,6 @@ function getConnection() {
 }
 
 if(isset($_POST["method"])) {
-    $method = $_POST["method"];
-
     if(isset($_POST["registerNewUser"])) {
         $userData = [
             "firstName" => $_POST["firstName"],
@@ -19,35 +17,34 @@ if(isset($_POST["method"])) {
             "email" => $_POST["email"],
             "password" => password_hash($_POST["password"], PASSWORD_DEFAULT)
         ];
-
-        registration($userData);
     }
-    
+    $method = $_POST["method"];
+    if($method=="registerUser") {registration($userData);};    
 }
     
     function registration($userData){
         echo 'registration function called';
         $pdo = getConnection();
         echo 'connection established';
-        $pdo->beginTransaction();
+        // $pdo->beginTransaction();
 
-        try {
-            echo 'Start inserting user';
-            $sql = "INSERT INTO DBO.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
-            echo 'user inserted successfully, now getting user id';
-            $userId = $pdo->lastInsertId();
-           echo 'user id: ' . $userId;
-           echo 'inserting user extensions';
-            $sql = "INSERT INTO DBO.USER_EXTENSIONS (USER_ID, JUMBLE) VALUES (?, ?)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$userId, $userData['password']]);
-            $pdo->commit();
-            return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
-        } catch (Exception $e) {
-            $pdo->rollBack();
-            return json_encode(['status' => 'error', 'message' => 'An error occurred during registration: ' . $e->getMessage()]);
-        }
+        // try {
+        //     echo 'Start inserting user';
+        //     $sql = "INSERT INTO DBO.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
+        //     $stmt = $pdo->prepare($sql);
+        //     $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
+        //     echo 'user inserted successfully, now getting user id';
+        //     $userId = $pdo->lastInsertId();
+        //    echo 'user id: ' . $userId;
+        //    echo 'inserting user extensions';
+        //     $sql = "INSERT INTO DBO.USER_EXTENSIONS (USER_ID, JUMBLE) VALUES (?, ?)";
+        //     $stmt = $pdo->prepare($sql);
+        //     $stmt->execute([$userId, $userData['password']]);
+        //     $pdo->commit();
+        //     return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
+        // } catch (Exception $e) {
+        //     $pdo->rollBack();
+        //     return json_encode(['status' => 'error', 'message' => 'An error occurred during registration: ' . $e->getMessage()]);
+        // }
     }
 ?>
