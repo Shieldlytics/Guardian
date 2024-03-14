@@ -38,8 +38,14 @@ if(isset($_POST["method"])) {
             echo 'User insert Started <br>';
             $sql = "INSERT INTO dbo.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
-            echo 'User inserted <br>';
+            if (!$stmt) {
+                throw new Exception($pdo->errorInfo()[2]);
+            }
+            $result = $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
+            if (!$result) {
+                throw new Exception($pdo->errorInfo()[2]);
+            }
+            echo "Record inserted successfully";
 
             $sql = "SELECT USER_ID FROM dbo.USERS WHERE EMAIL = ?";
             $stmt = $pdo->prepare($sql);
