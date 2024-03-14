@@ -10,12 +10,24 @@ function getConnection() {
 }
 
 if(isset($_POST["method"])) {
+
+    if(isset($_POST["registerNewUser"])) {
+        $userData = [
+            "firstName" => $_POST["firstName"],
+            "lastName" => $_POST["lastName"],
+            "email" => $_POST["email"],
+            "password" => password_hash($_POST["password"], PASSWORD_DEFAULT)
+        ];
+        $method = $_POST["method"];
+        if($method=="registerUser") {registerUser($userData);};
+    }
     $userData = [
         "firstName" => $_POST["firstName"],
         "lastName" => $_POST["lastName"],
         "email" => $_POST["email"],
         "password" => password_hash($_POST["password"], PASSWORD_DEFAULT)
     ];
+    echo json_encode($userData);
     
     $method = $_POST["method"];
     if($method=="registerUser") {registerUser($userData);};
