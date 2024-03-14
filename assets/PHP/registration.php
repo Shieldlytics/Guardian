@@ -28,31 +28,31 @@ if(isset($_POST["method"])) {
     if($method=="registerUser") {registration($userData);};    
 }
     
-    function registration($userData){
-        $pdo = getConnection();
-        $pdo->beginTransaction();
+function registration($userData){
+    $pdo = getConnection();
+    $pdo->beginTransaction();
 
-        try {
-            $sql = "INSERT INTO dbo.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
+    try {
+        $sql = "INSERT INTO dbo.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
 
-            $sql = "SELECT USER_ID FROM dbo.USERS WHERE EMAIL = ?";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$userData['email']]);
-            $userId = $stmt->fetch();
+        // Ensure EMAIL is unique in USERS table to avoid fetching the wrong USER_ID
+        $sql = "SELECT USER_ID FROM dbo.USERS WHERE EMAIL = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$userData['email']]);
+        $userId = $stmt->fetch();
 
-            $sql = "INSERT INTO dbo.USER_PASSWORDS (USER_ID, PASSWORD) VALUES (?, ?)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$userId['USER_ID'], $userData['password']]);
-            
-            $pdo->commit();
-            return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
-            
-
-            } catch (Exception $e) {
-            $pdo->rollBack();
-            return json_encode(['status' => 'error', 'message' => 'An error occurred during registration: ' . $e->getMessage()]);
-        }
+        $sql = "INSERT INTO dbo.USER_PASSWORDS (USER_ID, PASSWORD) VALUES (?, ?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$userId['USER_ID'], $userData['password']]);
+        
+        $pdo->commit();
+        return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
+    } catch (PDOException $e) {
+        $pdo->rollBack();
+        return json_encode(['status' => 'error', 'message' => 'An error occurred during registration: ' . $e->getMessage()]);
     }
+}
+
 ?>
