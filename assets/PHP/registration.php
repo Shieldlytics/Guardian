@@ -34,15 +34,7 @@ function registration($userData){
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
 
-    // Ensure EMAIL is unique in USERS table to avoid fetching the wrong USER_ID
-    $sql = "SELECT USER_ID FROM dbo.USERS WHERE EMAIL = ?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$userData['email']]);
-    $userId = $stmt->fetch();
-
-    $sql = "INSERT INTO dbo.USER_PASSWORDS (USER_ID, PASSWORD) VALUES (?, ?)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$userId['USER_ID'], $userData['password']]);
+    
     return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
     
 }
