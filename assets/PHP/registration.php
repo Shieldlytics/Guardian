@@ -11,7 +11,7 @@ function getConnection() {
 
 if(isset($_POST["method"])) {
     $method = $_POST["method"];
-    
+
     if(isset($_POST["registerNewUser"])) {
         $userData = [
             "firstName" => $_POST["firstName"],
@@ -25,10 +25,10 @@ if(isset($_POST["method"])) {
     
     
     echo json_encode($method);
-    if($method=="registerUser") {registerUser($userData);};
+    if($method=="registerUser") {registration($userData);};
 }
     
-    function registerUser($userData){
+    function registration($userData){
         $pdo = getConnection();
         $pdo->beginTransaction();
         try {
