@@ -17,6 +17,7 @@ if(isset($_POST["method"])) {
             "email" => $_POST["email"],
             "password" => password_hash($_POST["password"], PASSWORD_DEFAULT)
         ];
+        echo json_encode($userData);
     }
     $method = $_POST["method"];
     if($method=="registerUser") {registration($userData);};    
@@ -26,21 +27,26 @@ if(isset($_POST["method"])) {
         $pdo = getConnection();
         // $pdo->beginTransaction();
 
-        try {
+       
             echo 'Start inserting user <br>';
             $sql = "INSERT INTO dbo.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
-            echo 'user inserted successfully, now getting user id <br>';
-            $userId = $pdo->lastInsertId();
-            echo 'user id: ' . $userId . '<br>';
-            echo 'inserting user extensions <br>';
-            $sql = "INSERT INTO dbo.USER_EXTENSIONS (USER_ID, JUMBLE) VALUES (?, ?)";
+            echo 'User inserted <br>';
+            $sql = "SELECT USER_ID FROM dbo.USERS WHERE EMAIL = ?";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([$userId, $userData['password']]);
+            $stmt->execute([$userData['email']]);
+            $userId = $stmt->fetch();
+            echo 'User ID: ' . $userId['USER_ID'] . '<br>';
+            $sql = "INSERT INTO dbo.USER_PASSWORDS (USER_ID, PASSWORD) VALUES (?, ?)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$userId['USER_ID'], $userData['password']]);
+            echo 'Password inserted <br>';
             $pdo->commit();
             return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
-        } catch (Exception $e) {
+            try {
+
+            } catch (Exception $e) {
             $pdo->rollBack();
             return json_encode(['status' => 'error', 'message' => 'An error occurred during registration: ' . $e->getMessage()]);
         }
