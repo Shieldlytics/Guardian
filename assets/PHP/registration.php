@@ -1,5 +1,4 @@
-<?php
-phpinfo();
+https://guardian1.azurewebsites.net/signup.html
 // function getConnection() {
 //     $serverName = "tcp:guardian-dev-db.database.windows.net,1433";
 //     $database = "GUARDIAN-DEV";
