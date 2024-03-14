@@ -1,24 +1,27 @@
 <?php
 function getConnection() {
-    $DB_DNS = "jdbc:sqlserver://;serverName=guardian-dev-db.database.windows.net;databaseName=GUARDIAN-DEV;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-    $DB_USER = "GUARDIAN";
-    $DB_PASSWORD = "Sh13ldlyt1c$";
-    $conn = new PDO($DB_DNS, $DB_USER, $DB_PASSWORD);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    return $conn;
+    try {
+        $conn = new PDO("sqlsrv:server = tcp:guardian-dev-db.database.windows.net,1433; Database = GUARDIAN-DEV", "GUARDIAN", "Sh13ldlyt1c");
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
+    }
+    catch (PDOException $e) {
+        print("Error connecting to SQL Server.");
+        die(print_r($e));
+    }
+    
 }
 
 if(isset($_POST["method"])) {
 
-    if(isset($_POST["registerNewUser"])) {
-        $userData = [
-            "firstName" => $_POST["firstName"],
-            "lastName" => $_POST["lastName"],
-            "email" => $_POST["email"],
-            "password" => $_POST["password"]
-        ];
-        $userData["hashedPassword"] = password_hash($userData["password"], PASSWORD_DEFAULT);
-    }
+
+    $userData = [
+        "firstName" => $_POST["firstName"],
+        "lastName" => $_POST["lastName"],
+        "email" => $_POST["email"],
+        "password" => password_hash($_POST["password"], PASSWORD_DEFAULT)
+    ];
+    
     $method = $_POST["method"];
     if($method=="registerUser") {registerUser($userData);};
 }
