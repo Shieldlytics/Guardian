@@ -5,7 +5,6 @@ function getConnection() {
     $database = "GUARDIAN-DEV";
     $username = "GUARDIAN";
     $password = "Sh13ldlyt1c$";
-
     try {
         $conn = new PDO("sqlsrv:server=$serverName;Database=$database", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
