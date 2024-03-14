@@ -9,7 +9,7 @@ function getConnection() {
         $conn = new PDO("sqlsrv:server=$serverName;Database=$database", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
-        echo "Connected successfully <br>";
+       // echo "Connected successfully <br>";
     } catch (PDOException $e) {
         die("Connection failed: " . $e->getMessage());
     }
@@ -23,8 +23,8 @@ if(isset($_POST["method"])) {
             "email" => $_POST["email"],
             "password" => password_hash($_POST["password"], PASSWORD_DEFAULT)
         ];
-       echo json_encode($userData);
-       echo '<br>';
+       //echo json_encode($userData);
+       //echo '<br>';
     }
     $method = $_POST["method"];
     if($method=="registerUser") {registration($userData);};    
@@ -35,7 +35,7 @@ if(isset($_POST["method"])) {
         // $pdo->beginTransaction();
 
         try {
-            echo 'User insert Started <br>';
+            //echo 'User insert Started <br>';
             $sql = "INSERT INTO dbo.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
             $stmt = $pdo->prepare($sql);
             if (!$stmt) {
