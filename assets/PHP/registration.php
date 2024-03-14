@@ -12,6 +12,7 @@ function getConnection() {
     } catch (PDOException $e) {
         die("Connection failed: " . $e->getMessage());
     }
+    
 }
 
 if(isset($_POST["method"])) {

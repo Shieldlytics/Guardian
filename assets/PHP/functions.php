@@ -16,9 +16,7 @@ function getConnection() {
                 "firstName" => $_POST["firstName"],
                 "lastName" => $_POST["lastName"],
                 "email" => $_POST["email"],
-                "password" => $_POST["password"], // Note: Storing plain text password is not secure
-                "createDate" => $_POST["createDate"],
-                "createUserId" => $_POST["createUserId"]
+                "password" => $_POST["password"]
             ];
             $userData["hashedPassword"] = password_hash($userData["password"], PASSWORD_DEFAULT);
         }
@@ -44,13 +42,13 @@ function getConnection() {
         $pdo = getConnection();
         
         // Start transaction
-        $pdo->beginTransaction();
+        //$pdo->beginTransaction();
         
         try {
             // Insert user details into DBO.USERS
-            $sql = "INSERT INTO DBO.USERS (FIRST_NAME, LAST_NAME, EMAIL, CREATE_DATE, CREATE_USER_ID) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO DBO.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email'], $userData['createDate'], $userData['createUserId']]);
+            $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
             
             // Get the USER_ID of the newly inserted user
             $userId = $pdo->lastInsertId();
