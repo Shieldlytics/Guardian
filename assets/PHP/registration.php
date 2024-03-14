@@ -1,15 +1,17 @@
 <?php
 function getConnection() {
-    try {
-        $conn = new PDO("sqlsrv:server = tcp:guardian-dev-db.database.windows.net,1433; Database = GUARDIAN-DEV", "GUARDIAN", "Sh13ldlyt1c");
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $conn;
-    }
-    catch (PDOException $e) {
-        print("Error connecting to SQL Server.");
-        die(print_r($e));
-    }
+    $serverName = "tcp:guardian-dev-db.database.windows.net,1433";
+    $database = "GUARDIAN-DEV";
+    $username = "GUARDIAN";
+    $password = "Sh13ldlyt1c";
     
+    try {
+        $conn = new PDO("sqlsrv:server=$serverName;Database=$database", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "Connected successfully";
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
 }
 
 if(isset($_POST["method"])) {
