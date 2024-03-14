@@ -55,7 +55,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
-                                    <h1 class="text-center">Sign Up</h1>
+                                    <h1 class="text-center">Guardian Registration</h1>
                                 </div>
                             </div>
                             <div class="row">
@@ -83,6 +83,7 @@
                                         </div>
                                         <label for="email" class="h6 mt-2">*Email:</label>
                                         <input type="email" class="form-control" id="email" name="email">
+                                        <div class="alert alert-danger mt-2" style="display:none"><i class="far fa-exclamation-triangle"></i> <span id="emailAlert"></span></div>
                                     </form>
                                 </div>
                             </div>
@@ -164,16 +165,9 @@ $(document).ready(function() {
     });
 
     $('#email').on('input', function() {
-        var email = $(this).val();
-        var valid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email);
-        if (valid) {
-            $(this).removeClass('is-invalid');
-        } else {
-            $(this).addClass('is-invalid');
-        }
+        emailVerification();
     });
-
-
+    
     function toggleCheckMark(id, condition) {
         if (condition) {
             $(id).addClass('text-success').find('.checkmark').html(checkMark);
@@ -186,6 +180,9 @@ $(document).ready(function() {
         checkPasswordCriteria();
         checkPasswordMatch();
         //remove disabled attribute from submit button
+        //if all inputs are empty do not verify passwords until all inputs are filled
+
+
         if (verifyInputs()) {
             $('.signmeup').removeAttr('disabled');
         } else {
@@ -196,13 +193,15 @@ $(document).ready(function() {
 // check password criteria on submit
     $('.signmeup').on('click', function(e) {
         e.preventDefault();
+        // Call the function to activate the verification
+        
         checkPasswordCriteria();
         checkPasswordMatch();
+        emailVerification();
         verifyInputs();
         if (verifyInputs()) {
             registerUser();
         }
-        console.log('submit');
     });
     $('#address_line_1, #city, #state, #postal_code, #country').on('keyup', function() {
         // search google for address and populate inputs city, state, postal code, country
@@ -258,7 +257,7 @@ function registerUser(){
     }
 
     $.ajax({
-        url: 'assets/PHP/functions.php',
+        url: 'assets/PHP/registration.php',
         method: 'POST',
         dataType: 'json',
         data: data,
@@ -270,4 +269,60 @@ function registerUser(){
     });
 
 }
+function emailVerification() {
+        var email = $('#email').val();
+        var valid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email);
+
+        if (valid) {
+            // Extract the domain from the email
+            var domain = email.split('@')[1];
+
+            // Define the allowed domains
+            var allowedDomains = {
+                "free": [
+                    "gmail.com",
+                    "yahoo.com",
+                    "outlook.com",
+                    "aol.com",
+                    "zoho.com",
+                    "mail.com",
+                    "protonmail.com",
+                    "gmx.com",
+                    "icloud.com",
+                    "tutanota.com",
+                    "me.com",
+                    "hotmail.com"
+                ],
+                "paid": [
+                    "fastmail.com",
+                    "hushmail.com",
+                    "pobox.com",
+                    "protonmail.com",
+                    "runbox.com",
+                    "mailbox.org",
+                    "posteo.de",
+                    "hey.com",
+                    "zoho.com"
+                ]
+            };
+
+            // Check if the domain is allowed
+            var isAllowedDomain = allowedDomains.free.includes(domain) || allowedDomains.paid.includes(domain);
+
+            if (isAllowedDomain) {
+                $(this).removeClass('is-invalid');
+                $('#emailAlert').parent().slideDown(300)
+            } else {
+                // The domain is not allowed
+                $(this).addClass('is-invalid');
+                //alert('The email provider is not allowed.');
+                $('#emailAlert').html('The email provider is not allowed.').parent().slideUp(300);
+            }
+        } else {
+            $(this).addClass('is-invalid');
+        }
+}
+
+
+
 </script>
