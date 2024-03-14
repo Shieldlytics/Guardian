@@ -30,29 +30,27 @@ if(isset($_POST["method"])) {
     
 function registration($userData){
     $pdo = getConnection();
-    //$pdo->beginTransaction();
+    $sql = "INSERT INTO dbo.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
 
-   
-        $sql = "INSERT INTO dbo.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
+    // Ensure EMAIL is unique in USERS table to avoid fetching the wrong USER_ID
+    $sql = "SELECT USER_ID FROM dbo.USERS WHERE EMAIL = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$userData['email']]);
+    $userId = $stmt->fetch();
 
-        // Ensure EMAIL is unique in USERS table to avoid fetching the wrong USER_ID
-        $sql = "SELECT USER_ID FROM dbo.USERS WHERE EMAIL = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$userData['email']]);
-        $userId = $stmt->fetch();
+    $sql = "INSERT INTO dbo.USER_PASSWORDS (USER_ID, PASSWORD) VALUES (?, ?)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$userId['USER_ID'], $userData['password']]);
+    return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
+    
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $sql = "INSERT INTO dbo.USER_PASSWORDS (USER_ID, PASSWORD) VALUES (?, ?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$userId['USER_ID'], $userData['password']]);
-        
-        //$pdo->commit();
-        return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
-    try { } catch (PDOException $e) {
-        $pdo->rollBack();
-        return json_encode(['status' => 'error', 'message' => 'An error occurred during registration: ' . $e->getMessage()]);
-    }
+    header('Content-Type: application/json');
+    $json = json_encode(array('items' => $results));
+    echo $json;
+
 }
 
 ?>
