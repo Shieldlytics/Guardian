@@ -30,7 +30,7 @@ if(isset($_POST["method"])) {
     
     function registration($userData){
         $pdo = getConnection();
-        // $pdo->beginTransaction();
+        $pdo->beginTransaction();
 
         try {
             $sql = "INSERT INTO dbo.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
