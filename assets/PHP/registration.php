@@ -30,13 +30,27 @@ if(isset($_POST["method"])) {
     
 function registration($userData){
     $conn = getConnection();
-    $sql = "INSERT INTO Users (firstName, lastName, email, password) VALUES (:firstName, :lastName, :email, :password)";
+    $sql = "INSERT INTO USERS (firstName, lastName, email, password) VALUES (:firstName, :lastName, :email)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(":firstName", $userData["firstName"]);
     $stmt->bindParam(":lastName", $userData["lastName"]);
     $stmt->bindParam(":email", $userData["email"]);
+    $stmt->execute();
+    $stmt = null;
+    //get new user id
+    $sql = "SELECT USER_ID FROM USERS WHERE EMAIL = :email";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":email", $userData["email"]);
+    $stmt->execute();
+    $result = $stmt->fetch();
+    $stmt = null;
+    //add password to password table
+    $sql = "INSERT INTO USER_EXTENSIONS (USER_ID, JUMBLE) VALUES (:userId, :password)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":userId", $result["id"]);
     $stmt->bindParam(":password", $userData["password"]);
     $stmt->execute();
+
     $conn = null;
     echo "User registered successfully";
     
