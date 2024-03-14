@@ -32,10 +32,7 @@ function registration($userData){
     $pdo = getConnection();
     $sql = "INSERT INTO dbo.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
-
-    
-    return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
+   return $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
     
 }
 
