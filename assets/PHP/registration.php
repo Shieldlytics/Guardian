@@ -9,7 +9,6 @@ function getConnection() {
         $conn = new PDO("sqlsrv:server=$serverName;Database=$database", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
-       // echo "Connected successfully <br>";
     } catch (PDOException $e) {
         die("Connection failed: " . $e->getMessage());
     }
@@ -23,8 +22,6 @@ if(isset($_POST["method"])) {
             "email" => $_POST["email"],
             "password" => password_hash($_POST["password"], PASSWORD_DEFAULT)
         ];
-       //echo json_encode($userData);
-       //echo '<br>';
     }
     $method = $_POST["method"];
     if($method=="registerUser") {registration($userData);};    
@@ -35,30 +32,25 @@ if(isset($_POST["method"])) {
         // $pdo->beginTransaction();
 
         try {
-            //echo 'User insert Started <br>';
             $sql = "INSERT INTO dbo.USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (?, ?, ?)";
             $stmt = $pdo->prepare($sql);
+           
+            $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
             if (!$stmt) {
                 throw new Exception($pdo->errorInfo()[2]);
                 echo 'Error: ' . $pdo->errorInfo()[2];
             }
-            $result = $stmt->execute([$userData['firstName'], $userData['lastName'], $userData['email']]);
-            if (!$result) {
-                throw new Exception($pdo->errorInfo()[2]);
-                echo 'Error: ' . $pdo->errorInfo()[2];
-            }
-            echo "Record inserted successfully";
 
-            $sql = "SELECT USER_ID FROM dbo.USERS WHERE EMAIL = ?";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$userData['email']]);
-            $userId = $stmt->fetch();
-            echo 'User ID: ' . $userId['USER_ID'] . '<br>';
+            // $sql = "SELECT USER_ID FROM dbo.USERS WHERE EMAIL = ?";
+            // $stmt = $pdo->prepare($sql);
+            // $stmt->execute([$userData['email']]);
+            // $userId = $stmt->fetch();
+            // echo 'User ID: ' . $userId['USER_ID'] . '<br>';
 
-            $sql = "INSERT INTO dbo.USER_PASSWORDS (USER_ID, PASSWORD) VALUES (?, ?)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$userId['USER_ID'], $userData['password']]);
-            echo 'Password inserted <br>';
+            // $sql = "INSERT INTO dbo.USER_PASSWORDS (USER_ID, PASSWORD) VALUES (?, ?)";
+            // $stmt = $pdo->prepare($sql);
+            // $stmt->execute([$userId['USER_ID'], $userData['password']]);
+            // echo 'Password inserted <br>';
             
             $pdo->commit();
             return json_encode(['status' => 'success', 'message' => 'User registered successfully']);
