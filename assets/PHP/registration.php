@@ -33,13 +33,13 @@ function registration($userData){
         $conn->beginTransaction();
 
         // Retrieve the maximum USER_ID and add 1 to it to generate a new ID
-        $sql = "SELECT MAX(USER_ID) as max_id FROM USERS";
+        $sql = "SELECT MAX(USER_ID) as max_id FROM USERSv2";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $newUserId = $row['max_id'] + 1;
 
-        $sql = "INSERT INTO USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (:firstName, :lastName, :email)";
+        $sql = "INSERT INTO USERSv2 (FIRST_NAME, LAST_NAME, EMAIL) VALUES (:firstName, :lastName, :email)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([':firstName' => $userData["firstName"], ':lastName' => $userData["lastName"], ':email' => $userData["email"]]);
 
