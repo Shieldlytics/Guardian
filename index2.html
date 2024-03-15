@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="description" content="">
+    <link rel="icon" type="image/png" href="assets/images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon/apple-touch-icon.png">
+    <meta name="author" content="Ernest Pena Jr">
+    <meta name="HandheldFriendly" content="true">
+    <title>Guardian bowered by Shieldlytics</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-tour/build/css/bootstrap-tour.css">
+</head>
+<style>
+    .custom-popover .popover-header {
+        background-color: #008080;
+        color: #fff;
+        border-bottom: 1px solid #008080;
+    }
+
+    .custom-popover .popover-body {
+        background-color: #008080;
+        color: #fff;
+        border: 2px solid #008080;
+        border-radius: 10px;
+    }
+
+    .custom-popover.bs-popover-top .arrow::before {
+        border-top-color: #008080 !important;
+    }
+
+    .custom-popover.bs-popover-top .arrow::after {
+        border-top-color: #008080 !important;
+    }
+</style>
+
+<body class="light_layout" data-bs-spy="scroll" data-bs-target="#TableOfContents">
+    <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-light border-2 border-bottom border-secondary-subtle shadow-sm ">
+        <nav class="container-fluid bd-gutter flex-wrap flex-lg-nowrap " aria-label="Main navigation">
+            <a class="navbar-brand p-0 me-0 me-lg-2 d-flex align-items-center" href="#" aria-label="Guardian">
+                <img src="assets/images/GuardianLogo-Blk.png" height="45" alt="Logo" />
+                <h2 style="margin-bottom: 0; margin-left: 10px;">Guardian</h2>
+            </a>
+            
+            <div class="d-flex">
+      
+            <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
+              <i class="far fa-ellipsis-h bi"></i>
+            </button>
+          </div>
+      
+          <div class="offcanvas-lg offcanvas-end flex-grow-1 bg-light" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+            <div class="offcanvas-header px-4 pb-0">
+                <!-- <img src="assets/images/GuardianLogo-Wht.png" height="35" alt="Logo" /> -->
+              <h4 class="offcanvas-title text-black text-uppercase" id="bdNavbarOffcanvasLabel">Guardian </h4>
+              <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+            </div>
+      
+            <div class="offcanvas-body p-4 pt-0 p-lg-0">
+                <ul class="navbar-nav p-0 me-0 me-lg-2">
+                    <li class="nav-item py-2 py-lg-1 col-12">
+                        <input id="docsearch" class="form-control navbar-text  d-flex align-content-center justify-content-center" type="text" placeholder="Search..."aria-label="Search for..." autocomplete="off">
+                    </li>
+                </ul>
+
+                <div class="collapse navbar-collapse " id="bdSidebar">
+                    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar"aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+                        <div class="offcanvas-header px-4 pb-0">
+                            <h5 class="offcanvas-title text-white " id="bdNavbarOffcanvasLabel">GUARDIAN</h5>
+                            <button type="button" class="btn-close btn-close-white float-start" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+                    <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                        <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+                        <hr class="d-lg-none my-2 text-white-50">
+                    </li>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-light dropdown-toggle bg-layout  justify-content-center" type="button" id="ProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                
+                                    <img class="rounded-circle me-2 d-flex align-content-center justify-content-center float-start " width="30" height="30" src="https://pena-cloud.network/images/EP.jpg" alt="E. Pena Jr."> <span id="profileName" class="fs-5 align-content-center justify-content-center text-dark fw-bold" data-bs-theme="auto"></span>
+                                
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="profileDropdown" id="profileDropdown" >
+                                <li><a class="dropdown-item" data-bs-value="profile" href="#"><i class="fas fa-user"></i> Profile</a></li>
+                                <li><a class="dropdown-item" data-bs-value="settings" href="#"><i class="fas fa-user-cog"></i> Settings</a></li>
+                                <li><a class="dropdown-item" data-bs-value="signout" href="#"><i class="fas fa-portal-exit"></i> Sign Out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                        <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+                        <hr class="d-lg-none my-2 text-white-50">
+                    </li>
+                    <div class="d-flex align-items-center">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="bd-theme-text" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-sun fa-2x"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text" id="bd-theme-text">
+                                <li><a class="dropdown-item" href="#" data-bs-theme-value="light"><i class="fas fa-sun"></i> Light</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-theme-value="dark"><i class="fas fa-moon-stars"></i> Dark</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-theme-value="auto"><i class="fas fa-eclipse"></i> Auto</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+          </div>
+        </nav>
+    </header>
+
+    <div class="d-flex ">
+        <div class="d-flex flex-column bg-layout leftNavCollapse border-2 border-end border-secondary-subtle" id="leftNav">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a page="expand" href="#" class="nav-link">
+                        <i class="fas fa-arrow-to-right float-end" style="color: teal; "></i>
+                    </a>
+                </li>
+                <li class="nav-itemn p-1">
+                    <div class="border border-0 rounded leftNavButton"
+                        style="background: linear-gradient(to right, rgb(146, 230, 232), rgb(255, 255, 255));">
+                        <a page="index" href="#" class="nav-link d-flex align-items-center" data-bs-container="body"
+                            data-bs-trigger="hover" data-bs-custom-class="custom-popover" data-bs-toggle="popover"
+                            data-bs-placement="auto" data-bs-content="Home">
+                            <i class="fal fa-home-alt fa-2x col-2" style="color: teal; font-size: 25px;"></i>
+                            <span id="navTextDashboard" class="text-uppercase mx-3"
+                                style="display:none; color:#008080;"> Home</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item mt-1 p-1">
+                    <div class="border border-0 rounded leftNavButton">
+                        <a page="notifications" href="#" class="nav-link d-flex align-items-center"
+                            data-bs-container="body" data-bs-custom-class="custom-popover" data-bs-trigger="hover"
+                            data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="Notices">
+                            <i class="fal fa-megaphone fa-2x col-2" style="color: teal; font-size:25px"></i>
+                            <span id="navTextMessaging" class="text-uppercase mx-3 fw-medium"
+                                style="display:none; color:#008080;"> Notices</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item mt-1 p-1">
+                    <div class="border border-0 rounded leftNavButton">
+                        <a page="newmesssages" href="#" class="nav-link d-flex align-items-center"
+                            data-bs-container="body" data-bs-custom-class="custom-popover" data-bs-trigger="hover"
+                            data-bs-toggle="popover" data-bs-placement="auto" data-bs-content="New Message">
+                            <i class="fal fa-edit fa-2x col-2" style="color: teal;  font-size:25px"></i>
+                            <span id="navTextNewMessaging" class="text-uppercase mx-3"
+                                style="display:none; color:#008080;"> New Message</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item mt-1 p-1">
+                    <div class="border border-0 rounded leftNavButton">
+                        <a page="settings" href="#" class="nav-link d-flex align-items-center" data-bs-container="body"
+                            data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-toggle="popover"
+                            data-bs-placement="auto" data-bs-content="Settings">
+                            <i class="fal fa-cog fa-2x col-2" style="color: teal; font-size:25px"></i>
+                            <span id="navTextSettings" class="text-uppercase mx-3" style="display:none; color:#008080;">
+                                Settings</span>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="nav-item mt-1 p-1">
+                    <div class="border border-0 rounded leftNavButton">
+                        <a page="signout" href="#" class="nav-link d-flex align-items-center" data-bs-container="body"
+                            data-bs-custom-class="custom-popover" data-bs-trigger="hover" data-bs-toggle="popover"
+                            data-bs-placement="auto" data-bs-content="Sign Out">
+                            <i class="fal fa-sign-out fa-2x col-2" style="color: teal;  font-size:25px"></i>
+                            <span id="navTextSignOut" class="text-uppercase mx-3" style="display:none; color:#008080;">
+                                Sign Out</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item mt-1 p-1">
+                    <div class="border border-0 rounded leftNavButton">
+                        <a page="siteAdministration" href="#" class="nav-link d-flex align-items-center"
+                            data-bs-container="body" data-bs-trigger="hover" data-bs-toggle="popover"
+                            data-bs-placement="auto" data-bs-content="Site Admin">
+                            <i class="fal fa-shield fa-2x col-2" style="color:teal; font-size:25px"></i>
+                            <span id="navTextSignOut" class="text-uppercase mx-3" style="display:none; color:#008080">
+                                Site Admin</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="container-fluid bd-guttermy-md-4 bd-layout bg-body-tertiary">
+            <main class="bd-main order-1" style="margin-right:-10px">
+                <div class="bd-layout min-vh-100" id="mainContent"></div>
+            </main>
+        </div>
+
+
+    </div>
+
+<footer class="bd-footer py-4 py-md-5 bg-layout border-2 border-top border-secondary-subtle">
+    <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+      <div class="row">
+        <div class="col-lg-3 mb-3">
+            
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a class="navbar-brand p-0 me-0 me-lg-2 d-flex align-items-center" href="#" aria-label="Guardian">
+                    <img src="assets/images/GuardianLogo.png" height="40" alt="Logo" />
+                    <h1 style="margin-bottom: 0; margin-left: 5px;">GUARDIAN</h1>
+                </a>
+            </li>
+            <li class="mb-2">Powered by <a class="shieldlitics" href="https://www.shieldlytics.com/theteam/" style="text-decoration: none;">Shieldlytics</a>.</li>
+            <li class="mb-2">Code licensed <a href="https://github.com/Shieldlytics/Guardian/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>.</li>
+            <li class="mb-2">Current Version: alpha 0.1</li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+          <h5>Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a page="index" href="#">Home</a></li>
+            <li class="mb-2"><a page="notifications" href="#">Messaging</a></li>
+            <li class="mb-2"><a page="newmesssages" href="#">New Messsages</a></li>
+            <li class="mb-2"><a page="settings" href="#">Settings</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Guides</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/docs/1.0/getting-started/">Getting started</a></li>
+            <!-- <li class="mb-2"><a href="/docs/5.3/examples/starter-template/">Starter template</a></li>
+            <li class="mb-2"><a href="/docs/5.3/getting-started/webpack/">Webpack</a></li>
+            <li class="mb-2"><a href="/docs/5.3/getting-started/parcel/">Parcel</a></li>
+            <li class="mb-2"><a href="/docs/5.3/getting-started/vite/">Vite</a></li> -->
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Projects</h5>
+          <ul class="list-unstyled">
+            <!-- <li class="mb-2"><a href="https://github.com/twbs/bootstrap" target="_blank" rel="noopener">Bootstrap 5</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev" target="_blank" rel="noopener">Bootstrap 4</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/icons" target="_blank" rel="noopener">Icons</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/rfs" target="_blank" rel="noopener">RFS</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/examples/" target="_blank" rel="noopener">Examples repo</a></li> -->
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Community</h5>
+          <ul class="list-unstyled">
+            <!-- <li class="mb-2"><a href="https://github.com/twbs/bootstrap/issues" target="_blank" rel="noopener">Issues</a></li>
+            <li class="mb-2"><a href="https://github.com/twbs/bootstrap/discussions" target="_blank" rel="noopener">Discussions</a></li>
+            <li class="mb-2"><a href="https://github.com/sponsors/twbs" target="_blank" rel="noopener">Corporate sponsors</a></li>
+            <li class="mb-2"><a href="https://opencollective.com/bootstrap" target="_blank" rel="noopener">Open Collective</a></li>
+            <li class="mb-2"><a href="https://stackoverflow.com/questions/tagged/bootstrap-5" target="_blank" rel="noopener">Stack Overflow</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+    <script src="assets/js/apps.js"></script>
+    <script src="assets/js/color-modes.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/aos/dist/aos.js"></script>
+    <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="node_modules/datatables.net-buttons/js/dataTables.buttons.js"></script>
+    <script src="node_modules/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+    <script src="node_modules/bootstrap-tour/build/js/bootstrap-tour.js"></script>
+
+</body>
+
+</html>
+<script>
+    AOS.init({
+        duration: 800, // values from 0 to 3000, with step 50ms
+    });
+</script>
+<script>
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+    let scrollpos = window.scrollY
+    const header = document.querySelector(".navbar")
+    const header_height = header.offsetHeight
+    const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
+    const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
+    window.addEventListener('scroll', function () {
+        scrollpos = window.scrollY;
+        if (scrollpos >= header_height) { add_class_on_scroll() }
+        else { remove_class_on_scroll() }
+        console.log(scrollpos)
+    });
+
+    $(document).ready(function () {
+        $("#mainContent").load("dashboard.html");
+
+        $('#bd-theme-text .dropdown-item').click(function () {
+            var theme = $(this).attr('data-bs-theme-value');
+            if (theme == "light") {
+                $('html').attr('data-bs-theme', 'light');
+                $('#bd-theme-text').find('i').removeClass('fa-moon-stars fa-eclipse').addClass('fa-sun');
+                $('.navbar-brand img').attr('src', 'assets/images/GuardianLogo-Blk.png');
+            } else if (theme == "dark") {
+                $('html').attr('data-bs-theme', 'dark');
+                $('#bd-theme-text').find('i').removeClass('fa-sun fa-eclipse').addClass('fa-moon-stars');
+                $('.navbar-brand img').attr('src', 'assets/images/GuardianLogo-Wht.png');
+            } else {
+                $('html').attr('data-bs-theme', 'auto');
+                $('#bd-theme-text').find('i').removeClass('fa-sun fa-moon-stars').addClass('fa-eclipse');
+            }
+        });
+
+        $('#profileDropdown .dropdown-item').click(function () {
+            var x = $(this).attr('data-bs-value');
+            if (x == "signout") {
+                localStorage.clear();
+                window.location.href = "landing.html";
+            }
+        });
+
+        const storedUser = JSON.parse(sessionStorage.getItem('user'));
+        console.log(storedUser);
+        if(storedUser.id !== 'undefined'){
+            $('#profileName').html(storedUser.firstName.charAt(0) + '. ' + storedUser.lastName);
+
+            var sitePermissions = JSON.stringify(storedUser.organization);
+            
+            console.log(sitePermissions);
+            
+        }
+        
+        // if(storedUser.length != 0){
+
+           
+
+        //     var sitePermissions = JSON.parse(sessionStorage.getItem('sitePermissions'));
+        //     console.log(sitePermissions);
+        //     if(sitePermissions.includes("SiteAdmin")){
+        //         $('#navTextSignOut').parent().parent().parent().css('display', 'block');
+        //         $('#navTextSignOut').parent().parent().css('display', 'block');
+        //         $('#navTextSignOut').parent().css('display', 'block');
+        //         $('#navTextSignOut').css('display', 'block');
+        //     }
+        // }
+
+        $('a').on('click', function () {
+            //remove fw-bold class
+            $('.nav-link').removeClass('fw-bold');
+
+            var page = $(this).attr('page');
+            if (page == "index") {
+                //reload page
+                location.reload();
+            } else if (page == "expand") {
+                //expand parent div and add text after icon
+                $(this).find('i').toggleClass('fa-arrow-to-right fa-arrow-from-right');
+                $('#leftNav').toggleClass('expanded');
+                // Check if the nav is expanded and set the display accordingly
+                if ($('#leftNav').hasClass('expanded')) {
+                    $('.nav-link span').css('display', 'inline').animate({ opacity: 1 }, 500);
+                    
+                    $('a').removeAttr('data-bs-container data-bs-trigger data-bs-custom-class data-bs-toggle data-bs-placement data-bs-content');
+                    $('.popover, .custom-popover').remove();
+                } else {
+                    //add popover
+                    $('.nav-link').attr('data-bs-container="body" data-bs-trigger="hover" data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="auto"');
+                    $('.nav-link span').animate({ opacity: 0 }, 100, function () {
+                        $(this).css('display', 'none');
+                    });
+                }
+                //$
+
+            } else {
+                $("#mainContent").load(page + ".html");
+                //set selected nav-item to active
+                $('.nav-item').removeClass('active');
+                $(this).parent().parent('li.nav-item').addClass('active')
+                //set selected nav-item text to teal
+                $('.nav-link span').css('color', '#008080');
+                $(this).find('span').css('color', '#000');
+                //set selected nav-item background to teal
+                $('.leftNavButton').css('background', 'none');
+                $(this).parent('.leftNavButton').css('background', 'linear-gradient(to right, #92E6E8, #ffffff');
+                $(this).addClass('fw-bold');
+            }
+        });
+    });
+
+</script>

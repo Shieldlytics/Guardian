@@ -263,6 +263,15 @@ function registerUser(){
         data: data,
         success: function(response) {
             console.log(response);
+            var message = response.message;
+            var status = response.status;
+            if (status === 'success') {
+                //redirect to login page
+                window.location.href = 'login.html';
+            } else {
+                //display error message
+                alert(message);
+            }
         },error: function(response) {
             console.log(response);
         }
