@@ -32,7 +32,7 @@ function registration($userData){
     try {
         $conn->beginTransaction();
 
-        $sql = "INSERT INTO USERS (firstName, lastName, email) VALUES (:firstName, :lastName, :email)";
+        $sql = "INSERT INTO USERS (FIRST_NAME, LAST_NAME, EMAIL) VALUES (:firstName, :lastName, :email)";
         $stmt = $conn->prepare($sql);
         $stmt->execute([':firstName' => $userData["firstName"], ':lastName' => $userData["lastName"], ':email' => $userData["email"]]);
 
