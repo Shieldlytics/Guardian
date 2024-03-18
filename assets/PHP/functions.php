@@ -22,6 +22,7 @@ function getConnection() {
         }
 
 
+
         $method = $_POST["method"];
         if($method=="registerUser") {registerUser($userData);};
         if($method=="verifyUser") {verifyUser($email,$password);};
@@ -29,7 +30,7 @@ function getConnection() {
         if($method=="getUsers") {getUsers();};
         if($method=="addUser") {addUser($_POST["userData"]);};
         if($method=="editUser") {editUser($_POST["userId"], $_POST["userData"]);};
-        if($method=="authenticate") {authenticate($email,$password);};
+        if($method=="authenticate") {authenticateUser($email,$password);};
         if($method=="deleteUser") {deleteUser($_POST["userId"]);};
         if($method=="getUserRoles") {getUserRoles($_POST["userId"]);};
         if($method=="addUserRole") {addUserRole($_POST["userId"], $_POST["roleId"]);};
@@ -245,43 +246,77 @@ function getConnection() {
     }
 
     //authentication
-    function authenticate($username, $password) {
-        $pdo = getConnection();
-        $sql = "SELECT u.USER_ID,u.FIRST_NAME,u.MIDDLE_NAME,u.LAST_NAME,u.ADDRESS_LINE_1,u.ADDRESS_LINE_2,u.ADDRESS_LINE_3,u.CITY,u.STATE,u.POSTAL_CODE,u.COUNTRY, u.PHONE,u.EMAIL,u.CREATE_DATE,u.UPDATE_DATE,u.ACTIVE, r.NAME FROM DBO.USERS u, DBO.USER_ROLES ur, DBO.ROLES r WHERE ur.USER_ID = u.USER_ID AND ur.ROLE_ID = r.ROLE_ID AND u.ACTIVE ='A' AND u.EMAIL = ? AND PASSWORD = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$username, $password]);
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    function authenticateUser($email, $password) {
+        echo $email;
         header('Content-Type: application/json');
-        if(count($results) > 0){
-            $response['userid'] = $results[0]['USER_ID'];
-            $response['role'] = $results[0]['NAME'];
-            $response['updateDate'] = $results[0]['UPDATE_DATE'];
-            $response['state'] = $results[0]['STATE'];
-            $response['postalCode'] = $results[0]['POSTAL_CODE'];
-            $response['phone'] = $results[0]['PHONE'];
-            $response['middleName'] = $results[0]['MIDDLE_NAME'];
-            $response['lastName'] = $results[0]['LAST_NAME'];
-            $response['firstName'] = $results[0]['FIRST_NAME'];
-            $response['email'] = $results[0]['EMAIL'];
-            $response['createDate'] = $results[0]['CREATE_DATE'];
-            $response['country'] = $results[0]['COUNTRY'];
-            $response['city'] = $results[0]['CITY'];
-            $response['addressLine3'] = $results[0]['ADDRESS_LINE_3'];
-            $response['addressLine2'] = $results[0]['ADDRESS_LINE_2'];
-            $response['addressLine1'] = $results[0]['ADDRESS_LINE_1'];
-            $response['active'] = $results[0]['ACTIVE'];
-            $response['status'] = "Success";
-            $response['statusID'] = "bg-success";
-        }else{
-            $response['status'] = "Please check your email and password, or request access if you do not have access.";
-            $response['statusID'] = "bg-warning";
+        $conn = getConnection(); // Ensure getConnection() is defined and returns a PDO connection
+    
+        try {
+            $conn->beginTransaction();
+            // Check if the user exists in the database
+            $checkUserSql = "SELECT USER_ID FROM USERSv2 WHERE EMAIL = :email";
+            $checkStmt = $conn->prepare($checkUserSql);
+            $checkStmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $checkStmt->execute();
+    
+            if ($checkStmt->fetch(PDO::FETCH_ASSOC)) {
+                // User exists, proceed to get the JUMBLE and USER_ID for password verification
+                $sql = "SELECT u.USER_ID, ue.JUMBLE FROM USERSv2 u INNER JOIN USER_EXTENSIONS ue ON u.USER_ID = ue.USER_ID WHERE u.EMAIL = :email AND u.STATUS = 'A'";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+                $stmt->execute();
+    
+                if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $user_id = $row['USER_ID'];
+                    $jumble = $row['JUMBLE'];
+    
+                    if (password_verify($password, $jumble)) {
+                        // Password is correct, fetch additional user details
+                        $detailsSql = "SELECT u.USER_ID, u.FIRST_NAME, u.MIDDLE_NAME, u.LAST_NAME, u.ADDRESS_LINE_1, u.ADDRESS_LINE_2, u.ADDRESS_LINE_3, u.CITY, u.STATE, u.POSTAL_CODE, u.COUNTRY, u.PHONE, u.EMAIL, u.CREATE_DATE, u.UPDATE_DATE, u.STATUS, r.NAME FROM DBO.USERSv2 u INNER JOIN DBO.USER_ROLES ur ON ur.USER_ID = u.USER_ID INNER JOIN DBO.ROLES r ON ur.ROLE_ID = r.ROLE_ID WHERE u.USER_ID = :userId";
+                        $detailsStmt = $conn->prepare($detailsSql);
+                        $detailsStmt->bindParam(':userId', $user_id, PDO::PARAM_INT);
+                        $detailsStmt->execute();
+    
+                        $results = $detailsStmt->fetchAll(PDO::FETCH_ASSOC);
+    
+                        if (count($results) > 0) {
+                            $response = [
+                                // Populate $response with the user's details as needed
+                                // Example:
+                                'status' => "Success",
+                                'data' => $results[0]  // Sending the first row of results
+                            ];
+                        } else {
+                            $response = [
+                                'status' => "User data not found.",
+                                'statusID' => "bg-warning"
+                            ];
+                        }
+                    } else {
+                        $response = [
+                            'status' => "Incorrect password.",
+                            'statusID' => "bg-warning"
+                        ];
+                    }
+                } else {
+                    $response = [
+                        'status' => "User not found or inactive.",
+                        'statusID' => "bg-warning"
+                    ];
+                }
+            } else {
+                $response = [
+                    'status' => "User does not exist.",
+                    'statusID' => "bg-warning"
+                ];
             }
-            $json = json_encode(array('items' => $response));
-            echo $json;
+            echo json_encode(['items' => $response]);
+        } catch (PDOException $e) {
+            echo json_encode([
+                'status' => "Error occurred: " . $e->getMessage(),
+                'statusID' => "bg-danger"
+            ]);
         }
-
-
-
-
-
+    }
+    
 ?>

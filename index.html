@@ -46,21 +46,19 @@
                 <div class="row gy-3 overflow-hidden">
                   <div class="col-sm-12">
                     <div class="form-floating mb-2">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com"
-                        required>
+                      <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
                       <label for="email" class="form-label text-black">Email</label>
                     </div>
                   </div>
                   <div class="col-sm-12">
                     <div class="form-floating mb-2">
-                      <input type="password" class="form-control" name="password" id="password" value=""
-                        placeholder="Password" required>
+                      <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required>
                       <label for="password" class="form-label text-black">Password</label>
                     </div>
                   </div>
                   <div class="col-sm-12">
                     <div class="row justify-content-between">
-                      <div class="col-6"><a href="#!" class="link-dark text-decoration-none" style="color:teal">Sign Up!</a></div>
+                      <div class="col-6"><a id="SignUp" href="#!" class="link-dark link-underline-primary link-offset-3" style="color:teal">Register Now!</a></div>
                       <div class="col-6">
                         <div class="text-end">
                           <a href="#!" class="link-dark text-decoration-none" style="color:teal">Forgot password?</a>
@@ -71,15 +69,14 @@
                   
                   <div class="col-sm-12">
                     <div class="d-grid">
-                      <button id="SignMeIn" class="btn btn-teal btn-lg">Sign In</button>
+                      <button id="SignMeIn" class="btn btn-teal btn-lg ">Sign In</button>
                     </div>
                   </div>
-                  <span class="text-center">OR</span>
+                  <!-- <span class="text-center">OR</span>
                   <div class="col-sm-12">
                     <div class="d-grid">
-                      <button id="SignUp" class="btn btn-outline-primary btn-lg">Registration</button>
                     </div>
-                  </div>
+                  </div> -->
                   <div id="showResults" class="col-sm-12" style="display:none">
                     <div class="results"></div>
                   </div>
@@ -140,33 +137,29 @@
         $.ajax({
             url: 'assets/PHP/functions.php', // Updated path
             type: 'POST',
-            data: {method: "verifyUser" ,email: e, password: p },
+            data: {method: "authenticate" ,email: e, password: p },
             success: function(response){
                 // Process the response
-               // console.log(response);
+               console.log(response.items);
 
                 // Display the results
                 // TODO: Update this part to display the data as needed
-                var status = response.status
-                var message = response.message
-                console.log(response);
-                var u = response.user.id;
-                console.log('user length: '+u);
+               
 
-                if(status == "success"){
-                    $("#showResults").slideDown(500);
-                    $(".results").html("<div class='alert alert-success' role='alert'>"+message+"</div>");
+                // if(status == "success"){
+                //     $("#showResults").slideDown(500);
+                //     $(".results").html("<div class='alert alert-success' role='alert'>"+message+"</div>");
 
-                    //set session storage
-                    sessionStorage.setItem('user', JSON.stringify(response.user));
+                //     //set session storage
+                //     sessionStorage.setItem('user', JSON.stringify(response.user));
 
-                    //redirect to dashboard
-                    window.location.href = "index.html";
+                //     //redirect to dashboard
+                //     window.location.href = "index.html";
 
-                }else if(status == "error"){
-                    $("#showResults").slideDown(500);
-                    $(".results").html("<div class='alert alert-danger' role='alert'>"+message+"</div>");
-                }
+                // }else if(status == "error"){
+                //     $("#showResults").slideDown(500);
+                //     $(".results").html("<div class='alert alert-danger' role='alert'>"+message+"</div>");
+                // }
 
 
             return false;

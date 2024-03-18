@@ -44,14 +44,22 @@
         .fal.fa-eye:hover, .fal.fa-eye-slash:hover {
             color: #333;
         }
+        body {
+            position: relative;
+            background: url('assets/images/RegistrationBG_Blue.png') no-repeat fixed;
+            background-size: cover;
+            display: grid;
+            height: 100vh;
+            margin: 0;
+        }
 
     </style>
     <body>
-        <div class="container mt-5 my-auto d-flex justify-content-center">
-  
-            <div class="row ">
-                <div class="col-md-12">
-                    <div class="card mb-3" style="width: 40rem;">
+        <div id="registration" class=" d-flex justify-content-center align-items-center" style="display: none;">
+            
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <di class="card mb-3" style="width: 40rem;">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
@@ -86,7 +94,7 @@
                                         <div class="alert alert-danger mt-2" style="display:none"><i class="far fa-exclamation-triangle"></i> <span id="emailAlert"></span></div>
                                     </form>
                                 </div>
-                            </div>
+                            </di>
                             <div class="row mt-5">
                                 <div class="col-sm-6">
                                     <label for="password" class="h6">Create Password:</label>
@@ -119,8 +127,23 @@
 
                         </div>
                     </div>
+                    
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+              <span class="text-white">Powered by</span><br>
+                <img src="assets/images/landingPage/ShieldLyticsLogoOrbitronHorzWt.svg" height="40" alt="">
+            </div>
+        </div>
+      
+        
+
+            
+
+       
+       
         
         
         <script src="node_modules/jquery/dist/jquery.js"></script>
@@ -130,6 +153,8 @@
 </html>
 <script>
 $(document).ready(function() {
+    //$("#registration").slideDown(500);
+
     var checkMark = '<i class="fal fa-check"></i>';
     $('.toggle-password').on('click', function() {
         $(this).toggleClass('fa-eye fa-eye-slash');
