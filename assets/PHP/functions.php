@@ -278,7 +278,7 @@ function getConnection() {
                         $detailsStmt->execute();
     
                         $results = $detailsStmt->fetchAll(PDO::FETCH_ASSOC);
-                        echo json_encode(['items' => $results]);
+                        echo $results;
     
                         if (count($results) > 0) {
                             $response = [
