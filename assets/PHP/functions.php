@@ -279,7 +279,6 @@ function getConnection() {
                         $detailsStmt->execute();
     
                         $results = $detailsStmt->fetchAll(PDO::FETCH_ASSOC);
-                        echo count($results);
     
                         if (count($results) > 0) {
                             $response = [
