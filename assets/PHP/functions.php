@@ -247,8 +247,6 @@ function getConnection() {
 
     //authentication
     function authenticateUser($email, $password) {
-        echo $email;
-        header('Content-Type: application/json');
         $conn = getConnection(); // Ensure getConnection() is defined and returns a PDO connection
     
         try {
