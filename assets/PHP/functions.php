@@ -254,7 +254,7 @@ function getConnection() {
         try {
             $conn->beginTransaction();
             // Check if the user exists in the database
-            $checkUserSql = "SELECT USER_ID FROM USERSv2 WHERE EMAIL = :email";
+            $checkUserSql = "SELECT USER_ID FROM USERSv2 WHERE LOWER(EMAIL) = LOWER(:email)";
             $checkStmt = $conn->prepare($checkUserSql);
             $checkStmt->bindParam(':email', $email, PDO::PARAM_STR);
             $checkStmt->execute();
@@ -279,6 +279,7 @@ function getConnection() {
                         $detailsStmt->execute();
     
                         $results = $detailsStmt->fetchAll(PDO::FETCH_ASSOC);
+                        //echo count($results);
     
                         if (count($results) > 0) {
                             $response = [
