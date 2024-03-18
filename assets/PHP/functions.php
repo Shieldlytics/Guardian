@@ -272,7 +272,8 @@ function getConnection() {
     
                     if (password_verify($password, $jumble)) {
                         // Password is correct, fetch additional user details
-                        $detailsSql = "SELECT u.USER_ID, u.FIRST_NAME, u.MIDDLE_NAME, u.LAST_NAME, u.ADDRESS_LINE_1, u.ADDRESS_LINE_2, u.ADDRESS_LINE_3, u.CITY, u.STATE, u.POSTAL_CODE, u.COUNTRY, u.PHONE, u.EMAIL, u.CREATE_DATE, u.UPDATE_DATE, u.STATUS, r.NAME FROM DBO.USERSv2 u INNER JOIN DBO.USER_ROLES ur ON ur.USER_ID = u.USER_ID INNER JOIN DBO.ROLES r ON ur.ROLE_ID = r.ROLE_ID WHERE u.USER_ID = :userId";
+                        //$detailsSql = "SELECT u.USER_ID, u.FIRST_NAME, u.MIDDLE_NAME, u.LAST_NAME, u.ADDRESS_LINE_1, u.ADDRESS_LINE_2, u.ADDRESS_LINE_3, u.CITY, u.STATE, u.POSTAL_CODE, u.COUNTRY, u.PHONE, u.EMAIL, u.CREATE_DATE, u.UPDATE_DATE, u.STATUS, r.NAME FROM DBO.USERSv2 u INNER JOIN DBO.USER_ROLES ur ON ur.USER_ID = u.USER_ID INNER JOIN DBO.ROLES r ON ur.ROLE_ID = r.ROLE_ID WHERE u.USER_ID = :userId";
+                        $detailsSql = "SELECT u.USER_ID, u.FIRST_NAME, u.MIDDLE_NAME, u.LAST_NAME, u.ADDRESS_LINE_1, u.ADDRESS_LINE_2, u.ADDRESS_LINE_3, u.CITY, u.STATE, u.ZIP_CODE, u.COUNTRY, u.PHONE, u.EMAIL, u.CREATE_DATE, u.UPDATE_DATE, u.STATUS FROM DBO.USERSv2 u  WHERE u.USER_ID = :userId";
                         $detailsStmt = $conn->prepare($detailsSql);
                         $detailsStmt->bindParam(':userId', $user_id, PDO::PARAM_INT);
                         $detailsStmt->execute();
