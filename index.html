@@ -159,7 +159,7 @@
                     //redirect to dashboard
                     window.location.href = "mail.html";
 
-                }else if(status == "error"){
+                }else if(status != "Success"){
                     $("#showResults").slideDown(500);
                     $(".results").html("<div class='alert alert-danger' role='alert'>"+message+"</div>");
                 }
