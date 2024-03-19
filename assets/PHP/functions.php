@@ -10,21 +10,18 @@ function getConnection() {
 }
     // Check if the method is set
     if(isset($_POST["method"])) {
+        $method = $_POST["method"];
 
-        if(isset($_POST["registerNewUser"])) {
+        if($method=="registerUser") {
             $userData = [
                 "firstName" => $_POST["firstName"],
                 "lastName" => $_POST["lastName"],
                 "email" => $_POST["email"],
-                "password" => $_POST["password"]
+                "password" => $_POST["password"],
+                "hashedPassword" => password_hash($userData["password"], PASSWORD_DEFAULT)
             ];
-            $userData["hashedPassword"] = password_hash($userData["password"], PASSWORD_DEFAULT);
-        }
-        
-
-
-        $method = $_POST["method"];
-        if($method=="registerUser") {registerUser($userData);};
+            registerUser($userData);
+        };
         if($method=="verifyUser") {verifyUser($email,$password);};
         if($method=="addNewCompany") {verifyUser($_POST["email"], $_POST["password"]);};
         if($method=="getUsers") {getUsers();};
@@ -265,62 +262,61 @@ function getConnection() {
             $stmt->bindParam(':e', $email, PDO::PARAM_STR);  // Ensure the email variable is bound correctly
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            echo json_encode(['items' => $user]);
 
-            // if ($user) {
-            //     // User exists, proceed to get the JUMBLE and USER_ID for password verification
-            //     $sql = "SELECT u.USER_ID, ue.JUMBLE FROM USERSv2 u INNER JOIN USER_EXTENSIONS ue ON u.USER_ID = ue.USER_ID WHERE u.EMAIL = :email AND u.STATUS = 'A'";
-            //     $stmt = $conn->prepare($sql);
-            //     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-            //     $stmt->execute();
+            if ($user) {
+                // User exists, proceed to get the JUMBLE and USER_ID for password verification
+                $sql = "SELECT u.USER_ID, ue.JUMBLE FROM USERSv2 u INNER JOIN USER_EXTENSIONS ue ON u.USER_ID = ue.USER_ID WHERE u.EMAIL = :email AND u.STATUS = 'A'";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+                $stmt->execute();
     
-            //     if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            //         $user_id = $row['USER_ID'];
-            //         $jumble = $row['JUMBLE'];
+                if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $user_id = $row['USER_ID'];
+                    $jumble = $row['JUMBLE'];
     
-            //         if (password_verify($password, $jumble)) {
-            //             // Password is correct, fetch additional user details
-            //             //$detailsSql = "SELECT u.USER_ID, u.FIRST_NAME, u.MIDDLE_NAME, u.LAST_NAME, u.ADDRESS_LINE_1, u.ADDRESS_LINE_2, u.ADDRESS_LINE_3, u.CITY, u.STATE, u.POSTAL_CODE, u.COUNTRY, u.PHONE, u.EMAIL, u.CREATE_DATE, u.UPDATE_DATE, u.STATUS, r.NAME FROM DBO.USERSv2 u INNER JOIN DBO.USER_ROLES ur ON ur.USER_ID = u.USER_ID INNER JOIN DBO.ROLES r ON ur.ROLE_ID = r.ROLE_ID WHERE u.USER_ID = :userId";
-            //             $detailsSql = "SELECT u.USER_ID, u.FIRST_NAME, u.MIDDLE_NAME, u.LAST_NAME, u.ADDRESS_LINE_1, u.ADDRESS_LINE_2, u.ADDRESS_LINE_3, u.CITY, u.STATE, u.ZIP_CODE, u.COUNTRY, u.PHONE, u.EMAIL, u.CREATE_DATE, u.UPDATE_DATE, u.STATUS FROM DBO.USERSv2 u  WHERE u.USER_ID = :userId";
-            //             $detailsStmt = $conn->prepare($detailsSql);
-            //             $detailsStmt->bindParam(':userId', $user_id, PDO::PARAM_INT);
-            //             $detailsStmt->execute();
+                    if (password_verify($password, $jumble)) {
+                        // Password is correct, fetch additional user details
+                        //$detailsSql = "SELECT u.USER_ID, u.FIRST_NAME, u.MIDDLE_NAME, u.LAST_NAME, u.ADDRESS_LINE_1, u.ADDRESS_LINE_2, u.ADDRESS_LINE_3, u.CITY, u.STATE, u.ZIP_CODE, u.COUNTRY, u.PHONE, u.EMAIL, u.CREATE_DATE, u.UPDATE_DATE, u.STATUS, r.NAME FROM DBO.USERSv2 u INNER JOIN DBO.USER_ROLES ur ON ur.USER_ID = u.USER_ID INNER JOIN DBO.ROLES r ON ur.ROLE_ID = r.ROLE_ID WHERE u.USER_ID = :userId";
+                        $detailsSql = "SELECT u.USER_ID, u.FIRST_NAME, u.MIDDLE_NAME, u.LAST_NAME, u.ADDRESS_LINE_1, u.ADDRESS_LINE_2, u.ADDRESS_LINE_3, u.CITY, u.STATE, u.ZIP_CODE, u.COUNTRY, u.PHONE, u.EMAIL, u.CREATE_DATE, u.UPDATE_DATE, u.STATUS FROM DBO.USERSv2 u  WHERE u.USER_ID = :userId";
+                        $detailsStmt = $conn->prepare($detailsSql);
+                        $detailsStmt->bindParam(':userId', $user_id, PDO::PARAM_INT);
+                        $detailsStmt->execute();
     
-            //             $results = $detailsStmt->fetchAll(PDO::FETCH_ASSOC);
-            //             //echo count($results);
+                        $results = $detailsStmt->fetchAll(PDO::FETCH_ASSOC);
+                        //echo count($results);
     
-            //             if (count($results) > 0) {
-            //                 $response = [
-            //                     // Populate $response with the user's details as needed
-            //                     // Example:
-            //                     'status' => "Success",
-            //                     'data' => $results[0]  // Sending the first row of results
-            //                 ];
-            //             } else {
-            //                 $response = [
-            //                     'status' => "User data not found.",
-            //                     'statusID' => "bg-warning"
-            //                 ];
-            //             }
-            //         } else {
-            //             $response = [
-            //                 'status' => "Incorrect password.",
-            //                 'statusID' => "bg-warning"
-            //             ];
-            //         }
-            //     } else {
-            //         $response = [
-            //             'status' => "User not found or inactive.",
-            //             'statusID' => "bg-warning"
-            //         ];
-            //     }
-            // } else {
-            //     $response = [
-            //         'status' => "User does not exist.",
-            //         'statusID' => "bg-warning"
-            //     ];
-            // }
-            // echo json_encode(['items' => $response]);
+                        if (count($results) > 0) {
+                            $response = [
+                                // Populate $response with the user's details as needed
+                                // Example:
+                                'status' => "Success",
+                                'data' => $results[0]  // Sending the first row of results
+                            ];
+                        } else {
+                            $response = [
+                                'status' => "User data not found.",
+                                'statusID' => "bg-warning"
+                            ];
+                        }
+                    } else {
+                        $response = [
+                            'status' => "Incorrect password.",
+                            'statusID' => "bg-warning"
+                        ];
+                    }
+                } else {
+                    $response = [
+                        'status' => "User not found or inactive.",
+                        'statusID' => "bg-warning"
+                    ];
+                }
+            } else {
+                $response = [
+                    'status' => "User does not exist.",
+                    'statusID' => "bg-warning"
+                ];
+            }
+            echo json_encode(['items' => $response]);
         } catch (PDOException $e) {
             echo json_encode([
                 'status' => "Error occurred: " . $e->getMessage(),
