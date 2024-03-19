@@ -253,12 +253,12 @@ function getConnection() {
             $conn->beginTransaction();
             // Check if the user exists in the database
             $checkUserSql = "SELECT USER_ID FROM USERSv2 WHERE LOWER(EMAIL) = LOWER(:email)";
-            $checkStmt = $conn->prepare($checkUserSql);
-            $checkStmt->bindParam(':email', $email, PDO::PARAM_STR);
-            $checkStmt->execute();
-            echo $checkStmt->fetch(PDO::FETCH_ASSOC);
-            
-            if ($checkStmt->fetch(PDO::FETCH_ASSOC)) {
+            $stmt = $conn->prepare($checkUserSql);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);  // Ensure the email variable is bound correctly
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user) {
                 // User exists, proceed to get the JUMBLE and USER_ID for password verification
                 $sql = "SELECT u.USER_ID, ue.JUMBLE FROM USERSv2 u INNER JOIN USER_EXTENSIONS ue ON u.USER_ID = ue.USER_ID WHERE u.EMAIL = :email AND u.STATUS = 'A'";
                 $stmt = $conn->prepare($sql);
