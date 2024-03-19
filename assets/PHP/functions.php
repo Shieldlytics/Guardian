@@ -250,8 +250,6 @@ function getConnection() {
     function authenticateUser($email, $password) {
         // set $email to lowercase
         $email = strtolower($email);
-
-        echo json_encode(['items' => $email]);
         $conn = getConnection(); // Ensure getConnection() is defined and returns a PDO connection
     
         try {

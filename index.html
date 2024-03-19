@@ -139,27 +139,30 @@
             type: 'POST',
             data: {method: "authenticate" ,email: e, password: p },
             success: function(response){
+              var x = response.items
+              console.log(x);
                 // Process the response
-               console.log(response.items);
+               console.log(x);
+
 
                 // Display the results
                 // TODO: Update this part to display the data as needed
                
 
-                // if(status == "success"){
-                //     $("#showResults").slideDown(500);
-                //     $(".results").html("<div class='alert alert-success' role='alert'>"+message+"</div>");
+                if(status == "Success"){
+                    $("#showResults").slideDown(500);
+                    $(".results").html("<div class='alert alert-success' role='alert'>"+message+"</div>");
 
-                //     //set session storage
-                //     sessionStorage.setItem('user', JSON.stringify(response.user));
+                    //set session storage
+                    sessionStorage.setItem('user', JSON.stringify(response.user));
 
-                //     //redirect to dashboard
-                //     window.location.href = "index.html";
+                    //redirect to dashboard
+                    window.location.href = "mail.html";
 
-                // }else if(status == "error"){
-                //     $("#showResults").slideDown(500);
-                //     $(".results").html("<div class='alert alert-danger' role='alert'>"+message+"</div>");
-                // }
+                }else if(status == "error"){
+                    $("#showResults").slideDown(500);
+                    $(".results").html("<div class='alert alert-danger' role='alert'>"+message+"</div>");
+                }
 
 
             return false;
