@@ -257,7 +257,7 @@ function getConnection() {
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);  // Ensure the email variable is bound correctly
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            echo $user;
+            //echo $user;
 
             if ($user) {
                 // User exists, proceed to get the JUMBLE and USER_ID for password verification
