@@ -252,9 +252,9 @@ function getConnection() {
         try {
             $conn->beginTransaction();
             // Check if the user exists in the database
-            $checkUserSql = "SELECT USER_ID FROM USERSv2 WHERE LOWER(EMAIL) = LOWER(:email)";
+            $checkUserSql = "SELECT USER_ID FROM USERSv2 WHERE LOWER(EMAIL) = ? AND STATUS = 'A'";
             $stmt = $conn->prepare($checkUserSql);
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);  // Ensure the email variable is bound correctly
+            $stmt->bindParam($email, PDO::PARAM_STR);  // Ensure the email variable is bound correctly
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             echo json_encode(['items' => $user]);
