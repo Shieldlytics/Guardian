@@ -20,7 +20,7 @@ function getConnection() {
             ];
             $userData["hashedPassword"] = password_hash($userData["password"], PASSWORD_DEFAULT);
         }
-
+        
 
 
         $method = $_POST["method"];
@@ -30,7 +30,11 @@ function getConnection() {
         if($method=="getUsers") {getUsers();};
         if($method=="addUser") {addUser($_POST["userData"]);};
         if($method=="editUser") {editUser($_POST["userId"], $_POST["userData"]);};
-        if($method=="authenticate") {authenticateUser($email,$password);};
+        if($method=="authenticate") {
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+            authenticateUser($email,$password);
+        };
         if($method=="deleteUser") {deleteUser($_POST["userId"]);};
         if($method=="getUserRoles") {getUserRoles($_POST["userId"]);};
         if($method=="addUserRole") {addUserRole($_POST["userId"], $_POST["roleId"]);};
