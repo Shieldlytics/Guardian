@@ -249,14 +249,16 @@ function getConnection() {
     function authenticateUser($email, $password) {
         // set $email to lowercase
         $email = strtolower($email);
+
+        echo json_encode(['items' => $email]);
         $conn = getConnection(); // Ensure getConnection() is defined and returns a PDO connection
     
         try {
             $conn->beginTransaction();
             // Check if the user exists in the database
-            $checkUserSql = "SELECT USER_ID FROM USERSv2 WHERE LOWER(EMAIL) = ':email' AND STATUS = 'A'";
+            $checkUserSql = "SELECT USER_ID FROM USERSv2 WHERE LOWER(EMAIL) = :e AND STATUS = 'A'";
             $stmt = $conn->prepare($checkUserSql);
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);  // Ensure the email variable is bound correctly
+            $stmt->bindParam(':e', $email, PDO::PARAM_STR);  // Ensure the email variable is bound correctly
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             echo json_encode(['items' => $user]);
