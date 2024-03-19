@@ -139,9 +139,8 @@
             type: 'POST',
             data: {method: "authenticate" ,email: e, password: p },
             success: function(response){
-              var x = response.items
-              console.log(response);
-              console.log(x);
+              var status = response.items.status;
+              var statusClass = response.items.statusID;
 
 
                 // Display the results
@@ -150,7 +149,7 @@
 
                 if(status == "Success"){
                     $("#showResults").slideDown(500);
-                    $(".results").html("<div class='alert alert-success' role='alert'>"+message+"</div>");
+                    $(".results").html("<div class='alert alert-success' role='alert'>"+Success+"</div>");
 
                     //set session storage
                     sessionStorage.setItem('user', JSON.stringify(response.user));
@@ -160,7 +159,7 @@
 
                 }else if(status != "Success"){
                     $("#showResults").slideDown(500);
-                    $(".results").html("<div class='alert alert-danger' role='alert'>"+message+"</div>");
+                    $(".results").html("<div class='alert alert-danger' role='alert'>"+Success+"</div>");
                 }
 
 
