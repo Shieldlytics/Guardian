@@ -142,14 +142,9 @@
               var status = response.items.status;
               var statusClass = response.items.statusID;
 
-
-                // Display the results
-                // TODO: Update this part to display the data as needed
-               
-
                 if(status == "Success"){
                     $("#showResults").slideDown(500);
-                    $(".results").html("<div class='alert alert-success' role='alert'>"+Success+"</div>");
+                    $(".results").html("<div class='alert alert-success' role='alert'>"+status+"</div>");
 
                     //set session storage
                     sessionStorage.setItem('user', JSON.stringify(response.user));
@@ -159,7 +154,7 @@
 
                 }else if(status != "Success"){
                     $("#showResults").slideDown(500);
-                    $(".results").html("<div class='alert alert-danger' role='alert'>"+Success+"</div>");
+                    $(".results").html("<div class='alert alert-danger' role='alert'>"+status+"</div>");
                 }
 
 
