@@ -139,6 +139,7 @@
             type: 'POST',
             data: {method: "authenticate" ,email: e, password: p },
             success: function(response){
+              console.log(response);
               var status = response.items.status;
               var statusClass = response.items.statusID;
 
