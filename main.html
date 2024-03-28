@@ -270,6 +270,7 @@
     </div>
   </footer>
 </div>
+
     <script src="assets/js/apps.js"></script>
     <script src="assets/js/color-modes.js"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -305,6 +306,32 @@
     });
 
     $(document).ready(function () {
+
+        // start Login and registration functions
+        $("#SignUp").click(function(){
+            window.location.href = "registration.html";
+        });
+        $("#login").slideDown(500);
+        $("#SignMeIn").click(function(){
+          $("#showResults").slideUp(500);
+            var e = $("#email").val();
+            var p = $("#password").val();
+            // if missing "@" or "."
+            if(e.indexOf("@") == -1 || e.indexOf(".") == -1){
+                $("#showResults").slideDown(500);
+                $(".results").html("<div class='alert alert-danger' role='alert'>Please enter a valid email address.</div>");
+                return false;
+            }
+            if(p.length < 8){
+                $("#showResults").slideDown(500);
+                $(".results").html("<div class='alert alert-danger' role='alert'>Please enter a valid password.</div>");
+                return false;
+            }
+            // if all is good
+            login(e,p);
+        });
+        // end Login and registration functions
+
         $("#mainContent").load("dashboard.html");
 
         $('#bd-theme-text .dropdown-item').click(function () {
@@ -398,5 +425,38 @@
             }
         });
     });
+    function login(e,p){
+        $.ajax({
+            url: 'assets/PHP/functions.php', // Updated path
+            type: 'POST',
+            data: {method: "authenticate" ,email: e, password: p },
+            success: function(data){
+              console.log('data');
+              console.log(data);
+              // var status = response.items.status;
+              // var statusClass = response.items.statusID;
 
+              //   if(status == "Success"){
+              //       $("#showResults").slideDown(500);
+              //       $(".results").html("<div class='alert alert-success' role='alert'>"+status+"</div>");
+
+              //       //set session storage
+              //       sessionStorage.setItem('user', JSON.stringify(response.user));
+
+              //       //redirect to dashboard
+              //       window.location.href = "mail.html";
+
+              //   }else if(status != "Success"){
+              //       $("#showResults").slideDown(500);
+              //       $(".results").html("<div class='alert alert-danger' role='alert'>"+status+"</div>");
+              //   }
+
+
+            return false;
+            },
+            error: function(xhr, status, error){
+                console.error(error);
+            }
+        });
+    }
 </script>

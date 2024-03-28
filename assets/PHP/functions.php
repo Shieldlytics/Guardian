@@ -4,10 +4,20 @@ function getConnection() {
     $database = "GUARDIAN-DEV";
     $username = "GUARDIAN";
     $password = "Sh13ldlyt1c$";
-    $conn = new PDO("sqlsrv:server=$serverName;Database=$database", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    return $conn;
+    try {
+        $conn = new PDO("sqlsrv:server=$serverName;Database=$database", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
+    } catch (PDOException $e) {
+        echo json_encode([
+            'status' => "Connection Error occurred: " . $e->getMessage(),
+            'statusID' => "bg-danger"
+        ]);
+        return null; // Explicitly return null
+    }
 }
+
+
     // Check if the method is set
     if(isset($_POST["method"])) {
         $method = $_POST["method"];
@@ -279,20 +289,19 @@ function getConnection() {
                         $detailsStmt = $conn->prepare($detailsSql);
                         $detailsStmt->bindParam(':userId', $user_id, PDO::PARAM_INT);
                         $detailsStmt->execute();
-    
                         $results = $detailsStmt->fetchAll(PDO::FETCH_ASSOC);
                         //echo count($results);
     
                         if (count($results) > 0) {
                             $response = [
                                 // Populate $response with the user's details as needed
-                                // Example:
                                 'status' => "Success",
+                                'statusID' => "bg-Success",
                                 'data' => $results[0]  // Sending the first row of results
                             ];
                         } else {
                             $response = [
-                                'status' => "User data not found.",
+                                'status' => "User not found.",
                                 'statusID' => "bg-warning"
                             ];
                         }
@@ -310,7 +319,7 @@ function getConnection() {
                 }
             } else {
                 $response = [
-                    'status' => "User does not exist.",
+                    'status' => 'User does not exist, please register but clicking the "Register Now!" link above.',
                     'statusID' => "bg-warning"
                 ];
             }

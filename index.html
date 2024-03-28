@@ -132,31 +132,30 @@
             login(e,p);
         });
     });
-
+    
     function login(e,p){
         $.ajax({
             url: 'assets/PHP/functions.php', // Updated path
             type: 'POST',
+            dataType: 'json',
             data: {method: "authenticate" ,email: e, password: p },
             success: function(response){
-              console.log(response);
-              var status = response.items.status;
-              var statusClass = response.items.statusID;
-
-                if(status == "Success"){
-                    $("#showResults").slideDown(500);
-                    $(".results").html("<div class='alert alert-success' role='alert'>"+status+"</div>");
-
-                    //set session storage
-                    sessionStorage.setItem('user', JSON.stringify(response.user));
-
-                    //redirect to dashboard
-                    window.location.href = "mail.html";
-
-                }else if(status != "Success"){
-                    $("#showResults").slideDown(500);
-                    $(".results").html("<div class='alert alert-danger' role='alert'>"+status+"</div>");
-                }
+              console.log(response.items);
+               var status = response.items.status;
+               var statusClass = response.items.statusID
+                 if(status == "Success"){
+                  var userData = response.items.data
+                     $("#showResults").slideDown(500);
+                     $(".results").html("<div class='alert alert-success' role='alert'>"+status+"</div>")
+                     //set session storage of user data from userData
+                      sessionStorage.setItem("userData", JSON.stringify(userData));
+                      
+                     //redirect to dashboard
+                     window.location.href = "mail.html"
+                 }else if(status != "Success"){
+                     $("#showResults").slideDown(500);
+                     $(".results").html("<div class='alert alert-danger' role='alert'>"+status+"</div>");
+                 }
 
 
             return false;
