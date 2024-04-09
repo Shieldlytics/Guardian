@@ -20,7 +20,8 @@ if(isset($_POST["method"])) {
             "firstName" => $_POST["firstName"],
             "lastName" => $_POST["lastName"],
             "email" => $_POST["email"],
-            "password" => password_hash($_POST["password"], PASSWORD_DEFAULT)
+            "password" => password_hash($_POST["password"], PASSWORD_DEFAULT),
+            "verificationToken" => bin2hex(random_bytes(50))
         ];
        
     }
@@ -39,9 +40,9 @@ function registration($userData){
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $newUserId = $row['max_id'] + 1;
 
-        $sql = "INSERT INTO USERSv2 (FIRST_NAME, LAST_NAME, EMAIL) VALUES (:firstName, :lastName, :email)";
+        $sql = "INSERT INTO USERSv2 (FIRST_NAME, LAST_NAME, EMAIL,EMAIL_VERIFICATION_TOKEN) VALUES (:firstName, :lastName, :email, :verificationToken)";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([':firstName' => $userData["firstName"], ':lastName' => $userData["lastName"], ':email' => $userData["email"]]);
+        $stmt->execute([':firstName' => $userData["firstName"], ':lastName' => $userData["lastName"], ':email' => $userData["email"] , ':verificationToken' => $userData["verificationToken"]]);
 
         $userId = $conn->lastInsertId();  // If USER_ID is auto-incremented
 
@@ -50,6 +51,11 @@ function registration($userData){
         $stmt->execute([':userId' => $userId, ':password' => $userData["password"]]);
 
         $conn->commit();
+
+        $to = $userData["email"];
+        $subject = "Verify your email address";
+        $message = "Please click on the following link to verify your email address: https://guardian1.azurewebsites.net/verify.php?token=$token";
+        $headers = "From: shieldlytics@shieldlytics.com";
 
         echo json_encode(['status' => 'success', 'message' => 'User registered successfully']);
     } catch (Exception $e) {

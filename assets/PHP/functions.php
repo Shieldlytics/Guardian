@@ -272,8 +272,8 @@ function getConnection() {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user) {
-                // User exists, proceed to get the JUMBLE and USER_ID for password verification
-                $sql = "SELECT u.USER_ID, ue.JUMBLE FROM USERSv2 u INNER JOIN USER_EXTENSIONS ue ON u.USER_ID = ue.USER_ID WHERE u.EMAIL = :email AND u.STATUS = 'A'";
+                // User exists, proceed to get the JUMBLE and USER_ID for password verification and email verification is done
+                $sql = "SELECT u.USER_ID, ue.JUMBLE FROM USERSv2 u INNER JOIN USER_EXTENSIONS ue ON u.USER_ID = ue.USER_ID WHERE u.EMAIL = :email AND u.STATUS = 'A' AND ue.VERIFIED = 'Y'";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
                 $stmt->execute();

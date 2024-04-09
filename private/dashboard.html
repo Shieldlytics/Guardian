@@ -43,11 +43,11 @@
     }
 </style>
 
-<body class="light_layout" data-bs-spy="scroll" data-bs-target="#TableOfContents">
+<body  data-bs-spy="scroll" data-bs-target="#TableOfContents">
     <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-light border-2 border-bottom border-secondary-subtle shadow-sm ">
         <nav class="container-fluid bd-gutter flex-wrap flex-lg-nowrap " aria-label="Main navigation">
             <a class="navbar-brand p-0 me-0 me-lg-2 d-flex align-items-center" href="#" aria-label="Guardian">
-                <img src="assets/images/GuardianLogo-Blk.png" height="45" alt="Logo" />
+                <img src="../assets/images/GuardianLogo-Blk.png" height="45" alt="Logo" />
                 <h2 style="margin-bottom: 0; margin-left: 10px;">Guardian</h2>
             </a>
             
@@ -218,7 +218,7 @@
             
           <ul class="list-unstyled small">
             <li class="mb-2"><a class="navbar-brand p-0 me-0 me-lg-2 d-flex align-items-center" href="#" aria-label="Guardian">
-                    <img src="assets/images/GuardianLogo.png" height="40" alt="Logo" />
+                    <img src="../assets/images/GuardianLogo.png" height="40" alt="Logo" />
                     <h1 style="margin-bottom: 0; margin-left: 5px;">GUARDIAN</h1>
                 </a>
             </li>
@@ -239,7 +239,7 @@
         <div class="col-6 col-lg-2 mb-3">
           <h5>Guides</h5>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="/docs/1.0/getting-started/">Getting started</a></li>
+            <li class="mb-2"><a href="../docs/1.0/getting-started/">Getting started</a></li>
             <!-- <li class="mb-2"><a href="/docs/5.3/examples/starter-template/">Starter template</a></li>
             <li class="mb-2"><a href="/docs/5.3/getting-started/webpack/">Webpack</a></li>
             <li class="mb-2"><a href="/docs/5.3/getting-started/parcel/">Parcel</a></li>
@@ -333,7 +333,7 @@
         });
         // end Login and registration functions
 
-        $("#mainContent").load("dashboard.html");
+        $("#mainContent").load("main.html");
 
         $('#bd-theme-text .dropdown-item').click(function () {
             var theme = $(this).attr('data-bs-theme-value');
@@ -355,7 +355,7 @@
             var x = $(this).attr('data-bs-value');
             if (x == "signout") {
                 localStorage.clear();
-                window.location.href = "landing.html";
+                window.location.href = "../index.html";
             }
         });
 
@@ -428,7 +428,7 @@
     });
     function login(e,p){
         $.ajax({
-            url: 'assets/PHP/functions.php', // Updated path
+            url: '../assets/PHP/functions.php', // Updated path
             type: 'POST',
             data: {method: "authenticate" ,email: e, password: p },
             success: function(data){
