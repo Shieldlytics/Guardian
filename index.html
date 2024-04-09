@@ -1,198 +1,120 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-        <meta name="description" content="">
-        <link rel="icon" type="image/png" href="assets/images/favicon_security/android-chrome-512x512.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon_security/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon_security/favicon-16x16.png">
-        <link rel="icon" type="image/png" href="assets/images/favicon/apple-touch-icon.png">
-        <meta name="author" content="Ernest Pena Jr">
-        <meta name="HandheldFriendly" content="true">
-        <title>Guardian bowered by Shieldlytics</title>
-        <link rel="stylesheet" href="assets/css/landing.css">
-        <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-        <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
-    </head>
-    <body>
 
-<style>
-.btn-teal {
-  background-color: #008080; /* Teal color */
-  border-color: #006666; /* Darker teal border */
-  color: #fff; /* White text */
-}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="description" content="">
+    <link rel="icon" type="image/png" href="assets/images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon/apple-touch-icon.png">
+    <meta name="author" content="Ernest Pena Jr">
+    <meta name="HandheldFriendly" content="true">
+    <title>Guardian bowered by Shieldlytics</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-tour/build/css/bootstrap-tour.css">
+</head>
 
-.btn-teal:hover {
-  background-color: #006666; /* Darker teal on hover */
-  border-color: #004d4d; /* Even darker teal border on hover */
-}
-
-</style>
-<div class="container my-auto">
-  <div id="login" class="card mx-auto" style="max-width: 550px;display: none;background-image: url('assets/images/GuardianLogo.png') no-repeat fixed;">
-    <div class="card-body">
-      <div class="row justify-content-center">
-        <div class="col-sm-12 col-sm-10 col-sm-8 mt-5 mb-5">
-          <div class="row gy-5 justify-content-center">
-          <div class="row">
-            <div class="col-sm-12">
-                <h2 class="display-5 fw-bold text-dark text-center"><img src="assets/images/GuardianLogo.png"alt="Guardian Logo" height="150" /><br> Guardian</h2>
-            </div>
-          </div>
-            <div class="col-sm-12 col-sm-8">
-                <div class="row gy-3 overflow-hidden">
-                  <div class="col-sm-12">
-                    <div class="form-floating mb-2">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
-                      <label for="email" class="form-label text-black">Email</label>
-                    </div>
-                  </div>
-                  <div class="col-sm-12">
-                    <div class="form-floating mb-2">
-                      <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" required>
-                      <label for="password" class="form-label text-black">Password</label>
-                    </div>
-                  </div>
-                  <div class="col-sm-12">
-                    <div class="row justify-content-between">
-                      <div class="col-6"><a id="SignUp" href="#!" class="link-dark link-underline-primary link-offset-3" style="color:teal">Register Now!</a></div>
-                      <div class="col-6">
-                        <div class="text-end">
-                          <a href="#!" class="link-dark text-decoration-none" style="color:teal">Forgot password?</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="col-sm-12">
-                    <div class="d-grid">
-                      <button id="SignMeIn" class="btn btn-teal btn-lg ">Sign In</button>
-                    </div>
-                  </div>
-                  <!-- <span class="text-center">OR</span>
-                  <div class="col-sm-12">
-                    <div class="d-grid">
-                    </div>
-                  </div> -->
-                  <div id="showResults" class="col-sm-12" style="display:none">
-                    <div class="results"></div>
-                  </div>
+    
+    <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
+    
+        <header class="navbar navbar-expand-lg bd-navbar sticky-top bg-light border-2 border-bottom border-secondary-subtle shadow-lg">
+            <nav class="container-fluid bd-gutter flex-wrap flex-lg-nowrap " aria-label="Main navigation">
+                <!-- <a class="navbar-brand p-0 me-0 me-lg-2 d-flex align-items-center " href="#" aria-label="Guardian">
+                    <img src="assets/images/GuardianLogo-Blk.png" height="45" alt="Logo" />
+                    <h2 style="margin-bottom: 0; margin-left: 10px;">Guardian</h2>
+                </a> -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse flex-column flex-sm-row" id="navbarsExample03">
+                    //center ul in navbar
+                    <ul class="navbar-nav d-flex justify-content-center w-100 text-center text-lg ">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="login" class="nav-link" href="auth/login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact Us</a>
+                        </li>
+                    </ul>
+            </nav>
+        </header>
+    
+    <main>
+        <div class="w-100 min-vh-100 overflow-hidden position-relative bg-black text-white bg-cover d-flex align-items-center" data-aos="fade" style="background: linear-gradient(0deg, rgba(18,224,210,1) 0%, rgba(2,103,95,1) 98%);">
+        <div class="position-absolute w-100 h-100  opacity-75 top-0 start-0"></div>
+        <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
+            <div class="row d-flex align-items-center justify-content-center py-vh-5">
+                <div class="col-12 col-xl-10">
+                    <img src="assets/images/GuardianLogo-Blk.png"  alt="Logo" />
+                    <h1 class="display-huge mt-3 mb-3 lh-1 text-dark">GUARDIAN</h1>
                 </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12 text-center mt-5">
-      <span class="text-white">Powered by</span><br>
-        <img src="assets/images/landingPage/ShieldLyticsLogoOrbitronHorzWt.svg" height="40" alt="">
-    </div>
-  </div>
+        </div>
 
-</div>
+        <div class="w-100 min-vh-100 position-relative bg-white text-black bg-cover d-flex align-items-center">
+        <div class="position-absolute w-100 h-100 bg-white opacity-75 top-0 start-0"></div>
+        <div class="container py-vh-4 position-relative mt-5 px-vw-5 text-center">
+            <div class="row d-flex align-items-center justify-content-center py-vh-5">
+                <div class="col-12 col-xl-10">
+                    <h1 class="display-huge mt-3 mb-3 lh-1">About Guardian</h1>
+                </div>
+                <div class="col-12 col-xl-8">
+                <p class="lead text-secondary">This can be a long description of the website </p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
         
-        
-        
-        <script src="assets/js/apps.js"></script>
-        <script src="node_modules/jquery/dist/jquery.js"></script>
-        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <script src="node_modules/aos/dist/aos.js"></script>
+
+    <script src="assets/js/apps.js"></script>
+    <script src="assets/js/color-modes.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/aos/dist/aos.js"></script>
+    <script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="node_modules/datatables.net-buttons/js/dataTables.buttons.js"></script>
+    <script src="node_modules/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+    <script src="node_modules/bootstrap-tour/build/js/bootstrap-tour.js"></script>
     </body>
 </html>
 <script>
-    $(document).ready(function(){
-        $("#SignUp").click(function(){
-            window.location.href = "registration.html";
-        });
-      
-      
-      $("#login").slideDown(500);
-
-        $("#SignMeIn").click(function(){
-          $("#showResults").slideUp(500);
-            var e = $("#email").val();
-            var p = $("#password").val();
-            // if missing "@" or "."
-            if(e.indexOf("@") == -1 || e.indexOf(".") == -1){
-                $("#showResults").slideDown(500);
-                $(".results").html("<div class='alert alert-danger' role='alert'>Please enter a valid email address.</div>");
-                return false;
-            }
-            if(p.length < 8){
-                $("#showResults").slideDown(500);
-                $(".results").html("<div class='alert alert-danger' role='alert'>Please enter a valid password.</div>");
-                return false;
-            }
-            // if all is good
-            login(e,p);
-        });
+    AOS.init({
+        duration: 800, // values from 0 to 3000, with step 50ms
     });
-    
-    function login(e,p){
-        $.ajax({
-            url: 'assets/PHP/functions.php', // Updated path
-            type: 'POST',
-            dataType: 'json',
-            data: {method: "authenticate" ,email: e, password: p },
-            success: function(response){
-              console.log(response.items);
-               var status = response.items.status;
-               var statusClass = response.items.statusID
-                 if(status == "Success"){
-                  var userData = response.items.data
-                     $("#showResults").slideDown(300);
-                     $(".results").html("<div class='alert alert-success' role='alert'><i class='fas fa-info'></i> "+status+"</div>")
-                     //set session storage of user data by looping threw userData list
-                      for (var i = 0; i < userData.length; i++) {
-                          sessionStorage.setItem(userData[i].name, userData[i].value);
-                      }
-                      
-                     //redirect to dashboard
-                     window.location.href = ".html"
-                 }else if(status != "Success"){
-                     $("#showResults").slideDown(300);
-                     $(".results").html("<div class='alert alert-danger' role='alert'><i class='fas fa-watning'></i> "+status+"</div>");
-                 }
-
-
-            return false;
-            },
-            error: function(xhr, status, error){
-                console.error(error);
-            }
-        });
-    }
-// Function to block out dates for specific users and make them non-clickable
-// function blockOutDatesForSpecificUsers(calendar, currentUserEmplid) {
-//     var blockedDates = ["2024-02-14", "2024-07-04", "2024-11-28", "2024-12-25"];
-//     var emplidsWithBlockedDates = ["12345", "67890"]; // List of EMPLIDs that need blocked dates
-
-//     if (emplidsWithBlockedDates.includes(currentUserEmplid)) {
-//         calendar.addEventSource(function(fetchInfo, successCallback, failureCallback) {
-//             var events = [];
-//             blockedDates.forEach(function(date) {
-//                 var dateObj = new Date(date);
-//                 if (fetchInfo.start <= dateObj && dateObj <= fetchInfo.end) {
-//                     events.push({
-//                         start: date,
-//                         end: date,
-//                         rendering: 'background',
-//                         color: '#ff9f89', // Color for blocked dates
-//                         overlap: false, // Prevent events from being dragged/resized over this
-//                         // Don't assign any click handler to make the day block non-clickable
-
-//                     });
-//                 }
-//             });
-//             successCallback(events);
-//         });
-//     }
-// }
-
 </script>
+<script>
 
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            
+        });
+
+    });
+    let scrollpos = window.scrollY
+    const header = document.querySelector(".navbar")
+    const header_height = header.offsetHeight
+    const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
+    const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
+    window.addEventListener('scroll', function () {
+        scrollpos = window.scrollY;
+        if (scrollpos >= header_height) { add_class_on_scroll() }
+        else { remove_class_on_scroll() }
+        console.log(scrollpos)
+    })
+</script>

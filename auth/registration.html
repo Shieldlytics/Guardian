@@ -6,9 +6,9 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/fontawesome-pro-5.15.4/css/all.css">
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../assets/fontawesome-pro-5.15.4/css/all.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     </head>
     <style>
         .password-container {
@@ -46,7 +46,7 @@
         }
         body {
             position: relative;
-            background: url('assets/images/RegistrationBG_Blue.png') no-repeat fixed;
+            background: url('../assets/images/RegistrationBG_Blue.png') no-repeat fixed;
             background-size: cover;
             display: grid;
             height: 100vh;
@@ -108,8 +108,7 @@
                                         <input type="password" class="form-control password-field" id="pwVerify" />
                                         <i class="fal fa-eye toggle-password"></i>
                                     </div>
-                                    <a href="https://pages.nist.gov/800-63-3/sp800-63b.html" class="text-uppcercase" style="font-size: 10px; text-decoration: none;">NIST password guidelines</a>
-                                    
+                                   <!---<a href="https://pages.nist.gov/800-63-3/sp800-63b.html" class="text-uppcercase" style="font-size: 10px; text-decoration: none;">NIST password guidelines</a>---> 
                                     <input class=" btn btn-primary form-control mt-5 signmeup" type="submit" value="Sign Up" disabled>
                                 </div>
                                 <div class="col-sm-6">
@@ -127,19 +126,15 @@
 
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12 text-center">
               <span class="text-white">Powered by</span><br>
-                <img src="assets/images/landingPage/ShieldLyticsLogoOrbitronHorzWt.svg" height="40" alt="">
+                <img src="../assets/images/landingPage/ShieldLyticsLogoOrbitronHorzWt.svg" height="40" alt="">
             </div>
         </div>
-      
-        
-
         <div class="modal fade" id="SuccessMessage" tabindex="-1" aria-labelledby="SuccessMessageLabel" aria-hidden="true">
             <div class="modal-dialog odal-dialog-centered">
               <div class="modal-content">
@@ -157,14 +152,9 @@
               </div>
             </div>
           </div>
-
-       
-       
-        
-        
-        <script src="node_modules/jquery/dist/jquery.js"></script>
-        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <script src="node_modules/aos/dist/aos.js"></script>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="../node_modules/aos/dist/aos.js"></script>
     </body>
 </html>
 <script>
