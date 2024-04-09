@@ -1,5 +1,5 @@
 {
-    "liveServer.settings.port": 5501,
+    "liveServer.settings.port": 5502,
     "phpserver.phpPath": "/usr/local/Cellar/php@8.2/8.2.17/bin/php",
     "phpserver.phpConfigPath": "/usr/local/etc/php/8.2/",
     "phpserver.relativePath": ""

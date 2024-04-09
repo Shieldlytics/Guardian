@@ -145,16 +145,18 @@
                var statusClass = response.items.statusID
                  if(status == "Success"){
                   var userData = response.items.data
-                     $("#showResults").slideDown(500);
-                     $(".results").html("<div class='alert alert-success' role='alert'>"+status+"</div>")
-                     //set session storage of user data from userData
-                      sessionStorage.setItem("userData", JSON.stringify(userData));
+                     $("#showResults").slideDown(300);
+                     $(".results").html("<div class='alert alert-success' role='alert'><i class='fas fa-info'></i> "+status+"</div>")
+                     //set session storage of user data by looping threw userData list
+                      for (var i = 0; i < userData.length; i++) {
+                          sessionStorage.setItem(userData[i].name, userData[i].value);
+                      }
                       
                      //redirect to dashboard
-                     window.location.href = "mail.html"
+                     window.location.href = ".html"
                  }else if(status != "Success"){
-                     $("#showResults").slideDown(500);
-                     $(".results").html("<div class='alert alert-danger' role='alert'>"+status+"</div>");
+                     $("#showResults").slideDown(300);
+                     $(".results").html("<div class='alert alert-danger' role='alert'><i class='fas fa-watning'></i> "+status+"</div>");
                  }
 
 
