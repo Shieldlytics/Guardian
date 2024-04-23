@@ -53,10 +53,12 @@ function registration($userData){
         $conn->commit();
 
         $to = $userData["email"];
-        $subject = "Verify your email address";
-        $message = "Please click on the following link to verify your email address: https://guardian1.azurewebsites.net/verify.php?token=$token";
-        $headers = "From: shieldlytics@shieldlytics.com";
-
+        $subject = "Confirm Email Address for new Guardian Account";
+        $message = "Please confirm you email address by entering verification code: $token  <br> Please click on the following link to verify your email address: https://guardian1.azurewebsites.net/verify.php?token=$token";
+        $headers = "From: GuardianSupport@shieldlytics.com";
+//      send email
+        mail($to, $subject, $message, $headers);
+        
         echo json_encode(['status' => 'success', 'message' => 'User registered successfully']);
     } catch (Exception $e) {
         $conn->rollBack();
