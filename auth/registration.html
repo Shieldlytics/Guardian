@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="stylesheet" href="../assets/fontawesome-pro-5.15.4/css/all.css">
         <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/aos/dist/aos.css">
     </head>
     <style>
         .password-container {
@@ -48,10 +49,19 @@
             position: relative;
             background: url('../assets/images/RegistrationBG_Blue.png') no-repeat fixed;
             background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+
             display: grid;
             height: 100vh;
             margin: 0;
+            transition:all 0.9s;
+            -webkit-transition:all 0.9s;
+            -o-transition:all 0.9s;
+            -moz-transition:all 0.9s;
         }
+
+ </style>
 
     </style>
     <body>
@@ -159,6 +169,7 @@
 </html>
 <script>
 $(document).ready(function() {
+    AOS.init({ useClassNames: true, initClassName: false, animatedClassName: 'animated', });
     //$("#registration").slideDown(500);
 
     var checkMark = '<i class="fal fa-check"></i>';
